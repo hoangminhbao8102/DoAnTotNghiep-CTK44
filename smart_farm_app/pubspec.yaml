@@ -1,252 +1,48 @@
 name: smart_farm_app
 description: A new Flutter project.
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
 version: 1.0.0+1
-
-environment:
-  sdk: '>=2.19.6 <3.0.0'
-
-# Dependencies specify other packages that your package needs in order to work.
-# To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
-# dependencies can be manually updated by changing the version numbers below to
-# the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
-dependencies:
-  flutter:
+environment: 
+  sdk: '>=2.12.0 <3.0.0'
+dependencies: 
+  flutter: 
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  google_fonts: ^3.0.1
-
-dev_dependencies:
-  flutter_test:
+  flutter_localizations: 
     sdk: flutter
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
-flutter:
-
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
+  cached_network_image: ^3.3.0
+  flutter_svg: ^2.0.9
+  pin_code_fields: ^8.0.1
+  grouped_list: ^5.1.2
+  intl: ^0.18.0
+  connectivity_plus: ^5.0.2
+  shared_preferences: ^2.2.3
+dev_dependencies: 
+  flutter_test: 
+    sdk: flutter
+flutter: 
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/usercicrle.png
-    - assets/images/lock.png
-    - assets/images/kisspng-computer-icons-login-management-user-5ae155f3386149-2.png
-    - assets/images/lock-57M.png
-    - assets/images/property-1view.png
-    - assets/images/farm-1.png
-    - assets/images/image.png
-    - assets/images/property-1variant4.png
-    - assets/images/property-1variant9.png
-    - assets/images/messagefill.png
-    - assets/images/phone.png
-    - assets/images/image-i3y.png
-    - assets/images/phone-kNj.png
-    - assets/images/usercicrle-KwD.png
-    - assets/images/lock-An3.png
-    - assets/images/pin.png
-    - assets/images/kisspng-computer-icons-login-management-user-5ae155f3386149-2-1ro.png
-    - assets/images/lock-Tjm.png
-    - assets/images/usercicrle-sh1.png
-    - assets/images/messagefill-YAs.png
-    - assets/images/arroba-1.png
-    - assets/images/farm-4.png
-    - assets/images/farm-4-8qV.png
-    - assets/images/keyboardarrowright.png
-    - assets/images/kisspng-computer-icons-login-management-user-5ae155f3386149-2-p1m.png
-    - assets/images/rectangle-89.png
-    - assets/images/closesquare.png
-    - assets/images/phone-call-1.png
-    - assets/images/thng-k.png
-    - assets/images/property-1variant18.png
-    - assets/images/duck-1.png
-    - assets/images/settings.png
-    - assets/images/property-1variant17.png
-    - assets/images/pet-1.png
-    - assets/images/property-1trash.png
-    - assets/images/addringfill.png
-    - assets/images/wbsunny.png
-    - assets/images/settings-umq.png
-    - assets/images/notificationsactive.png
-    - assets/images/property-1variant9-bsD.png
-    - assets/images/kisspng-computer-icons-login-management-user-5ae155f3386149-3.png
-    - assets/images/lock-iD5.png
-    - assets/images/kisspng-computer-icons-login-management-user-5ae155f3386149-3-EhD.png
-    - assets/images/image-23.png
-    - assets/images/usercicrle-T4B.png
-    - assets/images/smsfailed.png
-    - assets/images/lock-C1m.png
-    - assets/images/property-1editfill.png
-    - assets/images/farm-4-ziK.png
-    - assets/images/keyboardarrowright-mVR.png
-    - assets/images/livestock-1.png
-    - assets/images/chicken-1.png
-    - assets/images/cow-1.png
-    - assets/images/farm-4-xB1.png
-    - assets/images/kisspng-computer-icons-login-management-user-5ae155f3386149-2-tqu.png
-    - assets/images/farm-4-9fu.png
-    - assets/images/rectangle-70.png
-    - assets/images/farm-4-uNo.png
-    - assets/images/keyboardarrowright-65D.png
-    - assets/images/visibilityoff.png
-    - assets/images/pin-6es.png
-    - assets/images/keyboardarrowright-qRy.png
-    - assets/images/accountcircle.png
-    - assets/images/rectangle-10.png
-    - assets/images/edit.png
-    - assets/images/arrowbackios.png
-    - assets/images/chevron.png
-    - assets/images/arrowbackios-w27.png
-    - assets/images/image-3.png
-    - assets/images/language.png
-    - assets/images/rectangle-43.png
-    - assets/images/property-1variant14.png
-    - assets/images/barn-1.png
-    - assets/images/image-22.png
-    - assets/images/auto-group-i3ry.png
-    - assets/images/formatlistbulleted.png
-    - assets/images/property-1variant15.png
-    - assets/images/warning.png
-    - assets/images/image-10.png
-    - assets/images/headsetmic.png
-    - assets/images/camerafill.png
-    - assets/images/accountcircle-1my.png
-    - assets/images/keyboardarrowright-xBR.png
-    - assets/images/key.png
-    - assets/images/property-1variant11.png
-    - assets/images/visibilityoff-1NX.png
-    - assets/images/arrowbackios-kL7.png
-    - assets/images/controller.png
-    - assets/images/home.png
-    - assets/images/lock-H6w.png
-    - assets/images/keyboardarrowright-RU3.png
-    - assets/images/chevron-arj.png
-    - assets/images/visibilityoff-9Q3.png
-    - assets/images/image-12.png
-    - assets/images/location-1.png
-    - assets/images/property-1variant13.png
-    - assets/images/keyboardarrowright-v1m.png
-    - assets/images/keyboardarrowright-TGb.png
-    - assets/images/property-1variant16.png
-    - assets/images/settings-8b1.png
-    - assets/images/edit-foD.png
-    - assets/images/auto-group-8hyt.png
-    - assets/images/bell.png
-    - assets/images/messagefill-Wud.png
-    - assets/images/arrowbackios-4AT.png
-    - assets/images/rectangle-37.png
-    - assets/images/settings-VFm.png
-    - assets/images/home-crB.png
-    - assets/images/rectangle-88.png
-    - assets/images/lock-v4o.png
-    - assets/images/home-jLK.png
-    - assets/images/image-13.png
-    - assets/images/livestock-2.png
-    - assets/images/keyboardarrowright-71H.png
-    - assets/images/group-38.png
-    - assets/images/phone-q2w.png
-    - assets/images/livestock-3.png
-    - assets/images/arrowbackios-X43.png
-    - assets/images/line-17.png
-    - assets/images/arrowleft.png
-    - assets/images/wide-1.png
-    - assets/images/location.png
-    - assets/images/counter-1.png
-    - assets/images/property-1variant12.png
-    - assets/images/person.png
-    - assets/images/location-2.png
-    - assets/images/farm-4-kAK.png
-    - assets/images/menu.png
-    - assets/images/rectangle-11.png
-    - assets/images/field-2.png
-    - assets/images/farm-4-2GX.png
-    - assets/images/farm-4-xfy.png
-    - assets/images/property-1variant10.png
-    - assets/images/chevron-uZZ.png
-    - assets/images/controller-1eX.png
-    - assets/images/rectangle-71.png
-    - assets/images/farm-4-37M.png
-    - assets/images/farm-4-b27.png
-    - assets/images/arrowleft-K8B.png
-    - assets/images/farm-4-wYB.png
-    - assets/images/image-21.png
-    - assets/images/arrowbackios-HRH.png
-    - assets/images/arrowleft-gCP.png
-    - assets/images/chevron-sAF.png
-    - assets/images/rectangle-67.png
-    - assets/images/image-20.png
-    - assets/images/rectangle-71-4uV.png
-    - assets/images/wide-1-K4b.png
-    - assets/images/cow.png
-    - assets/images/chevron-Dkb.png
-    - assets/images/counter-1-CnB.png
-    - assets/images/location-2-nNb.png
-    - assets/images/rectangle-67-waf.png
-    - assets/images/arrowbackios-gpP.png
-    - assets/images/chevron-zXZ.png
-    - assets/images/location-sfD.png
-    - assets/images/rectangle-67-pJB.png
-    - assets/images/field-2-g2s.png
-    - assets/images/livestock-2-xJK.png
-    - assets/images/arrowbackios-64w.png
-    - assets/images/livestock-3-4DM.png
-    - assets/images/rectangle-67-HJP.png
-    - assets/images/image-13-UtP.png
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  assets: 
+    - assets/
+    - assets/images/
+  fonts: 
+    - family: Roboto
+      fonts: 
+        - asset: assets/fonts/RobotoMedium.ttf
+          weight: 500
+        - asset: assets/fonts/RobotoRegular.ttf
+          weight: 400
+        - asset: assets/fonts/RobotoRomanBold.ttf
+          weight: 700
+        - asset: assets/fonts/RobotoRomanRegular.ttf
+          weight: 400
+        - asset: assets/fonts/RobotoRomanMedium.ttf
+          weight: 500
+        - asset: assets/fonts/RobotoRomanLight.ttf
+          weight: 300
+    - family: Inter
+      fonts: 
+        - asset: assets/fonts/InterBold.ttf
+          weight: 700
+        - asset: assets/fonts/InterMedium.ttf
+          weight: 500
+        - asset: assets/fonts/InterRegular.ttf
+          weight: 400
