@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:smart_farm_app/presentation/info_product_screen/info_product_screen.dart';
 import '../../core/app_export.dart';
 import '../../widgets/custom_bottom_bar.dart';
+import '../find_product_screen/find_product_screen.dart';
 import '../home_page/home_page.dart';
+import '../info_account_screen/info_account_screen.dart';
+import '../statistical_screen/statistical_screen.dart';
 
 // ignore: must_be_immutable
 class HomePageContainerScreen extends StatelessWidget {
@@ -40,9 +42,9 @@ class HomePageContainerScreen extends StatelessWidget {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Farm:
-        return AppRoutes.homePage;
+        return AppRoutes.infoAllFarmScreen;
       case BottomBarEnum.Product:
-        return AppRoutes.infoProductScreen;
+        return AppRoutes.findProductScreen;
       case BottomBarEnum.Statistic:
         return AppRoutes.statisticalScreen;
       case BottomBarEnum.Information:
@@ -57,8 +59,12 @@ class HomePageContainerScreen extends StatelessWidget {
     switch (currentRoute) {
       case AppRoutes.homePage:
         return HomePage();
-      case AppRoutes.infoProductScreen:
-        return InfoProductScreen();
+      case AppRoutes.findProductScreen:
+        return FindProductScreen();
+      case AppRoutes.statisticalScreen:
+        return StatisticalScreen();
+      case AppRoutes.infoAccountScreen:
+        return InfoAccountScreen();
       default:
         return DefaultWidget();
     }
