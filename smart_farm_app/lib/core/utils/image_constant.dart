@@ -16,12 +16,13 @@ class ImageConstant {
   static String imageNavStatistic =  '$imagePath/img_nav_statistic.png';
 
   static String imageNavInformation =  '$imagePath/img_nav_information.png';
-// Register images
-  static String imgLinkedin = '$imagePath/img_linkedin.svg';
 
-  static String imgCheckmark = '$imagePath/img_checkmark.svg';
   // Home page
   static String imgCow = '$imagePath/img_cow.png';
+
+  static String imgChicken = '$imagePath/img_chicken.jpg';
+
+  static String imgPet = '$imagePath/img_pet.jpg';
 
   static String imgSetting = '$imagePath/img_setting.png';
 
@@ -29,6 +30,11 @@ class ImageConstant {
 
   static String imgBell = '$imagePath/img_bell.png';
 
+// Register images
+  static String imgLinkedin = '$imagePath/img_linkedin.svg';
+
+  static String imgCheckmark = '$imagePath/img_checkmark.svg';
+  
   // Info all Farm images
   static String imgCreate = '$imagePath/img_create.png';
 

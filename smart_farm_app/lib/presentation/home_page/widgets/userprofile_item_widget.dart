@@ -28,7 +28,45 @@ class UserprofileItemWidget extends StatelessWidget{
           Text(
             "GIA SÚC",
             style: CustomTextStyles.titleSmallInter,
-          )
+          ),
+          /*Container(
+            height: 70.adaptSize,
+            width: 70.adaptSize,
+            padding: EdgeInsets.all(10.h),
+            decoration: AppDecoration.outlinedGreen.copyWith(
+              borderRadius: BorderRadiusStyle.roundedBorder15,
+            ),
+            child: CustomImageView(
+              imagePath: ImageConstant.imgChicken,
+              height: 40.adaptSize,
+              width: 40.adaptSize,
+              alignment: Alignment.center,
+            ),
+          ),
+          SizedBox(height: 8.v),
+          Text(
+            "GIA CẦM",
+            style: CustomTextStyles.titleSmallInter,
+          ),
+          Container(
+            height: 70.adaptSize,
+            width: 70.adaptSize,
+            padding: EdgeInsets.all(10.h),
+            decoration: AppDecoration.outlinedGreen.copyWith(
+              borderRadius: BorderRadiusStyle.roundedBorder15,
+            ),
+            child: CustomImageView(
+              imagePath: ImageConstant.imgPet,
+              height: 40.adaptSize,
+              width: 40.adaptSize,
+              alignment: Alignment.center,
+            ),
+          ),
+          SizedBox(height: 8.v),
+          Text(
+            "THÚ CƯNG",
+            style: CustomTextStyles.titleSmallInter,
+          )*/
         ],
       ),
     );

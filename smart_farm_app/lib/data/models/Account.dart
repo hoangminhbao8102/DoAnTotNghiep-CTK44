@@ -1,11 +1,11 @@
 class Account {
-  int? id;
-  String? name;
-  String? location;
-  String? phone;
-  String? email;
-  String? username;
-  String? password;
+  final int? id;
+  final String? name;
+  final String? location;
+  final String? phone;
+  final String? email;
+  final String username;
+  final String password;
 
   Account({
     this.id,
@@ -13,18 +13,20 @@ class Account {
     this.location,
     this.phone,
     this.email,
-    this.username,
-    this.password
+    required this.username,
+    required this.password
   });
 
-  Account.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    location = json['location'];
-    phone = json['phone'];
-    email = json['email'];
-    username = json['username'];
-    password = json['password'];
+  factory Account.fromJson(Map<String, dynamic> json) {
+    return Account(
+      id: json['id'],
+      name: json['name'],
+      location: json['location'],
+      phone: json['phone'],
+      email: json['email'],
+      username: json['username'],
+      password: json['password'],
+    );
   }
 
   Map<String, dynamic> toJson() {

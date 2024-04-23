@@ -28,7 +28,7 @@ class LocalStorage {
     if (account.id != null) {
       await _preferences.setInt('id', account.id!);
     }
-    await _preferences.setString('username', account.username ?? '');
+    await _preferences.setString('username', account.username);
     await _preferences.setString('email', account.email ?? '');
     // Thêm các thuộc tính khác của tài khoản nếu cần
   }
@@ -39,9 +39,9 @@ class LocalStorage {
     String? email = _preferences.getString('email');
     // Đọc các thuộc tính khác của tài khoản nếu cần
     if (accountId != null && username != null && email != null) {
-      return Account(id: accountId, username: username, email: email);
+      return Account(id: accountId, username: username, email: email, password: '');
     } else {
-      return Account(id: 0, username: '', email: '');
+      return Account(id: 0, username: '', email: '', password: '');
     }
   }
 

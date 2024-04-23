@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smart_farm_app/presentation/change_password_screen/change_password_screen.dart';
+import 'package:smart_farm_app/presentation/log_in_screen/log_in_screen.dart';
+import 'package:smart_farm_app/presentation/update_info_account_screen/update_info_account_screen.dart';
 import '../../core/app_export.dart';
 import '../../theme/custom_button_style.dart';
 import '../../widgets/app_bar/appbar_leading_image.dart';
@@ -33,16 +36,6 @@ class SettingScreen extends StatelessWidget {
                 "Minh Bảo",
                 style: theme.textTheme.titleLarge,
               ),
-              SizedBox(height: 10.v),
-              Text(
-                "Minh Bảo",
-                style: theme.textTheme.titleLarge,
-              ),
-              SizedBox(height: 6.v),
-              Text(
-                "Minh Bảo",
-                style: theme.textTheme.titleLarge,
-              ),
               SizedBox(height: 40.v),
               CustomOutlinedButton(
                 height: 65.v,
@@ -58,6 +51,9 @@ class SettingScreen extends StatelessWidget {
                 ),
                 buttonStyle: CustomButtonStyles.outlinePrimaryTL302,
                 buttonTextStyle: CustomTextStyles.titleMediumSecondaryContainer,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateInfoAccountScreen()));
+                },
               ),
               SizedBox(height: 30.v),
               CustomOutlinedButton(
@@ -74,6 +70,9 @@ class SettingScreen extends StatelessWidget {
                 ),
                 buttonStyle: CustomButtonStyles.outlinePrimaryTL302,
                 buttonTextStyle: CustomTextStyles.titleMediumSecondaryContainer,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ChangePasswordScreen()));
+                },
               ),
               SizedBox(height: 35.v),
               CustomOutlinedButton(
@@ -90,6 +89,9 @@ class SettingScreen extends StatelessWidget {
                 ),
                 buttonStyle: CustomButtonStyles.outlinePrimaryTL302,
                 buttonTextStyle: CustomTextStyles.titleMediumSecondaryContainer,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LogInScreen()));
+                },
               ),
             ],
           ),

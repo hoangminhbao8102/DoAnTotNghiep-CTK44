@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smart_farm_app/presentation/forgot_password_screen/forgot_password_screen.dart';
+import 'package:smart_farm_app/presentation/home_page/home_page.dart';
+import 'package:smart_farm_app/presentation/register_screen/register_screen.dart';
 import '../../core/app_export.dart';
 import '../../theme/custom_button_style.dart';
 import '../../widgets/custom_outlined_button.dart';
@@ -191,14 +194,26 @@ class LogInScreen extends StatelessWidget {
       margin: EdgeInsets.only(right: 52.h),
       buttonStyle: CustomButtonStyles.outlinePrimaryTL30,
       buttonTextStyle: CustomTextStyles.titleMediumPrimary,
+      onPressed: () {
+        onTapRegister(context);
+      },
     );
   }
 
   onTapTxtForgotPassword(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.forgotPasswordScreen);
+    Navigator.push(
+      context, MaterialPageRoute(builder: (context) => ForgotPasswordScreen())
+    );
   }
 
   onTapLogin(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.homePageContainerScreen);
+    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+  }
+
+  onTapRegister(BuildContext context) {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(builder: (context) => RegisterScreen())
+    );
   }
 }

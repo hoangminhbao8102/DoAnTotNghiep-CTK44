@@ -9,7 +9,6 @@ import '../presentation/forgot_password_gmail_screen/forgot_password_gmail_scree
 import '../presentation/forgot_password_phone_screen/forgot_password_phone_screen.dart';
 import '../presentation/forgot_password_screen/forgot_password_screen.dart';
 import '../presentation/home_page/home_page.dart';
-import '../presentation/home_page_container_screen/home_page_container_screen.dart';
 import '../presentation/info_account_screen/info_account_screen.dart';
 import '../presentation/info_all_farm_screen/info_all_farm_screen.dart';
 import '../presentation/info_farm_screen/info_farm_screen.dart';
@@ -98,7 +97,6 @@ class AppRoutes {
     otpEmailScreen: (context) => OtpEmailScreen(),
     setPasswordScreen: (context) => SetPasswordScreen(),
     homePage: (context) => HomePage(),
-    homePageContainerScreen: (context) => HomePageContainerScreen(),
     livestockScreen: (context) => LivestockScreen(),
     infoLivestockScreen: (context) => InfoLivestockScreen(),
     createFarmScreen: (context) => CreateFarmScreen(),

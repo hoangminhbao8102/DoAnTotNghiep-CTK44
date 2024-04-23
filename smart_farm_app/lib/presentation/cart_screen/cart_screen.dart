@@ -76,7 +76,7 @@ class CartScreen extends StatelessWidget {
           bottom: 15.v,
         ),
         onTap: () {
-          onTapArrowleftone(context);
+          onTapArrowleft(context);
         },
       ),
       title: AppbarTitle(
@@ -87,7 +87,7 @@ class CartScreen extends StatelessWidget {
   }
 
   /// Navigates back to the previous screen.
-  onTapArrowleftone(BuildContext context) {
+  onTapArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 }

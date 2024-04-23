@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:smart_farm_app/presentation/cart_screen/cart_screen.dart';
+import 'package:smart_farm_app/presentation/notification_screen/notification_screen.dart';
 import '../../core/app_export.dart';
 import '../../widgets/app_bar/appbar_leading_image.dart';
 import '../../widgets/app_bar/appbar_subtitle_one.dart';
 import '../../widgets/app_bar/appbar_trailing_image.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
+import '../../widgets/custom_bottom_bar.dart';
+import '../find_product_screen/find_product_screen.dart';
+import '../info_account_screen/info_account_screen.dart';
+import '../setting_screen/setting_screen.dart';
+import '../statistical_screen/statistical_screen.dart';
 import 'widgets/productdetails_item_widget.dart';
 import 'widgets/userprofile_item_widget.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+
+  GlobalKey<NavigatorState> navigatorKey = GlobalKey();
   
   @override
   Widget build(BuildContext context) {
@@ -36,10 +46,21 @@ class HomePage extends StatelessWidget {
               _buildProductdetails(context),
               SizedBox(height: 20.v),
               _buildRowview(context),
-              SizedBox(height: 5.v)
+              SizedBox(height: 5.v),
+              Expanded(
+                child: Navigator(
+                  key: navigatorKey,
+                  initialRoute: AppRoutes.homePage,
+                  onGenerateRoute: (routeSetting) => PageRouteBuilder(
+                    pageBuilder: (ctx, ani, secAni) => getCurrentPage(routeSetting.name!),
+                    transitionDuration: Duration(seconds: 0),
+                  ),
+                )
+              )
             ],
           ),
         ),
+        bottomNavigationBar: _buildBottombar(context),
       ),
     );
   }
@@ -72,7 +93,7 @@ class HomePage extends StatelessWidget {
             right: 8.h,
           ),
           onTap: () {
-            onTapCartone(context);
+            onTapCart(context);
           },
         ),
         AppbarTrailingImage(
@@ -83,7 +104,7 @@ class HomePage extends StatelessWidget {
             right: 23.h,
           ),
           onTap: () {
-            onTapBellone(context);
+            onTapBell(context);
           },
         )
       ],
@@ -268,18 +289,67 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  /// Section Widget
+  Widget _buildBottombar(BuildContext context) {
+    return CustomButtonBar(
+      onChanged: (BottomBarEnum type) {
+        Navigator.pushNamed(navigatorKey.currentContext!, getCurrentRoute(type));
+      },
+    );
+  }
+  
+  /// Handing route based on bottom click actions
+  String getCurrentRoute(BottomBarEnum type) {
+    switch (type) {
+      case BottomBarEnum.Farm:
+        return AppRoutes.infoAllFarmScreen;
+      case BottomBarEnum.Product:
+        return AppRoutes.findProductScreen;
+      case BottomBarEnum.Statistic:
+        return AppRoutes.statisticalScreen;
+      case BottomBarEnum.Information:
+        return AppRoutes.infoAccountScreen;
+      default:
+        return "/";
+    }
+  }
+  
+  /// Handing page based on route
+  Widget getCurrentPage(String currentRoute) {
+    switch (currentRoute) {
+      case AppRoutes.homePage:
+        return HomePage();
+      case AppRoutes.findProductScreen:
+        return FindProductScreen();
+      case AppRoutes.statisticalScreen:
+        return StatisticalScreen();
+      case AppRoutes.infoAccountScreen:
+        return InfoAccountScreen();
+      default:
+        return DefaultWidget();
+    }
+  }
+   
+
   /// Navigates to the settingScreen when the action is triggered
   onTapSetting(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.settingScreen);
+    Navigator.push(
+      context, 
+      MaterialPageRoute(builder: (context) => SettingScreen())
+    ); // Điều hướng đến màn hình SettingScreen
   }
 
   /// Navigates to the cartScreen when the action is triggered
-  onTapCartone(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.cartScreen);
+  onTapCart(BuildContext context) {
+    Navigator.push(
+      context, MaterialPageRoute(builder: (context) => CartScreen())
+    );
   }
   
   /// Navigates to the notificationScreen when the action is triggered
-  onTapBellone(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.notificationScreen);
+  onTapBell(BuildContext context) {
+    Navigator.push(
+      context, MaterialPageRoute(builder: (context) => NotificationScreen())
+    );
   }
 }
