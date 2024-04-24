@@ -15,8 +15,8 @@ namespace Core.Entities
 
         public DateTime CareDate { get; set; }
 
-        public required string CareDescription { get; set; }
+        public string CareDescription { get; set; }
 
-        public required Livestock Livestock { get; set; }
+        public Livestock Livestock { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace Core.Entities
 
         public DateTime ReportDate { get; set; }
 
-        public required string ReportContent { get; set; }
+        public string ReportContent { get; set; }
 
         public int FarmId { get; set; }
 
-        public required Farm Farm { get; set; }
+        public Farm Farm { get; set; }
     }
 }

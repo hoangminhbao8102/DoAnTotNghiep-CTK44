@@ -11,13 +11,13 @@ namespace Core.Entities
     {
         public int Id { get; set; }
 
-        public required string ProductName { get; set; }
+        public string ProductName { get; set; }
 
         public string Description { get; set; }
 
         public string ImageUrl { get; set; }
 
-        public required string Category { get; set; }
+        public string Category { get; set; }
 
         public int Amount { get; set; }
 
@@ -25,6 +25,6 @@ namespace Core.Entities
 
         public int FarmId { get; set; }
 
-        public required Farm Farm { get; set; }
+        public Farm Farm { get; set; }
     }
 }

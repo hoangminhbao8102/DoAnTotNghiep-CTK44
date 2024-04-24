@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UmmEUuGpBvHylZWw7YqnMUM2FUIhTXJf6axLucY6iKz5xgNwhJjUWNbS9aT1r8gurssKGdpXHxtEf3xkLS99Tg==",
+  "dgSpecHash": "2az7TOtjv9KP87hZ3qCWFvQxdMezR9iStmOqddEtWy7uHdPTGR5ZJZlUswCO7rm4xDcBpT8lRf6hZFNL1Ehp/Q==",
   "success": true,
   "projectFilePath": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
@@ -42,6 +42,7 @@
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.formats.asn1\\5.0.0\\system.formats.asn1.5.0.0.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.35.0\\system.identitymodel.tokens.jwt.6.35.0.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\Maxsys\\.nuget\\packages\\system.linq.dynamic.core\\1.3.12\\system.linq.dynamic.core.1.3.12.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\Maxsys\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",

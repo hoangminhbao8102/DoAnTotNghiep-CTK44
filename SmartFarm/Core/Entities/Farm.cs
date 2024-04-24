@@ -11,20 +11,20 @@ namespace Core.Entities
     {
         public int Id { get; set; }
 
-        public required string FarmName { get; set; }
+        public string FarmName { get; set; }
 
-        public required string Location { get; set; }
+        public string Location { get; set; }
 
         public int Area { get; set; }
 
         public int OwnerId { get; set; }
 
-        public required Account Owner { get; set; }
+        public Account Owner { get; set; }
 
-        public required List<Livestock> Livestocks { get; set; }
+        public List<Livestock> Livestocks { get; set; }
 
-        public required List<Product> Products { get; set; }
+        public List<Product> Products { get; set; }
 
-        public required List<Report> Reports { get; set; }
+        public List<Report> Reports { get; set; }
     }
 }

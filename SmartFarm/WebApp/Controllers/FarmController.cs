@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Services.Repositories.FarmRepository;
+using System.Threading;
 
 namespace WebApp.Controllers
 {
@@ -18,8 +20,12 @@ namespace WebApp.Controllers
 
             return View();
         }
+        public async Task<IActionResult> FarmAsync() 
+        {
+            List<Farm> farms = await _farmRepository.GetAllFarmsAsync();
 
-        public IActionResult Farm() => View();
+            return View(farms);
+        }
 
         public IActionResult Livestock() => View();
 

@@ -1,0 +1,21 @@
+﻿@model Farm
+
+<article class="blog-entry mb-4">
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <p class="card-text">
+                        <small class="text-muted">Tên trang trại: </small>
+                        <span class="text-primary">@Model.Author.FullName</span>
+                        <small class="text-muted">Địa chỉ: </small>
+                        <span class="text-primary">@Model.Category.Name</span>
+                    </p>
+                    <div class="tag-list">
+                        <partial name="FarmList" model="@Model.Farm" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
