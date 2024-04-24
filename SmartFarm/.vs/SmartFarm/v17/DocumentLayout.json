@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DD14763D-E94D-458F-88F8-FD489E09F291}|Data\\Data.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarm\\data\\seeders\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD14763D-E94D-458F-88F8-FD489E09F291}|Data\\Data.csproj|solutionrelative:data\\seeders\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{92027A2A-64F5-4A86-A653-57168B110CB1}|Services\\Services.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarm\\services\\repositories\\reportrepository\\reportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92027A2A-64F5-4A86-A653-57168B110CB1}|Services\\Services.csproj|solutionrelative:services\\repositories\\reportrepository\\reportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92027A2A-64F5-4A86-A653-57168B110CB1}|Services\\Services.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarm\\services\\repositories\\reportrepository\\ireportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92027A2A-64F5-4A86-A653-57168B110CB1}|Services\\Services.csproj|solutionrelative:services\\repositories\\reportrepository\\ireportrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92027A2A-64F5-4A86-A653-57168B110CB1}|Services\\Services.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarm\\services\\repositories\\productrepository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92027A2A-64F5-4A86-A653-57168B110CB1}|Services\\Services.csproj|solutionrelative:services\\repositories\\productrepository\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92027A2A-64F5-4A86-A653-57168B110CB1}|Services\\Services.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarm\\services\\repositories\\productrepository\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92027A2A-64F5-4A86-A653-57168B110CB1}|Services\\Services.csproj|solutionrelative:services\\repositories\\productrepository\\iproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DataSeeder.cs",
-              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Data\\Seeders\\DataSeeder.cs",
-              "RelativeDocumentMoniker": "Data\\Seeders\\DataSeeder.cs",
-              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Data\\Seeders\\DataSeeder.cs",
-              "RelativeToolTip": "Data\\Seeders\\DataSeeder.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAANAAAA",
+              "Title": "ReportRepository.cs",
+              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Repositories\\ReportRepository\\ReportRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Repositories\\ReportRepository\\ReportRepository.cs",
+              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Repositories\\ReportRepository\\ReportRepository.cs",
+              "RelativeToolTip": "Services\\Repositories\\ReportRepository\\ReportRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T08:02:27.51Z",
+              "WhenOpened": "2024-04-24T04:13:09.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IReportRepository.cs",
+              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Repositories\\ReportRepository\\IReportRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Repositories\\ReportRepository\\IReportRepository.cs",
+              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Repositories\\ReportRepository\\IReportRepository.cs",
+              "RelativeToolTip": "Services\\Repositories\\ReportRepository\\IReportRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:13:00.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductRepository.cs",
+              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Repositories\\ProductRepository\\ProductRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Repositories\\ProductRepository\\ProductRepository.cs",
+              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Repositories\\ProductRepository\\ProductRepository.cs",
+              "RelativeToolTip": "Services\\Repositories\\ProductRepository\\ProductRepository.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAmwBYAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:08:52.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IProductRepository.cs",
+              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Repositories\\ProductRepository\\IProductRepository.cs",
+              "RelativeDocumentMoniker": "Services\\Repositories\\ProductRepository\\IProductRepository.cs",
+              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Repositories\\ProductRepository\\IProductRepository.cs",
+              "RelativeToolTip": "Services\\Repositories\\ProductRepository\\IProductRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T04:08:43.349Z",
               "EditorCaption": ""
             }
           ]
