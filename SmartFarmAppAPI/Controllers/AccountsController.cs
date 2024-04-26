@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 using SmartFarmAppAPI.Core.Entities;
 using SmartFarmAppAPI.Data.Contexts;
 
@@ -73,7 +74,7 @@ namespace SmartFarmAppAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Accounts
+        // POST: api/Accounts/
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Account>> PostAccount(Account account)
@@ -82,6 +83,43 @@ namespace SmartFarmAppAPI.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAccount", new { id = account.Id }, account);
+        }
+
+        // POST: api/Accounts/login
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] Account loginInfo)
+        {
+            var account = _context.Accounts.FirstOrDefault(a => a.Username == loginInfo.Username && a.Password == loginInfo.Password);
+
+            if (account == null)
+            {
+                return BadRequest("Invalid username or password");
+            }
+
+            // Đăng nhập thành công, trả về thông tin tài khoản
+            return Ok(account);
+        }
+
+        // POST: api/Accounts/register
+        [HttpPost("register")]
+        public IActionResult Register(Account newAccount)
+        {
+            // Kiểm tra xem tài khoản đã tồn tại chưa
+            var existingAccount = _context.Accounts.FirstOrDefault(a => a.Username == newAccount.Username || a.Email == newAccount.Email);
+
+            if (existingAccount != null)
+            {
+                return BadRequest("Username or email already exists");
+            }
+
+            // Gán Id cho tài khoản mới
+            newAccount.Id = _context.Accounts.Count() + 1;
+
+            // Thêm tài khoản mới vào danh sách (trong thực tế, bạn sẽ lưu trữ vào cơ sở dữ liệu)
+            _context.Add(newAccount);
+
+            // Trả về tài khoản đã đăng ký thành công
+            return Ok(newAccount);
         }
 
         // DELETE: api/Accounts/5
