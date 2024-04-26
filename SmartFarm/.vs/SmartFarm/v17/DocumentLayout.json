@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D20DF81B-36A1-4B83-80FE-4CB9F9B0E068}|WebApp\\WebApp.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarm\\webapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{D20DF81B-36A1-4B83-80FE-4CB9F9B0E068}|WebApp\\WebApp.csproj|solutionrelative:webapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D20DF81B-36A1-4B83-80FE-4CB9F9B0E068}|WebApp\\WebApp.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarm\\webapp\\views\\farm\\farmlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D20DF81B-36A1-4B83-80FE-4CB9F9B0E068}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\farm\\farmlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -78,11 +82,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\WebApp\\appsettings.json",
+              "RelativeDocumentMoniker": "WebApp\\appsettings.json",
+              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\WebApp\\appsettings.json",
+              "RelativeToolTip": "WebApp\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-25T01:42:07.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Farm.cshtml",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\WebApp\\Views\\Farm\\Farm.cshtml",
               "RelativeDocumentMoniker": "WebApp\\Views\\Farm\\Farm.cshtml",
@@ -90,12 +107,11 @@
               "RelativeToolTip": "WebApp\\Views\\Farm\\Farm.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T10:26:53.576Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T10:26:53.576Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FarmList.cshtml",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\WebApp\\Views\\Farm\\FarmList.cshtml",
               "RelativeDocumentMoniker": "WebApp\\Views\\Farm\\FarmList.cshtml",
@@ -108,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IFarmRepository.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Repositories\\FarmRepository\\IFarmRepository.cs",
               "RelativeDocumentMoniker": "Services\\Repositories\\FarmRepository\\IFarmRepository.cs",
@@ -116,12 +132,11 @@
               "RelativeToolTip": "Services\\Repositories\\FarmRepository\\IFarmRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAABYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T10:20:46.613Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T10:20:46.613Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "_ViewImports.cshtml",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\WebApp\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "WebApp\\Views\\_ViewImports.cshtml",
@@ -129,12 +144,11 @@
               "RelativeToolTip": "WebApp\\Views\\_ViewImports.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T10:16:50.422Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T10:16:50.422Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "FarmController.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\WebApp\\Controllers\\FarmController.cs",
               "RelativeDocumentMoniker": "WebApp\\Controllers\\FarmController.cs",
@@ -142,12 +156,11 @@
               "RelativeToolTip": "WebApp\\Controllers\\FarmController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAABGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T10:16:26.646Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T10:16:26.646Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\WebApp\\Views\\Farm\\Index.cshtml",
               "RelativeDocumentMoniker": "WebApp\\Views\\Farm\\Index.cshtml",
@@ -155,12 +168,11 @@
               "RelativeToolTip": "WebApp\\Views\\Farm\\Index.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-24T10:15:38.322Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T10:15:38.322Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "DataSeeder.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Data\\Seeders\\DataSeeder.cs",
               "RelativeDocumentMoniker": "Data\\Seeders\\DataSeeder.cs",
@@ -168,12 +180,11 @@
               "RelativeToolTip": "Data\\Seeders\\DataSeeder.cs",
               "ViewState": "AQIAANsBAAAAAAAAAAAmwPEBAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:29:32.897Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:29:32.897Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Report.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Core\\Entities\\Report.cs",
               "RelativeDocumentMoniker": "Core\\Entities\\Report.cs",
@@ -181,12 +192,11 @@
               "RelativeToolTip": "Core\\Entities\\Report.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAIwBMAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:29:13.557Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:29:13.557Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Product.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Core\\Entities\\Product.cs",
               "RelativeDocumentMoniker": "Core\\Entities\\Product.cs",
@@ -194,12 +204,11 @@
               "RelativeToolTip": "Core\\Entities\\Product.cs",
               "ViewState": "AQIAAA8AAAAAAAAAAADwvxsAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:29:00.853Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:29:00.853Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "LivestockCare.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Core\\Entities\\LivestockCare.cs",
               "RelativeDocumentMoniker": "Core\\Entities\\LivestockCare.cs",
@@ -207,12 +216,11 @@
               "RelativeToolTip": "Core\\Entities\\LivestockCare.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAIwBEAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:28:46.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:28:46.235Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Livestock.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Core\\Entities\\Livestock.cs",
               "RelativeDocumentMoniker": "Core\\Entities\\Livestock.cs",
@@ -220,12 +228,11 @@
               "RelativeToolTip": "Core\\Entities\\Livestock.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAADwvxsAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:28:34.213Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:28:34.213Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Farm.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Core\\Entities\\Farm.cs",
               "RelativeDocumentMoniker": "Core\\Entities\\Farm.cs",
@@ -233,12 +240,11 @@
               "RelativeToolTip": "Core\\Entities\\Farm.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAADwvxsAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:28:20.423Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:28:20.423Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Account.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Core\\Entities\\Account.cs",
               "RelativeDocumentMoniker": "Core\\Entities\\Account.cs",
@@ -246,12 +252,11 @@
               "RelativeToolTip": "Core\\Entities\\Account.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:27:58.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:27:58.435Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "PagedListExtensions.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Services\\Extensions\\PagedListExtensions.cs",
               "RelativeDocumentMoniker": "Services\\Extensions\\PagedListExtensions.cs",
@@ -259,12 +264,11 @@
               "RelativeToolTip": "Services\\Extensions\\PagedListExtensions.cs",
               "ViewState": "AQIAABYAAAAAAAAAAAAQwDwAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:24:25.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:24:25.113Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "PagedList.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Core\\Collections\\PagedList.cs",
               "RelativeDocumentMoniker": "Core\\Collections\\PagedList.cs",
@@ -272,12 +276,11 @@
               "RelativeToolTip": "Core\\Collections\\PagedList.cs",
               "ViewState": "AQIAAD4AAAAAAAAAAAAUwFIAAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:07:42.993Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:07:42.993Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "IPagingParams.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Core\\Contracts\\IPagingParams.cs",
               "RelativeDocumentMoniker": "Core\\Contracts\\IPagingParams.cs",
@@ -285,12 +288,11 @@
               "RelativeToolTip": "Core\\Contracts\\IPagingParams.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:06:58.039Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:06:58.039Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "IPagedList.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarm\\Core\\Contracts\\IPagedList.cs",
               "RelativeDocumentMoniker": "Core\\Contracts\\IPagedList.cs",
@@ -298,8 +300,7 @@
               "RelativeToolTip": "Core\\Contracts\\IPagedList.cs",
               "ViewState": "AQIAABEAAAAAAAAAAAAgwB0AAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T09:05:36.18Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-24T09:05:36.18Z"
             }
           ]
         }

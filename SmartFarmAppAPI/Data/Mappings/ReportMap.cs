@@ -12,13 +12,25 @@ namespace SmartFarmAppAPI.Data.Mappings
 
             builder.HasKey(r => r.Id);
 
-            builder.Property(r => r.ReportDate)
+            builder.Property(r => r.Date)
                 .HasColumnType("date")
                 .IsRequired();
 
-            builder.Property(r => r.ReportContent)
+            builder.Property(r => r.Content)
                 .IsRequired()
                 .HasMaxLength(1000);
+
+            builder.Property(p => p.RegisteredAccounts)
+                .HasColumnType("int");
+
+            builder.Property(p => p.TotalFarms)
+                .HasColumnType("int");
+
+            builder.Property(p => p.TotalLivestocks)
+                .HasColumnType("int");
+
+            builder.Property(p => p.SoldProducts)
+                .HasColumnType("int");
 
             builder.HasOne(r => r.Farm)
                 .WithMany(f => f.Reports)

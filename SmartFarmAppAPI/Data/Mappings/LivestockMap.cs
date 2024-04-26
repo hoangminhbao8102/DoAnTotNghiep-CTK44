@@ -16,12 +16,15 @@ namespace SmartFarmAppAPI.Data.Mappings
                 .IsRequired()
                 .HasMaxLength(100);
 
-            builder.Property(l => l.LivestockAnimalType)
+            builder.Property(l => l.LivestockName)
                 .IsRequired()
                 .HasMaxLength(100);
 
-            builder.Property(l => l.LivestockName)
+            builder.Property(l => l.Description)
                 .IsRequired()
+                .HasMaxLength(100);
+
+            builder.Property(l => l.ImageUrl)
                 .HasMaxLength(100);
 
             builder.Property(l => l.Breed)

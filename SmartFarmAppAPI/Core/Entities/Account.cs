@@ -6,18 +6,18 @@ namespace SmartFarmAppAPI.Core.Entities
     {
         public int Id { get; set; }
 
-        public required string FullName { get; set; }
+        public string FullName { get; set; }
 
-        public required string Address { get; set; }
+        public string Address { get; set; }
 
-        public required string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
+            
+        public string Email { get; set; }
 
-        public required string Email { get; set; }
+        public string Username { get; set; }
 
-        public required string Username { get; set; }
-
-        public required string Password { get; set; }
-
-        public required List<Farm> Farms { get; set; }
+        public string Password { get; set; }
+            
+        public List<Farm> Farms { get; set; }
     }
 }

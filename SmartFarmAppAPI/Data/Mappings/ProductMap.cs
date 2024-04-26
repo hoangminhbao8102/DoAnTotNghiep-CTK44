@@ -16,8 +16,17 @@ namespace SmartFarmAppAPI.Data.Mappings
                 .IsRequired()
                 .HasMaxLength(100);
 
+            builder.Property(p => p.ImageUrl)
+                .HasMaxLength(100);
+
+            builder.Property(p => p.Description)
+                .HasMaxLength(255);
+
             builder.Property(p => p.Category)
                 .HasMaxLength(100);
+
+            builder.Property(p => p.Amount)
+                .HasColumnType("int");
 
             builder.Property(p => p.Price)
                 .HasColumnType("decimal(10,2)");

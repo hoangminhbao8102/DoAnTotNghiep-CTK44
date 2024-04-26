@@ -12,11 +12,11 @@ namespace SmartFarmAppAPI.Data.Mappings
 
             builder.HasKey(lc => lc.Id);
 
-            builder.Property(lc => lc.CareDate)
+            builder.Property(lc => lc.Date)
                 .HasColumnType("date")
                 .IsRequired();
 
-            builder.Property(lc => lc.CareDescription)
+            builder.Property(lc => lc.Description)
                 .IsRequired()
                 .HasMaxLength(500);
 

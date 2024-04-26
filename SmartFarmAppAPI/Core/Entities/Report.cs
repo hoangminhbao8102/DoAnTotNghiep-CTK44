@@ -6,12 +6,20 @@ namespace SmartFarmAppAPI.Core.Entities
     {
         public int Id { get; set; }
 
-        public DateTime ReportDate { get; set; }
+        public DateTime Date { get; set; }
 
-        public required string ReportContent { get; set; }
+        public string Content { get; set; }
+
+        public int RegisteredAccounts { get; set; }
+
+        public int TotalFarms { get; set; }
+
+        public int TotalLivestocks { get; set; }
+
+        public int SoldProducts { get; set; }
 
         public int FarmId { get; set; }
 
-        public required Farm Farm { get; set; }
+        public Farm Farm { get; set; }
     }
 }

@@ -6,11 +6,13 @@ namespace SmartFarmAppAPI.Core.Entities
     {
         public int Id { get; set; }
 
-        public required string LivestockType { get; set; }  // Loại vật nuôi (ví dụ: gia súc, gia cầm)
-
-        public required string LivestockAnimalType { get; set; } // Loại động vật (ví dụ: bò, gà, lợn)
+        public required string LivestockType { get; set; }
 
         public required string LivestockName { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public string Description { get; set; }
 
         public required string Breed { get; set; }
 
