@@ -9,13 +9,13 @@ class ImageConstant {
   static String imageArroba = '$imagePath/img_arroba.png';
 
 // Home page - Container images
-  static String imageNavFarm =  '$imagePath/img_nav_farm.png';
+  static String imageNavInformation =  '$imagePath/img_nav_information.png';
 
   static String imageNavProduct =  '$imagePath/img_nav_product.png';
 
   static String imageNavStatistic =  '$imagePath/img_nav_statistic.png';
 
-  static String imageNavInformation =  '$imagePath/img_nav_information.png';
+  static String imageNavAccount =  '$imagePath/img_nav_account.png';
 
   // Home page
   static String imgCow = '$imagePath/img_cow.png';
@@ -71,6 +71,8 @@ class ImageConstant {
   static String imgKisspngCompute = '$imagePath/img_kisspng_compute.png';
 
   static String imgArrowLeftPrimary = '$imagePath/img_arrow_left_primary.png';
+
+  static String imgLivestockInfo = '$imagePath/img_livestock_info.png';
 
   static String imgArrowdown = '$imagePath/img_arrowdown.png';
 

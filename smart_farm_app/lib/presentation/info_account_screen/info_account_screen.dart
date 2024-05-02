@@ -13,9 +13,9 @@ class InfoAccountScreen extends StatelessWidget {
 
   TextEditingController userNameController = TextEditingController();
 
-  TextEditingController addressoneController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
 
-  TextEditingController phonenumberoneController = TextEditingController();
+  TextEditingController phonenumberController = TextEditingController();
 
   TextEditingController emailController = TextEditingController();
 
@@ -58,11 +58,11 @@ class InfoAccountScreen extends StatelessWidget {
                       style: theme.textTheme.titleLarge,
                     ),
                     SizedBox(height: 42.v),
-                    _buildRowlockone(context),
+                    _buildRowlock(context),
                     SizedBox(height: 50.v),
-                    _buildRowlinkedinone(context),
+                    _buildRowlinkedin(context),
                     SizedBox(height: 50.v),
-                    _buildRowcallone(context),
+                    _buildRowcall(context),
                     SizedBox(height: 50.v),
                     _buildRowcheckmark(context),
                     SizedBox(height: 5.v),
@@ -88,7 +88,7 @@ class InfoAccountScreen extends StatelessWidget {
           bottom: 15.v,
         ),
         onTap: () {
-          onTapArrowleftone(context);
+          onTapArrowleft(context);
         },
       ),
       title: AppbarTitle(
@@ -99,7 +99,7 @@ class InfoAccountScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlockone(BuildContext context) {
+  Widget _buildRowlock(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -118,12 +118,12 @@ class InfoAccountScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildAddressone(BuildContext context) {
+  Widget _buildAddress(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 10.h),
         child: CustomTextFormField(
-          controller: addressoneController,
+          controller: addressController,
           hintText: "Địa chỉ",
         ),
       ),
@@ -131,7 +131,7 @@ class InfoAccountScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlinkedinone(BuildContext context) {
+  Widget _buildRowlinkedin(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -144,18 +144,18 @@ class InfoAccountScreen extends StatelessWidget {
             bottom: 15.v,
           ),
         ),
-        _buildAddressone(context)
+        _buildAddress(context)
       ],
     );
   }
 
   /// Section Widget
-  Widget _buildPhonenumberone(BuildContext context) {
+  Widget _buildPhonenumber(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 10.h),
         child: CustomTextFormField(
-          controller: phonenumberoneController,
+          controller: phonenumberController,
           hintText: "Số điện thoại",
         ),
       ),
@@ -163,7 +163,7 @@ class InfoAccountScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowcallone(BuildContext context) {
+  Widget _buildRowcall(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -176,7 +176,7 @@ class InfoAccountScreen extends StatelessWidget {
             bottom: 15.v,
           ),
         ),
-        _buildPhonenumberone(context)
+        _buildPhonenumber(context)
       ],
     );
   }
@@ -229,7 +229,7 @@ class InfoAccountScreen extends StatelessWidget {
   }
 
   /// Navigates back to the previous screen.
-  onTapArrowleftone(BuildContext context) {
+  onTapArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 }

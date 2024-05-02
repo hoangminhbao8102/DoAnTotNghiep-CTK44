@@ -62,7 +62,7 @@ class InfoFarmScreen extends StatelessWidget {
           top: 1.v,
         ),
         onTap: () {
-          onTapArrowleftone(context);
+          onTapArrowleft(context);
         },
       ),
       centerTitle: true,
@@ -115,7 +115,7 @@ class InfoFarmScreen extends StatelessWidget {
   }
 
   /// Navigates back to the previous screen.
-  onTapArrowleftone(BuildContext context) {
+  onTapArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 }

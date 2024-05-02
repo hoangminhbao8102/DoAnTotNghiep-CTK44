@@ -49,7 +49,7 @@ class ChangePasswordScreen extends StatelessWidget {
                             width: 24.adaptSize,
                             margin: EdgeInsets.only(bottom: 2.v),
                             onTap: () {
-                              onTapImgArrowleftone(context);
+                              onTapImgArrowleft(context);
                             },
                           ),
                           Padding(
@@ -322,7 +322,7 @@ class ChangePasswordScreen extends StatelessWidget {
   }
 
   /// Navigates back to the previous screen.
-  onTapImgArrowleftone(BuildContext context) {
+  onTapImgArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 }

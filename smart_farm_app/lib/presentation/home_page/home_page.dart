@@ -3,7 +3,7 @@ import 'package:smart_farm_app/presentation/cart_screen/cart_screen.dart';
 import 'package:smart_farm_app/presentation/notification_screen/notification_screen.dart';
 import '../../core/app_export.dart';
 import '../../widgets/app_bar/appbar_leading_image.dart';
-import '../../widgets/app_bar/appbar_subtitle_one.dart';
+import '../../widgets/app_bar/appbar_subtitle_large_primary.dart';
 import '../../widgets/app_bar/appbar_trailing_image.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
 import '../../widgets/custom_bottom_bar.dart';
@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
           onTapSetting(context);
         },
       ),
-      title: AppbarSubtitleOne(
+      title: AppbarSubtitleLargePrimary(
         text: "SMART FARM APP",
         margin: EdgeInsets.only(left: 35.h),
       ),
@@ -301,13 +301,13 @@ class HomePage extends StatelessWidget {
   /// Handing route based on bottom click actions
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
-      case BottomBarEnum.Farm:
+      case BottomBarEnum.Information:
         return AppRoutes.infoAllFarmScreen;
       case BottomBarEnum.Product:
         return AppRoutes.findProductScreen;
       case BottomBarEnum.Statistic:
         return AppRoutes.statisticalScreen;
-      case BottomBarEnum.Information:
+      case BottomBarEnum.Account:
         return AppRoutes.infoAccountScreen;
       default:
         return "/";

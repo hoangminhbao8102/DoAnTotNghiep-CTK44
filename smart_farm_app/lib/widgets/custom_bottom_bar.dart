@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../core/app_export.dart';
 
-enum BottomBarEnum { Farm, Product, Statistic, Information }
+enum BottomBarEnum { Information, Product, Statistic, Account }
 
 // ignore: must_be_immutable
 class CustomButtonBar extends StatefulWidget {
@@ -18,10 +18,10 @@ class CustomButtonBarState extends State<CustomButtonBar> {
 
   List<BottomMenuModel> bottomMenuList = [
     BottomMenuModel(
-      icon: ImageConstant.imageNavFarm,
-      activeIcon: ImageConstant.imageNavFarm,
-      title: "TRANG TRẠI",
-      type: BottomBarEnum.Farm,
+      icon: ImageConstant.imageNavInformation,
+      activeIcon: ImageConstant.imageNavInformation,
+      title: "THÔNG TIN",
+      type: BottomBarEnum.Information,
     ),
     BottomMenuModel(
       icon: ImageConstant.imageNavProduct,
@@ -36,10 +36,10 @@ class CustomButtonBarState extends State<CustomButtonBar> {
       type: BottomBarEnum.Statistic,
     ),
     BottomMenuModel(
-      icon: ImageConstant.imageNavInformation,
-      activeIcon: ImageConstant.imageNavInformation,
-      title: "THÔNG TIN",
-      type: BottomBarEnum.Information,
+      icon: ImageConstant.imageNavAccount,
+      activeIcon: ImageConstant.imageNavAccount,
+      title: "TÀI KHOẢN",
+      type: BottomBarEnum.Account,
     ),
   ];
 

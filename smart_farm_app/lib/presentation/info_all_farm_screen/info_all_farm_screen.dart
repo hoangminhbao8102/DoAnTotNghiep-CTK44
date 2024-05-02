@@ -77,7 +77,7 @@ class InfoAllFarmScreen extends StatelessWidget {
                       height: 100.adaptSize,
                       width: 100.adaptSize,
                       onTap: () {
-                        onTapImgCloseone(context);
+                        onTapImgClose(context);
                       },
                     ),
                     Container(
@@ -92,7 +92,7 @@ class InfoAllFarmScreen extends StatelessWidget {
                         height: 45.adaptSize,
                         width: 45.adaptSize,
                         onTap: () {
-                          onTapImgCloseone(context);
+                          onTapImgClose(context);
                         },
                       ),
                     )
@@ -118,7 +118,7 @@ class InfoAllFarmScreen extends StatelessWidget {
           bottom: 15.v,
         ),
         onTap: () {
-          onTapArrowleftone(context);
+          onTapArrowleft(context);
         },
       ),
       centerTitle: true,
@@ -147,12 +147,12 @@ class InfoAllFarmScreen extends StatelessWidget {
   }
 
   /// Navigates back to the previous screen.
-  onTapArrowleftone(BuildContext context) {
+  onTapArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 
   /// Navigates to the createFarmScreen when the action is triggered
-  onTapImgCloseone(BuildContext context) {
+  onTapImgClose(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.createFarmScreen);
   }
 }

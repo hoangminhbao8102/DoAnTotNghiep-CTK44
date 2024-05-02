@@ -40,7 +40,7 @@ class ForgotPasswordPhoneScreen extends StatelessWidget {
                 style: theme.textTheme.displayMedium,
               ),
               SizedBox(height: 37.v),
-              _buildRowcallone(context),
+              _buildRowcall(context),
               SizedBox(height: 33.v),
               CustomOutlinedButton(
                 width: 230.h,
@@ -59,7 +59,7 @@ class ForgotPasswordPhoneScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowcallone(BuildContext context) {
+  Widget _buildRowcall(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(

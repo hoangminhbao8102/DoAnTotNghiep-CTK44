@@ -54,7 +54,7 @@ class NotificationScreen extends StatelessWidget {
           bottom: 19.v,
         ),
         onTap: () {
-          onTapArrowleftone(context);
+          onTapArrowleft(context);
         },
       ),
       centerTitle: true,
@@ -113,7 +113,7 @@ class NotificationScreen extends StatelessWidget {
             height: 60.adaptSize,
             width: 60.adaptSize,
             onTap: () {
-              onTapImgCloseone(context);
+              onTapImgClose(context);
             },
           ),
           Expanded(
@@ -170,12 +170,12 @@ class NotificationScreen extends StatelessWidget {
   }
 
   /// Navigates back to the previous screen
-  onTapArrowleftone(BuildContext context) {
+  onTapArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 
   /// Navigates back to the previous screen
-  onTapImgCloseone(BuildContext context) {
+  onTapImgClose(BuildContext context) {
     Navigator.pop(context);
   }
 }

@@ -8,19 +8,19 @@ import '../../widgets/custom_text_form_field.dart';
 class CreateFarmScreen extends StatelessWidget {
   CreateFarmScreen({Key? key}) : super(key: key);
 
-  TextEditingController farmnameoneController = TextEditingController();
+  TextEditingController farmnameController = TextEditingController();
 
   TextEditingController locationthreeController = TextEditingController();
 
-  TextEditingController areaoneController = TextEditingController();
+  TextEditingController areaController = TextEditingController();
 
-  TextEditingController quantityoneController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
   
   List<String> dropdownItemListLivestockType = ["Item 1", "Item 2", "Item 3"];
 
   List<String> dropdownItemListLivestock = ["Item 1", "Item 2", "Item 3"];
 
-  TextEditingController cowoneController = TextEditingController();
+  TextEditingController cowController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class CreateFarmScreen extends StatelessWidget {
                         width: 25.adaptSize,
                         margin: EdgeInsets.only(bottom: 3.v),
                         onTap: () {
-                          onTapImgArrowleftone(context);
+                          onTapImgArrowleft(context);
                         },
                       ),
                       Padding(
@@ -76,13 +76,13 @@ class CreateFarmScreen extends StatelessWidget {
                 alignment: Alignment.center,
               ),
               SizedBox(height: 34.v),
-              _buildRowfieldtwoone(context),
+              _buildRowfieldtwo(context),
               SizedBox(height: 20.v),
-              _buildRowlocationone(context),
+              _buildRowlocation(context),
               SizedBox(height: 20.v),
-              _buildRowwideoneone(context),
+              _buildRowwide(context),
               SizedBox(height: 20.v),
-              _buildRowcounterone(context),
+              _buildRowcounter(context),
               SizedBox(height: 20.v),
               _buildRowLivestockType(context),
               SizedBox(height: 4.v),
@@ -141,12 +141,12 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildFarmnameone(BuildContext context) {
+  Widget _buildFarmname(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 8.h),
         child: CustomTextFormField(
-          controller: farmnameoneController,
+          controller: farmnameController,
           hintText: "Tên trang trại",
           borderDecoration: TextFormFieldStyleHelper.outlineOnPrimaryContainer,
         ),
@@ -155,7 +155,7 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowfieldtwoone(BuildContext context) {
+  Widget _buildRowfieldtwo(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 31.h),
       child: Row(
@@ -167,7 +167,7 @@ class CreateFarmScreen extends StatelessWidget {
             width: 24.adaptSize,
             margin: EdgeInsets.symmetric(vertical: 13.v),
           ),
-          _buildFarmnameone(context)
+          _buildFarmname(context)
         ],
       ),
     );
@@ -188,7 +188,7 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlocationone(BuildContext context) {
+  Widget _buildRowlocation(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 31.h),
       child: Row(
@@ -207,12 +207,12 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildAreaone(BuildContext context) {
+  Widget _buildArea(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 8.h),
         child: CustomTextFormField(
-          controller: areaoneController,
+          controller: areaController,
           hintText: "Diện tích",
           borderDecoration: TextFormFieldStyleHelper.outlineOnPrimaryContainer,
         ),
@@ -221,7 +221,7 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowwideoneone(BuildContext context) {
+  Widget _buildRowwide(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 31.h),
       child: Row(
@@ -233,19 +233,19 @@ class CreateFarmScreen extends StatelessWidget {
             width: 24.adaptSize,
             margin: EdgeInsets.symmetric(vertical: 13.v),
           ),
-          _buildAreaone(context)
+          _buildArea(context)
         ],
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildQuantityone(BuildContext context) {
+  Widget _buildQuantity(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 8.h),
         child: CustomTextFormField(
-          controller: quantityoneController,
+          controller: quantityController,
           hintText: "Số lượng con",
           borderDecoration: TextFormFieldStyleHelper.outlineOnPrimaryContainer,
         ),
@@ -254,7 +254,7 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowcounterone(BuildContext context) {
+  Widget _buildRowcounter(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 31.h),
       child: Row(
@@ -266,7 +266,7 @@ class CreateFarmScreen extends StatelessWidget {
             width: 24.adaptSize,
             margin: EdgeInsets.symmetric(vertical: 13.v),
           ),
-          _buildQuantityone(context)
+          _buildQuantity(context)
         ],
       ),
     );
@@ -312,9 +312,9 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildCowone(BuildContext context) {
+  Widget _buildCow(BuildContext context) {
     return CustomTextFormField(
-      controller: cowoneController,
+      controller: cowController,
       hintText: "Bò",
       textInputAction: TextInputAction.done,
       maxLines: 6,
@@ -360,7 +360,7 @@ class CreateFarmScreen extends StatelessWidget {
                     items: dropdownItemListLivestock,
                   ),
                   SizedBox(height: 4.v),
-                  _buildCowone(context)
+                  _buildCow(context)
                 ],
               ),
             ),
@@ -386,7 +386,7 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   // Navigates back to the previous screen
-  onTapImgArrowleftone(BuildContext context) {
+  onTapImgArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 }

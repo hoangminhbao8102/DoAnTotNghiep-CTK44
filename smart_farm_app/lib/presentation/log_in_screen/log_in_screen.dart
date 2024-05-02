@@ -59,9 +59,9 @@ class LogInScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 44.v),
-                    _buildRowlockone(context),
+                    _buildRowlock(context),
                     SizedBox(height: 20.v),
-                    _buildRowlocationone(context),
+                    _buildRowlocation(context),
                     SizedBox(height: 36.v),
                     GestureDetector(
                       onTap: () {
@@ -104,7 +104,7 @@ class LogInScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlockone(BuildContext context) {
+  Widget _buildRowlock(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(
@@ -155,7 +155,7 @@ class LogInScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlocationone(BuildContext context) {
+  Widget _buildRowlocation(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(

@@ -10,11 +10,11 @@ class RegisterScreen extends StatelessWidget {
           key: key,
         );
 
-  TextEditingController fullnameoneController = TextEditingController();
+  TextEditingController fullnameController = TextEditingController();
 
-  TextEditingController addressoneController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
 
-  TextEditingController phonenumberoneController = TextEditingController();
+  TextEditingController phonenumberController = TextEditingController();
 
   TextEditingController emailController = TextEditingController();
 
@@ -63,17 +63,17 @@ class RegisterScreen extends StatelessWidget {
                       style: theme.textTheme.displayMedium,
                     ),
                     SizedBox(height: 29.v),
-                    _buildRowlockone(context),
+                    _buildRowlock(context),
                     SizedBox(height: 20.v),
-                    _buildRowlinkedinone(context),
+                    _buildRowlinkedin(context),
                     SizedBox(height: 20.v),
-                    _buildRowcallone(context),
+                    _buildRowcall(context),
                     SizedBox(height: 20.v),
                     _buildRowcheckmark(context),
                     SizedBox(height: 20.v),
-                    _buildRowlockthree(context),
+                    _buildRowlock(context),
                     SizedBox(height: 20.v),
-                    _buildRowlocationone(context),
+                    _buildRowlocation(context),
                     SizedBox(height: 20.v),
                     _buildRowlocation(context)
                   ],
@@ -82,18 +82,18 @@ class RegisterScreen extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: _buildNgk(context),
+        bottomNavigationBar: _buildRegister(context),
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildFullnameone(BuildContext context) {
+  Widget _buildFullname(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 20.h),
         child: CustomTextFormField(
-          controller: fullnameoneController,
+          controller: fullnameController,
           hintText: "Họ và tên người dùng",
         ),
       ),
@@ -101,7 +101,7 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlockone(BuildContext context) {
+  Widget _buildRowlock(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(
@@ -117,19 +117,19 @@ class RegisterScreen extends StatelessWidget {
               bottom: 15.v,
             ),
           ),
-          _buildFullnameone(context)
+          _buildFullname(context)
         ],
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildAddressone(BuildContext context) {
+  Widget _buildAddress(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 20.h),
         child: CustomTextFormField(
-          controller: addressoneController,
+          controller: addressController,
           hintText: "Địa chỉ",
         ),
       ),
@@ -137,7 +137,7 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlinkedinone(BuildContext context) {
+  Widget _buildRowlinkedin(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(
@@ -153,19 +153,19 @@ class RegisterScreen extends StatelessWidget {
               bottom: 15.v,
             ),
           ),
-          _buildAddressone(context)
+          _buildAddress(context)
         ],
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildPhonenumberone(BuildContext context) {
+  Widget _buildPhonenumber(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 20.h),
         child: CustomTextFormField(
-          controller: phonenumberoneController,
+          controller: phonenumberController,
           hintText: "Số điện thoại",
         ),
       ),
@@ -173,7 +173,7 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowcallone(BuildContext context) {
+  Widget _buildRowcall(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(
@@ -189,7 +189,7 @@ class RegisterScreen extends StatelessWidget {
               bottom: 15.v,
             ),
           ),
-          _buildPhonenumberone(context)
+          _buildPhonenumber(context)
         ],
       ),
     );
@@ -245,7 +245,7 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlockthree(BuildContext context) {
+  Widget _buildRowlockUsername(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(
@@ -299,7 +299,7 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlocationone(BuildContext context) {
+  Widget _buildRowlocation(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(
@@ -354,7 +354,7 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlocation(BuildContext context) {
+  Widget _buildRowlocationAuthPassword(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(
@@ -377,7 +377,7 @@ class RegisterScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildNgk(BuildContext context) {
+  Widget _buildRegister(BuildContext context) {
     return CustomOutlinedButton(
       width: 230.h,
       text: "ĐĂNG KÝ",
@@ -389,13 +389,13 @@ class RegisterScreen extends StatelessWidget {
       buttonStyle: CustomButtonStyles.outlinePrimaryTL301,
       buttonTextStyle: theme.textTheme.titleMedium!,
       onPressed: () {
-        onTapNgk(context);
+        onTapRegister(context);
       },
     );
   }
 
   /// Navigates to the logInScreen when the action is triggered.
-  onTapNgk(BuildContext context) {
+  onTapRegister(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.logInScreen);
   }
 }

@@ -9,9 +9,9 @@ class SetPasswordScreen extends StatelessWidget {
           key: key,
         );
 
-  TextEditingController newpasswordoneController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
 
-  TextEditingController confirmnewpasswController = TextEditingController();
+  TextEditingController confirmNewPasswordController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -52,16 +52,16 @@ class SetPasswordScreen extends StatelessWidget {
                       style: theme.textTheme.displayMedium,
                     ),
                     SizedBox(height: 37.v),
-                    _buildRowlocationone(context),
+                    _buildRowlocationNewPassword(context),
                     SizedBox(height: 40.v),
-                    _buildRowlocation(context),
+                    _buildRowlocationConfirmNewPassword(context),
                     SizedBox(height: 42.v),
                     CustomOutlinedButton(
                       width: 230.h,
                       text: "ĐẶT LẠI MẬT KHẨU",
                       buttonTextStyle: theme.textTheme.titleMedium!,
                       onPressed: () {
-                        onTapTlimt(context);
+                        onTapSetPassword(context);
                       },
                     ),
                     SizedBox(height: 5.v)
@@ -76,7 +76,7 @@ class SetPasswordScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlocationone(BuildContext context) {
+  Widget _buildRowlocationNewPassword(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 11.h),
       child: Row(
@@ -95,7 +95,7 @@ class SetPasswordScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 20.h),
               child: CustomTextFormField(
-                controller: newpasswordoneController,
+                controller: newPasswordController,
                 hintText: "Mật khẩu mới",
               ),
             ),
@@ -106,7 +106,7 @@ class SetPasswordScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlocation(BuildContext context) {
+  Widget _buildRowlocationConfirmNewPassword(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 11.h),
       child: Row(
@@ -122,7 +122,7 @@ class SetPasswordScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 20.h),
               child: CustomTextFormField(
-                controller: confirmnewpasswController,
+                controller: confirmNewPasswordController,
                 hintText: "Nhập lại mật khẩu mới",
                 textInputAction: TextInputAction.done,
                 textInputType: TextInputType.visiblePassword,
@@ -136,7 +136,7 @@ class SetPasswordScreen extends StatelessWidget {
   }
 
   /// Navigates to the logInScreen when the action is triggered.
-  onTapTlimt(BuildContext context) {
+  onTapSetPassword(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.logInScreen);
   }
 }

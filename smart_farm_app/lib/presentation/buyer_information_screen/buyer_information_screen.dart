@@ -24,7 +24,7 @@ class BuyerInformationScreen extends StatelessWidget{
                       width: 24.adaptSize,
                       margin: EdgeInsets.only(top: 1.v),
                       onTap: () {
-                        onTapImgArrowleftone(context);
+                        onTapImgArrowleft(context);
                       },
                     ),
                     Padding(
@@ -142,7 +142,7 @@ class BuyerInformationScreen extends StatelessWidget{
   }
 
   /// Navigates back to the previous screen.
-  onTapImgArrowleftone(BuildContext context) {
+  onTapImgArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 }
