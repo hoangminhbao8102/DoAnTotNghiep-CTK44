@@ -18,6 +18,8 @@ namespace SmartFarmAppAPI.Core.Entities
 
         public decimal Price { get; set; }
 
+        public bool IsSold { get; set; }
+
         public int FarmId { get; set; }
 
         public required Farm Farm { get; set; }

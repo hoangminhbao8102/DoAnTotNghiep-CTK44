@@ -10,7 +10,7 @@ class CreateFarmScreen extends StatelessWidget {
 
   TextEditingController farmnameController = TextEditingController();
 
-  TextEditingController locationthreeController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
 
   TextEditingController areaController = TextEditingController();
 
@@ -20,7 +20,7 @@ class CreateFarmScreen extends StatelessWidget {
 
   List<String> dropdownItemListLivestock = ["Item 1", "Item 2", "Item 3"];
 
-  TextEditingController cowController = TextEditingController();
+  TextEditingController livestockController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -174,12 +174,12 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildLocationthree(BuildContext context) {
+  Widget _buildLocation(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 8.h),
         child: CustomTextFormField(
-          controller: locationthreeController,
+          controller: locationController,
           hintText: "Vị trí",
           borderDecoration: TextFormFieldStyleHelper.outlineOnPrimaryContainer,
         ),
@@ -200,7 +200,7 @@ class CreateFarmScreen extends StatelessWidget {
             width: 24.adaptSize,
             margin: EdgeInsets.symmetric(vertical: 13.v),
           ),
-          _buildLocationthree(context)
+          _buildLocation(context)
         ],
       ),
     );
@@ -312,9 +312,9 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildCow(BuildContext context) {
+  Widget _buildLivestock(BuildContext context) {
     return CustomTextFormField(
-      controller: cowController,
+      controller: livestockController,
       hintText: "Bò",
       textInputAction: TextInputAction.done,
       maxLines: 6,
@@ -360,7 +360,7 @@ class CreateFarmScreen extends StatelessWidget {
                     items: dropdownItemListLivestock,
                   ),
                   SizedBox(height: 4.v),
-                  _buildCow(context)
+                  _buildLivestock(context)
                 ],
               ),
             ),

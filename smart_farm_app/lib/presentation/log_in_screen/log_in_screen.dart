@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_farm_app/data/api/api_client.dart';
 import 'package:smart_farm_app/presentation/forgot_password_screen/forgot_password_screen.dart';
 import 'package:smart_farm_app/presentation/home_page/home_page.dart';
 import 'package:smart_farm_app/presentation/register_screen/register_screen.dart';
@@ -8,10 +9,8 @@ import '../../widgets/custom_outlined_button.dart';
 import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_immutable
 
 class LogInScreen extends StatelessWidget {
-  LogInScreen({Key? key})
-      : super(
-          key: key,
-        );
+  final APIClient apiClient;
+  LogInScreen({required this.apiClient, Key? key}) : super(key: key);
 
   TextEditingController userNameController = TextEditingController();
 
@@ -178,10 +177,19 @@ class LogInScreen extends StatelessWidget {
     return CustomOutlinedButton(
       width: 230.h,
       text: "ĐĂNG NHẬP",
-      margin: EdgeInsets.only(right: 52.h),
-      buttonTextStyle: theme.textTheme.titleMedium!,
-      onPressed: () {
-        onTapLogin(context);
+      margin: EdgeInsets.only(left: 33.h),
+      onPressed: () async {
+        // Lấy thông tin từ các trường nhập liệu
+        final username = userNameController.text;
+        final password = passwordController.text;
+
+        try {
+          await apiClient.Login(username, password);
+          onTapLogin(context);
+        } catch (error) {
+          // Xử lý lỗi ở đây, ví dụ: hiển thị thông báo lỗi
+          print("Đăng nhập thất bại: $error");
+        }
       },
     );
   }
@@ -207,7 +215,7 @@ class LogInScreen extends StatelessWidget {
   }
 
   onTapLogin(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
   }
 
   onTapRegister(BuildContext context) {

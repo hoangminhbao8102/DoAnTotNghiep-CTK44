@@ -109,21 +109,22 @@ namespace SmartFarmAppAPI.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("date");
 
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<int>("FarmId")
                         .HasColumnType("int");
 
-                    b.Property<string>("LivestockAnimalType")
-                        .IsRequired()
+                    b.Property<string>("ImageUrl")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("LivestockName")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("LivestockType")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -142,16 +143,19 @@ namespace SmartFarmAppAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CareDate")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("date");
 
-                    b.Property<string>("CareDescription")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<int>("LivestockId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -168,12 +172,26 @@ namespace SmartFarmAppAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<string>("Category")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Description")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
                     b.Property<int>("FarmId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("IsSold")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(10,2)");
@@ -198,16 +216,28 @@ namespace SmartFarmAppAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FarmId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ReportContent")
+                    b.Property<string>("Content")
                         .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<DateTime>("ReportDate")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("date");
+
+                    b.Property<int>("FarmId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RegisteredAccounts")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SoldProducts")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalFarms")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalLivestocks")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

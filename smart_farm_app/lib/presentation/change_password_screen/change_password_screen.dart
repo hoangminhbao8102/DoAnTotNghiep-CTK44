@@ -22,133 +22,130 @@ class ChangePasswordScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: SizedBox(
-          width: SizeUtils.width,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
-            ),
-            child: Form(
-              key: _formKey,
-              child: Container(
-                width: double.maxFinite,
-                padding: EdgeInsets.only(
-                  left: 15.h,
-                  top: 63.v,
-                  right: 15.h,
-                ),
-                child: Column(
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Row(
-                        children: [
-                          CustomImageView(
-                            imagePath: ImageConstant.imgArrowLeftOnprimary,
-                            height: 24.adaptSize,
-                            width: 24.adaptSize,
-                            margin: EdgeInsets.only(bottom: 2.v),
-                            onTap: () {
-                              onTapImgArrowleft(context);
-                            },
+        body: SingleChildScrollView(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: Form(
+            key: _formKey,
+            child: Container(
+              width: double.maxFinite,
+              padding: EdgeInsets.only(
+                left: 15.h,
+                top: 63.v,
+                right: 15.h,
+              ),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: [
+                        CustomImageView(
+                          imagePath: ImageConstant.imgArrowLeftOnprimary,
+                          height: 24.adaptSize,
+                          width: 24.adaptSize,
+                          margin: EdgeInsets.only(bottom: 2.v),
+                          onTap: () {
+                            onTapImgArrowleft(context);
+                          },
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 118.h,
+                            top: 2.v,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              left: 118.h,
-                              top: 2.v,
+                          child: Text(
+                            "Đổi mật khẩu",
+                            style: theme.textTheme.titleLarge,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 34.v),
+                  CustomImageView(
+                    imagePath: ImageConstant.imgImage,
+                    height: 94.v,
+                    width: 93.v,
+                    radius: BorderRadius.circular(46.h),
+                  ),
+                  SizedBox(height: 34.v),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 26.h),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Mật khẩu cũ ",
+                              style: CustomTextStyles.titleMediumRobotoSecondaryContainerMedium,
                             ),
-                            child: Text(
-                              "Đổi mật khẩu",
-                              style: theme.textTheme.titleLarge,
+                            TextSpan(
+                              text: "*",
+                              style: CustomTextStyles.titleMediumRobotoRedA700,
+                            )
+                          ],
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 19.v),
+                  _buildOldProperty(context),
+                  SizedBox(height: 20.v),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 26.h),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Mật khẩu mới ",
+                              style: CustomTextStyles.titleMediumRobotoSecondaryContainerMedium,
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 34.v),
-                    CustomImageView(
-                      imagePath: ImageConstant.imgImage,
-                      height: 94.v,
-                      width: 93.v,
-                      radius: BorderRadius.circular(46.h),
-                    ),
-                    SizedBox(height: 34.v),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 26.h),
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Mật khẩu cũ ",
-                                style: CustomTextStyles.titleMediumRobotoSecondaryContainerMedium,
-                              ),
-                              TextSpan(
-                                text: "*",
-                                style: CustomTextStyles.titleMediumRobotoRedA700,
-                              )
-                            ],
-                          ),
-                          textAlign: TextAlign.left,
+                            TextSpan(
+                              text: "*",
+                              style: CustomTextStyles.titleMediumRobotoRedA700,
+                            )
+                          ],
                         ),
+                        textAlign: TextAlign.left,
                       ),
                     ),
-                    SizedBox(height: 19.v),
-                    _buildOldProperty(context),
-                    SizedBox(height: 20.v),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 26.h),
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Mật khẩu mới ",
-                                style: CustomTextStyles.titleMediumRobotoSecondaryContainerMedium,
-                              ),
-                              TextSpan(
-                                text: "*",
-                                style: CustomTextStyles.titleMediumRobotoRedA700,
-                              )
-                            ],
-                          ),
-                          textAlign: TextAlign.left,
+                  ),
+                  SizedBox(height: 20.v),
+                  _buildNewProperty(context),
+                  SizedBox(height: 19.v),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 26.h),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "Nhập lại mật khẩu mới ",
+                              style: CustomTextStyles.titleMediumRobotoSecondaryContainerMedium,
+                            ),
+                            TextSpan(
+                              text: "*",
+                              style: CustomTextStyles.titleMediumRobotoRedA700,
+                            )
+                          ],
                         ),
+                        textAlign: TextAlign.left,
                       ),
                     ),
-                    SizedBox(height: 20.v),
-                    _buildNewProperty(context),
-                    SizedBox(height: 19.v),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: 26.h),
-                        child: RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Nhập lại mật khẩu mới ",
-                                style: CustomTextStyles.titleMediumRobotoSecondaryContainerMedium,
-                              ),
-                              TextSpan(
-                                text: "*",
-                                style: CustomTextStyles.titleMediumRobotoRedA700,
-                              )
-                            ],
-                          ),
-                          textAlign: TextAlign.left,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 21.v),
-                    _buildNewPasswordAuthenticationProperty(context),
-                    SizedBox(height: 52.v),
-                    _buildChangePassword(context),
-                    SizedBox(height: 5.v),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 21.v),
+                  _buildNewPasswordAuthenticationProperty(context),
+                  SizedBox(height: 52.v),
+                  _buildChangePassword(context),
+                  SizedBox(height: 5.v),
+                ],
               ),
             ),
           ),

@@ -13,15 +13,12 @@ namespace SmartFarmAppAPI.Data.Mappings
             builder.HasKey(l => l.Id);
 
             builder.Property(l => l.LivestockType)
-                .IsRequired()
                 .HasMaxLength(100);
 
             builder.Property(l => l.LivestockName)
-                .IsRequired()
                 .HasMaxLength(100);
 
             builder.Property(l => l.Description)
-                .IsRequired()
                 .HasMaxLength(100);
 
             builder.Property(l => l.ImageUrl)
@@ -31,13 +28,11 @@ namespace SmartFarmAppAPI.Data.Mappings
                 .HasMaxLength(100);
 
             builder.Property(l => l.DateOfBirth)
-                .HasColumnType("date")
-                .IsRequired();
+                .HasColumnType("date");
 
             builder.HasOne(l => l.Farm)
                 .WithMany(f => f.Livestocks)
-                .HasForeignKey(l => l.FarmId)
-                .IsRequired();
+                .HasForeignKey(l => l.FarmId);
 
             builder.HasMany(l => l.LivestockCares)
                 .WithOne(lc => lc.Livestock)

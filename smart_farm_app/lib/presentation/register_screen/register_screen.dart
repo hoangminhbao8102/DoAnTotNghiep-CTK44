@@ -63,7 +63,7 @@ class RegisterScreen extends StatelessWidget {
                       style: theme.textTheme.displayMedium,
                     ),
                     SizedBox(height: 29.v),
-                    _buildRowlock(context),
+                    _buildRowlockUsername(context),
                     SizedBox(height: 20.v),
                     _buildRowlinkedin(context),
                     SizedBox(height: 20.v),
@@ -75,7 +75,7 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: 20.v),
                     _buildRowlocation(context),
                     SizedBox(height: 20.v),
-                    _buildRowlocation(context)
+                    _buildRowlocationAuthPassword(context)
                   ],
                 ),
               ),

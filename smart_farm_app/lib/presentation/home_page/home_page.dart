@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_farm_app/presentation/cart_screen/cart_screen.dart';
+import 'package:smart_farm_app/presentation/information_screen/information_screen.dart';
 import 'package:smart_farm_app/presentation/notification_screen/notification_screen.dart';
 import '../../core/app_export.dart';
 import '../../widgets/app_bar/appbar_leading_image.dart';
@@ -46,17 +47,7 @@ class HomePage extends StatelessWidget {
               _buildProductdetails(context),
               SizedBox(height: 20.v),
               _buildRowview(context),
-              SizedBox(height: 5.v),
-              Expanded(
-                child: Navigator(
-                  key: navigatorKey,
-                  initialRoute: AppRoutes.homePage,
-                  onGenerateRoute: (routeSetting) => PageRouteBuilder(
-                    pageBuilder: (ctx, ani, secAni) => getCurrentPage(routeSetting.name!),
-                    transitionDuration: Duration(seconds: 0),
-                  ),
-                )
-              )
+              SizedBox(height: 5.v)
             ],
           ),
         ),
@@ -291,9 +282,12 @@ class HomePage extends StatelessWidget {
 
   /// Section Widget
   Widget _buildBottombar(BuildContext context) {
+    final navigator = Navigator.of(context);
     return CustomButtonBar(
       onChanged: (BottomBarEnum type) {
-        Navigator.pushNamed(navigatorKey.currentContext!, getCurrentRoute(type));
+        final currentRoute = getCurrentRoute(type);
+        // Không cần kiểm tra điều kiện nếu bạn biết getCurrentRoute(type) không bao giờ trả về null
+        navigator.pushNamed(currentRoute);
       },
     );
   }
@@ -302,7 +296,7 @@ class HomePage extends StatelessWidget {
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Information:
-        return AppRoutes.infoAllFarmScreen;
+        return AppRoutes.informationScreen;
       case BottomBarEnum.Product:
         return AppRoutes.findProductScreen;
       case BottomBarEnum.Statistic:
@@ -317,8 +311,8 @@ class HomePage extends StatelessWidget {
   /// Handing page based on route
   Widget getCurrentPage(String currentRoute) {
     switch (currentRoute) {
-      case AppRoutes.homePage:
-        return HomePage();
+      case AppRoutes.informationScreen:
+        return InformationScreen();
       case AppRoutes.findProductScreen:
         return FindProductScreen();
       case AppRoutes.statisticalScreen:

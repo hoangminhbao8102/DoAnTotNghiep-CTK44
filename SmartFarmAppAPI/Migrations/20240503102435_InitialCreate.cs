@@ -57,9 +57,10 @@ namespace SmartFarmAppAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LivestockType = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    LivestockAnimalType = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    LivestockName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    LivestockType = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    LivestockName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Breed = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     DateOfBirth = table.Column<DateTime>(type: "date", nullable: false),
                     FarmId = table.Column<int>(type: "int", nullable: false)
@@ -82,8 +83,12 @@ namespace SmartFarmAppAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     Category = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Amount = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
+                    IsSold = table.Column<bool>(type: "bit", nullable: false),
                     FarmId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -103,8 +108,12 @@ namespace SmartFarmAppAPI.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ReportDate = table.Column<DateTime>(type: "date", nullable: false),
-                    ReportContent = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Date = table.Column<DateTime>(type: "date", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    RegisteredAccounts = table.Column<int>(type: "int", nullable: false),
+                    TotalFarms = table.Column<int>(type: "int", nullable: false),
+                    TotalLivestocks = table.Column<int>(type: "int", nullable: false),
+                    SoldProducts = table.Column<int>(type: "int", nullable: false),
                     FarmId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -125,8 +134,9 @@ namespace SmartFarmAppAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LivestockId = table.Column<int>(type: "int", nullable: false),
-                    CareDate = table.Column<DateTime>(type: "date", nullable: false),
-                    CareDescription = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Date = table.Column<DateTime>(type: "date", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
                 },
                 constraints: table =>
                 {

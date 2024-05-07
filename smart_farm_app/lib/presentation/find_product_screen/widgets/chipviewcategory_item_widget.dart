@@ -17,6 +17,7 @@ class ChipViewCategoryItemWidget extends StatelessWidget {
         "CATEGORY",
         style: TextStyle(
           color: theme.colorScheme.secondaryContainer.withOpacity(1),
+          fontSize: 14.fSize,
           fontFamily: 'Inter',
           fontWeight: FontWeight.w400,
         ),

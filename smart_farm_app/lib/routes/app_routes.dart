@@ -14,6 +14,7 @@ import '../presentation/info_all_farm_screen/info_all_farm_screen.dart';
 import '../presentation/info_farm_screen/info_farm_screen.dart';
 import '../presentation/info_livestock_screen/info_livestock_screen.dart';
 import '../presentation/info_product_screen/info_product_screen.dart';
+import '../presentation/information_screen/information_screen.dart';
 import '../presentation/livestock_screen/livestock_screen.dart';
 import '../presentation/log_in_screen/log_in_screen.dart';
 import '../presentation/notification_screen/notification_screen.dart';
@@ -45,9 +46,9 @@ class AppRoutes {
 
   static const String setPasswordScreen = '/set_password_screen';
 
-  static const String homePageContainerScreen ='/home_page_container_screen';
+  static const String homePage = '/home_page';
 
-  static const String homePage ='/home_page';
+  static const String informationScreen = '/information_screen';
 
   static const String livestockScreen ='/livestock_screen';
 
@@ -97,6 +98,7 @@ class AppRoutes {
     otpEmailScreen: (context) => OtpEmailScreen(),
     setPasswordScreen: (context) => SetPasswordScreen(),
     homePage: (context) => HomePage(),
+    informationScreen: (context) => InformationScreen(),
     livestockScreen: (context) => LivestockScreen(),
     infoLivestockScreen: (context) => InfoLivestockScreen(),
     createFarmScreen: (context) => CreateFarmScreen(),

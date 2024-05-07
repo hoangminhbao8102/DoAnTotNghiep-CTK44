@@ -8,6 +8,8 @@ namespace SmartFarmAppAPI.Core.Entities
 
         public int LivestockId { get; set; }
 
+        public string Type { get; set; }
+
         public DateTime Date { get; set; }
 
         public string Description { get; set; }

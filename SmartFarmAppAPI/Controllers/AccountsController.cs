@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using SmartFarmAppAPI.Core.Entities;
 using SmartFarmAppAPI.Data.Contexts;
+using SmartFarmAppAPI.Services.Repositories.AccountRepository;
 
 namespace SmartFarmAppAPI.Controllers
 {
@@ -15,36 +16,34 @@ namespace SmartFarmAppAPI.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        private readonly FarmDbContext _context;
+        private readonly AccountRepository _accountRepository;
 
-        public AccountsController(FarmDbContext context)
+        public AccountsController(AccountRepository accountRepository)
         {
-            _context = context;
+            _accountRepository = accountRepository;
         }
 
         // GET: api/Accounts
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Account>>> GetAccounts()
         {
-            return await _context.Accounts.ToListAsync();
+            var accounts = await _accountRepository.GetAllAccountsAsync();
+            return Ok(accounts);
         }
 
         // GET: api/Accounts/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Account>> GetAccount(int id)
         {
-            var account = await _context.Accounts.FindAsync(id);
-
+            var account = await _accountRepository.GetAccountByIdAsync(id);
             if (account == null)
             {
                 return NotFound();
             }
-
-            return account;
+            return Ok(account);
         }
 
         // PUT: api/Accounts/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAccount(int id, Account account)
         {
@@ -52,36 +51,15 @@ namespace SmartFarmAppAPI.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(account).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AccountExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            await _accountRepository.UpdateAccountAsync(account);
             return NoContent();
         }
 
         // POST: api/Accounts/
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Account>> PostAccount(Account account)
         {
-            _context.Accounts.Add(account);
-            await _context.SaveChangesAsync();
-
+            await _accountRepository.AddAccountAsync(account);
             return CreatedAtAction("GetAccount", new { id = account.Id }, account);
         }
 
@@ -89,7 +67,7 @@ namespace SmartFarmAppAPI.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] Account loginInfo)
         {
-            var account = _context.Accounts.FirstOrDefault(a => a.Username == loginInfo.Username && a.Password == loginInfo.Password);
+            var account = _accountRepository.Accounts.FirstOrDefault(a => a.Username == loginInfo.Username && a.Password == loginInfo.Password);
 
             if (account == null)
             {
@@ -105,7 +83,7 @@ namespace SmartFarmAppAPI.Controllers
         public IActionResult Register(Account newAccount)
         {
             // Kiểm tra xem tài khoản đã tồn tại chưa
-            var existingAccount = _context.Accounts.FirstOrDefault(a => a.Username == newAccount.Username || a.Email == newAccount.Email);
+            var existingAccount = _accountRepository.Accounts.FirstOrDefault(a => a.Username == newAccount.Username || a.Email == newAccount.Email);
 
             if (existingAccount != null)
             {
@@ -113,10 +91,10 @@ namespace SmartFarmAppAPI.Controllers
             }
 
             // Gán Id cho tài khoản mới
-            newAccount.Id = _context.Accounts.Count() + 1;
+            newAccount.Id = _accountRepository.Accounts.Count() + 1;
 
             // Thêm tài khoản mới vào danh sách (trong thực tế, bạn sẽ lưu trữ vào cơ sở dữ liệu)
-            _context.Add(newAccount);
+            _accountRepository.Add(newAccount);
 
             // Trả về tài khoản đã đăng ký thành công
             return Ok(newAccount);
@@ -126,21 +104,8 @@ namespace SmartFarmAppAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAccount(int id)
         {
-            var account = await _context.Accounts.FindAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-
-            _context.Accounts.Remove(account);
-            await _context.SaveChangesAsync();
-
+            await _accountRepository.DeleteAccountAsync(id);
             return NoContent();
-        }
-
-        private bool AccountExists(int id)
-        {
-            return _context.Accounts.Any(e => e.Id == id);
         }
     }
 }

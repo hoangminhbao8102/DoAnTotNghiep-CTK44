@@ -6,22 +6,22 @@ namespace SmartFarmAppAPI.Core.Entities
     {
         public int Id { get; set; }
 
-        public required string LivestockType { get; set; }
+        public string LivestockType { get; set; }
 
-        public required string LivestockName { get; set; }
+        public string LivestockName { get; set; }
 
         public string ImageUrl { get; set; }
 
         public string Description { get; set; }
 
-        public required string Breed { get; set; }
+        public string Breed { get; set; }
 
         public DateTime DateOfBirth { get; set; }
 
         public int FarmId { get; set; }
 
-        public required Farm Farm { get; set; }
+        public Farm Farm { get; set; }
 
-        public required List<LivestockCare> LivestockCares { get; set; }
+        public List<LivestockCare> LivestockCares { get; set; }
     }
 }
