@@ -10,7 +10,8 @@ import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_
 
 class LogInScreen extends StatelessWidget {
   final APIClient apiClient;
-  LogInScreen({required this.apiClient, Key? key}) : super(key: key);
+
+  LogInScreen({Key? key, required this.apiClient}) : super(key: key);
 
   TextEditingController userNameController = TextEditingController();
 

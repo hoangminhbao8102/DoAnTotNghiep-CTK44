@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_farm_app/data/api/api_client.dart';
 import 'package:smart_farm_app/presentation/change_password_screen/change_password_screen.dart';
 import 'package:smart_farm_app/presentation/log_in_screen/log_in_screen.dart';
 import 'package:smart_farm_app/presentation/update_info_account_screen/update_info_account_screen.dart';
@@ -90,7 +91,7 @@ class SettingScreen extends StatelessWidget {
                 buttonStyle: CustomButtonStyles.outlinePrimaryTL302,
                 buttonTextStyle: CustomTextStyles.titleMediumSecondaryContainer,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LogInScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LogInScreen(apiClient: APIClient())));
                 },
               ),
             ],

@@ -3,6 +3,7 @@ import '../../core/app_export.dart';
 import '../../widgets/app_bar/appbar_leading_image.dart';
 import '../../widgets/app_bar/appbar_title.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
+import 'widgets/productlist_item_widget.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -11,53 +12,27 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: appTheme.whiteA700,
         appBar: _buildAppbar(context),
-        body: Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.symmetric(
-            horizontal: 15.h,
-            vertical: 38.v,
+        body: Padding(
+          padding: EdgeInsets.only(
+            left: 17.h,
+            top: 38.v,
+            right: 17.h
           ),
-          child: Column(
-            children: [
-              Container(
-                height: 100.v,
-                width: 395.h,
-                decoration: BoxDecoration(
-                  color: appTheme.blueGray100,
-                  borderRadius: BorderRadius.circular(15.h),
-                ),
-              ),
-              SizedBox(height: 20.v),
-              Container(
-                height: 100.v,
-                width: 395.h,
-                decoration: BoxDecoration(
-                  color: appTheme.blueGray100,
-                  borderRadius: BorderRadius.circular(15.h),
-                ),
-              ),
-              SizedBox(height: 20.v),
-              Container(
-                height: 100.v,
-                width: 395.h,
-                decoration: BoxDecoration(
-                  color: appTheme.blueGray100,
-                  borderRadius: BorderRadius.circular(15.h),
-                ),
-              ),
-              SizedBox(height: 15.v),
-              Container(
-                height: 100.v,
-                width: 395.h,
-                decoration: BoxDecoration(
-                  color: appTheme.blueGray100,
-                  borderRadius: BorderRadius.circular(15.h),
-                ),
-              ),
-              SizedBox(height: 5.v),
-            ],
+          child: ListView.separated(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemBuilder: (context, index) {
+              return ProductListItemWidget(
+                ontapImgProductImage: () {
+                  ontapImgProductImage(context);
+                },
+              );
+            }, 
+            separatorBuilder: (context, index) {
+              return SizedBox(height: 20.v);
+            }, 
+            itemCount: 6,
           ),
         ),
       )
@@ -89,5 +64,10 @@ class CartScreen extends StatelessWidget {
   /// Navigates back to the previous screen.
   onTapArrowleft(BuildContext context) {
     Navigator.pop(context);
+  }
+  
+  /// Navigates back to the infoProductScreen when the action is triggered
+  ontapImgProductImage(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.infoProductScreen);
   }
 }

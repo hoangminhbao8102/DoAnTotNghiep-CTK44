@@ -48,14 +48,19 @@ class CustomTextStyles {
         color: appTheme.gray400,
         fontWeight: FontWeight.w400,
       );  
-  static get titleLargeGray500 => theme.textTheme.titleLarge!.copyWith(
-    color: appTheme.gray500,
+  static get titleLargeGray50 => theme.textTheme.titleLarge!.copyWith(
+    color: appTheme.gray50,
   );
+
   static get titleLargeInter => theme.textTheme.titleLarge!.inter;
+
   static get titleLargeInterRegular => theme.textTheme.titleLarge!.inter.copyWith(
     fontSize: 20.fSize,
     fontWeight: FontWeight.w400,
   );
+
+  static get titleLarge => theme.textTheme.titleLarge!.inter;
+
   static get titleLargeLight => theme.textTheme.titleLarge!.inter.copyWith(
     fontSize: 20.fSize,
     fontWeight: FontWeight.w300,

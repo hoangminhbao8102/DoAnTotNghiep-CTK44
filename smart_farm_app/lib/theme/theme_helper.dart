@@ -167,7 +167,7 @@ class PrimaryColors {
   Color get gray10002 => Color(0XFFF3F4F7);
   Color get gray300 => Color(0XFFDADADA);
   Color get gray400 => Color(0XFFAFADAD);
-  Color get gray500 => Color(0XFFFFFAFA);
+  Color get gray50 => Color(0XFFFFFAFA);
   Color get gray800 => Color(0XFF3F3F3F);
   Color get gray900 => Color(0XFF222222);
 // Green

@@ -207,7 +207,7 @@ class LivestockScreen extends StatelessWidget {
         right: 96.h,
         bottom: 21.v,
       ),
-      buttonTextStyle: CustomTextStyles.titleLargeGray500,
+      buttonTextStyle: CustomTextStyles.titleLargeGray50,
     );
   }
 

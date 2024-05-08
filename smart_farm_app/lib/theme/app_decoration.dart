@@ -16,35 +16,35 @@ class AppDecoration {
         color: appTheme.whiteA700,
       );
   // OutLine decorations
-  static BoxDecoration outlinedGreen = BoxDecoration(
+  static BoxDecoration outlineGreen = BoxDecoration(
     color: appTheme.green200,
     border: Border.all(
       color: appTheme.green500,
       width: 5.h,
     ),
   );
-  static BoxDecoration outlinedPrimary = BoxDecoration(
+  static BoxDecoration outlinePrimary = BoxDecoration(
     color: appTheme.whiteA700,
     border: Border.all(
       color: theme.colorScheme.primary,
       width: 5.h,
     ),
   );
-  static BoxDecoration outlinedSmallerPrimary = BoxDecoration(
+  static BoxDecoration outlineSmallerPrimary = BoxDecoration(
     color: appTheme.whiteA700,
     border: Border.all(
       color: theme.colorScheme.primary,
       width: 2.h,
     ),
   );
-  static BoxDecoration outlinedSmallestPrimary = BoxDecoration(
+  static BoxDecoration outlineSmallestPrimary = BoxDecoration(
     color: appTheme.whiteA700,
     border: Border.all(
       color: theme.colorScheme.primary,
       width: 1.h,
     ),
   );
-  static BoxDecoration outlinedSmallPrimary = BoxDecoration(
+  static BoxDecoration outlineSmallPrimary = BoxDecoration(
     color: appTheme.whiteA700,
     border: Border.all(
       color: theme.colorScheme.primary,
@@ -82,6 +82,7 @@ class AppDecoration {
 
 class BorderRadiusStyle {
   // Circle borders
+  static BorderRadius get circleBorder10 => BorderRadius.circular(10.h);
   static BorderRadius get circleBorder50 => BorderRadius.circular(50.h);
   static BorderRadius get circleBorder99 => BorderRadius.circular(99.h);
   // Rounded borders

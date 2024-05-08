@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
+import '../../theme/custom_button_style.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_search_view.dart';
 import 'widgets/chipviewcategory_item_widget.dart';
@@ -43,12 +44,238 @@ class FindProductScreen extends StatelessWidget {
                   style: CustomTextStyles.titleLargeInterRegular,
                 ),
               ),
-              SizedBox(height: 12.v),
-              Divider(color: theme.colorScheme.secondaryContainer),
               SizedBox(height: 17.v),
-              _buildRowView(context),
-              SizedBox(height: 16.v),
-              _buildRowView(context),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 21.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 3.v),
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 9.h,
+                                vertical: 10.v,
+                              ),
+                              decoration: AppDecoration.outlinePrimary.copyWith(
+                                borderRadius: BorderRadiusStyle.roundedBorder15,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 1.v),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      height: 100.v,
+                                      width: 125.h,
+                                      decoration: BoxDecoration(
+                                        color: appTheme.blueGray100
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 9.v),
+                                  Container(
+                                    width: 100.h,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 5.h,
+                                      vertical: 1.v,
+                                    ),
+                                    decoration: AppDecoration.white.copyWith(
+                                      borderRadius: BorderRadiusStyle.circleBorder10
+                                    ),
+                                    child: Text(
+                                      "TÊN SẢN PHẨM",
+                                      style: theme.textTheme.bodySmall,
+                                    ),
+                                  ),
+                                  SizedBox(height: 11.v),
+                                  _buildRowCategory(context, category: ""),
+                                  SizedBox(height: 9.v),
+                                  _buildRowPrice(context, price: 0),
+                                  SizedBox(height: 10.v),
+                                  _buildWatchDetail(context)
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 20.v),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 9.h,
+                                vertical: 10.v,
+                              ),
+                              decoration: AppDecoration.outlinePrimary.copyWith(
+                                borderRadius: BorderRadiusStyle.roundedBorder15,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 1.v),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      height: 100.v,
+                                      width: 125.h,
+                                      decoration: BoxDecoration(
+                                        color: appTheme.blueGray100
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 9.v),
+                                  Container(
+                                    width: 100.h,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 5.h,
+                                      vertical: 1.v,
+                                    ),
+                                    decoration: AppDecoration.white.copyWith(
+                                      borderRadius: BorderRadiusStyle.circleBorder10
+                                    ),
+                                    child: Text(
+                                      "TÊN SẢN PHẨM",
+                                      style: theme.textTheme.bodySmall,
+                                    ),
+                                  ),
+                                  SizedBox(height: 11.v),
+                                  _buildRowCategory(context, category: ""),
+                                  SizedBox(height: 9.v),
+                                  _buildRowPrice(context, price: 0),
+                                  SizedBox(height: 10.v),
+                                  _buildWatchDetail(context)
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Spacer(),
+                      Padding(
+                        padding: EdgeInsets.only(top: 3.v),
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 9.h,
+                                vertical: 10.v,
+                              ),
+                              decoration: AppDecoration.outlinePrimary.copyWith(
+                                borderRadius: BorderRadiusStyle.roundedBorder15,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 1.v),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      height: 100.v,
+                                      width: 125.h,
+                                      decoration: BoxDecoration(
+                                        color: appTheme.blueGray100
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 9.v),
+                                  Container(
+                                    width: 100.h,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 5.h,
+                                      vertical: 1.v,
+                                    ),
+                                    decoration: AppDecoration.white.copyWith(
+                                      borderRadius: BorderRadiusStyle.circleBorder10
+                                    ),
+                                    child: Text(
+                                      "TÊN SẢN PHẨM",
+                                      style: theme.textTheme.bodySmall,
+                                    ),
+                                  ),
+                                  SizedBox(height: 11.v),
+                                  _buildRowCategory(context, category: ""),
+                                  SizedBox(height: 9.v),
+                                  _buildRowPrice(context, price: 0),
+                                  SizedBox(height: 10.v),
+                                  _buildWatchDetail(context)
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 20.v),
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 9.h,
+                                vertical: 10.v,
+                              ),
+                              decoration: AppDecoration.outlinePrimary.copyWith(
+                                borderRadius: BorderRadiusStyle.roundedBorder15,
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: 1.v),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      height: 100.v,
+                                      width: 125.h,
+                                      decoration: BoxDecoration(
+                                        color: appTheme.blueGray100
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 9.v),
+                                  Container(
+                                    width: 100.h,
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 5.h,
+                                      vertical: 1.v,
+                                    ),
+                                    decoration: AppDecoration.white.copyWith(
+                                      borderRadius: BorderRadiusStyle.circleBorder10
+                                    ),
+                                    child: Text(
+                                      "TÊN SẢN PHẨM",
+                                      style: theme.textTheme.bodySmall,
+                                    ),
+                                  ),
+                                  SizedBox(height: 11.v),
+                                  _buildRowCategory(context, category: ""),
+                                  SizedBox(height: 9.v),
+                                  _buildRowPrice(context, price: 0),
+                                  SizedBox(height: 10.v),
+                                  _buildWatchDetail(context)
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 8.h),
+                        child: SizedBox(
+                          height: 523.v,
+                          child: VerticalDivider(
+                            width: 4.h,
+                            thickness: 4.v,
+                            endIndent: 483.h,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
               SizedBox(height: 5.v),
             ],
           ),
@@ -61,7 +288,7 @@ class FindProductScreen extends StatelessWidget {
   Widget _buildRowArrowLeft(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        left: 14.h,
+        left: 15.h,
         right: 5.h,
       ),
       child: Row(
@@ -109,6 +336,7 @@ class FindProductScreen extends StatelessWidget {
     return CustomElevatedButton(
       width: 120.h,
       text: "XEM CHI TIẾT",
+      buttonStyle: CustomButtonStyles.fillPrimary,
       onPressed: () {
         onTapWatchDetail(context);
       },
@@ -116,117 +344,85 @@ class FindProductScreen extends StatelessWidget {
     );
   } 
    
-  /// Section Widget
-  Widget _buildRowView(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Padding(
-        padding: EdgeInsets.only(left: 28.h),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 2.v),
-              padding: EdgeInsets.symmetric(
-                horizontal: 7.h,
-                vertical: 9.v,
-              ),
-              decoration: AppDecoration.outlinedPrimary.copyWith(
-                borderRadius: BorderRadiusStyle.roundedBorder15
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 100.v,
-                    width: 125.h,
-                    decoration: BoxDecoration(
-                      color: appTheme.blueGray100,
-                    ),
-                  ),
-                  SizedBox(height: 9.v),
-                  Text(
-                    "TÊN SẢN PHẨM",
-                    style: CustomTextStyles.bodySmallInterSecondaryContainer,
-                  ),
-                  SizedBox(height: 17.v),
-                  Text(
-                    "Loại",
-                    style: CustomTextStyles.bodySmallInterSecondaryContainer,
-                  ),
-                  SizedBox(height: 13.v),
-                  Text(
-                    "Giá bán",
-                    style: CustomTextStyles.bodySmallInterSecondaryContainer,
-                  ),
-                  SizedBox(height: 16.v),
-                  _buildWatchDetail(context)
-                ],
-              ),
+  /// Common Widget
+  Widget _buildRowCategory(BuildContext context, { required String category }) {
+    return Row(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: 2.v),
+          child: Text(
+            "Loại: ",
+            style: CustomTextStyles.bodySmallInterSecondaryContainer.copyWith(
+              color: theme.colorScheme.secondaryContainer.withOpacity(1),
             ),
-            Container(
-              margin: EdgeInsets.only(
-                left: 18.h,
-                top: 2.v,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: 7.h,
-                vertical: 9.v,
-              ),
-              decoration: AppDecoration.outlinedPrimary.copyWith(
-                borderRadius: BorderRadiusStyle.roundedBorder15
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                      height: 100.v,
-                      width: 125.h,
-                      decoration: BoxDecoration(
-                        color: appTheme.blueGray100,
-                      ),
-                    ), 
-                  ),
-                  SizedBox(height: 9.v),
-                  Text(
-                    "TÊN SẢN PHẨM",
-                    style: CustomTextStyles.bodySmallInterSecondaryContainer,
-                  ),
-                  SizedBox(height: 17.v),
-                  Text(
-                    "Loại",
-                    style: CustomTextStyles.bodySmallInterSecondaryContainer,
-                  ),
-                  SizedBox(height: 13.v),
-                  Text(
-                    "Giá bán",
-                    style: CustomTextStyles.bodySmallInterSecondaryContainer,
-                  ),
-                  SizedBox(height: 16.v),
-                  _buildWatchDetail(context)
-                ],
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 18.h),
-              child: SizedBox(
-                height: 252.v,
-                child: VerticalDivider(
-                  width: 4.h,
-                  thickness: 4.v,
-                  endIndent: 212.h,
-                ),
-              ),
-            )
-          ],
+          ),
         ),
-      ),
+        Container(
+          width: 100.h,
+          margin: EdgeInsets.only(left: 2.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: 8.h,
+            vertical: 1.v
+          ),
+          decoration: AppDecoration.white.copyWith(
+            borderRadius: BorderRadiusStyle.circleBorder10
+          ),
+          child: Text(
+            category,
+            style: theme.textTheme.bodySmall!.copyWith(
+              color: theme.colorScheme.onPrimaryContainer,
+            ),
+          ),
+        )
+      ]
     );
   } 
+
+  /// Common Widget
+  Widget _buildRowPrice(BuildContext context, { required double price }) {
+    return Row(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(bottom: 4.v),
+          child: Text(
+            "Giá bán: ",
+            style: CustomTextStyles.bodySmallInterSecondaryContainer.copyWith(
+              color: theme.colorScheme.secondaryContainer.withOpacity(1),
+            ),
+          ),
+        ),
+        Container(
+          width: 62.h,
+          margin: EdgeInsets.only(left: 1.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: 8.h,
+            vertical: 2.v
+          ),
+          decoration: AppDecoration.white.copyWith(
+            borderRadius: BorderRadiusStyle.circleBorder10
+          ),
+          child: Text(
+            price as String,
+            style: theme.textTheme.bodySmall!.copyWith(
+              color: theme.colorScheme.onPrimaryContainer,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(
+            left: 2.h,
+            bottom: 3.v,
+          ),
+          child: Text(
+            "Đ",
+            style: CustomTextStyles.bodySmallInterSecondaryContainer.copyWith(
+              color: theme.colorScheme.secondaryContainer.withOpacity(1),
+            ),
+          ),
+        )
+      ],
+    );
+  }
    
   /// Navigates back to the previous screen.
   onTapImgArrowLeft(BuildContext context) {
@@ -235,6 +431,6 @@ class FindProductScreen extends StatelessWidget {
 
   /// Navigates to the infoProductScreen when the action is triggered.
   onTapWatchDetail(BuildContext context) {
-    Navigator.pop(context);
+    Navigator.pushNamed(context, AppRoutes.infoProductScreen);
   }
 }

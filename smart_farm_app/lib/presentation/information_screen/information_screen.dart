@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
-import '../../theme/custom_button_style.dart';
 import '../../widgets/app_bar/appbar_leading_image.dart';
 import '../../widgets/app_bar/appbar_subtitle_small_inter.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
-import '../../widgets/custom_elevated_button.dart';
 
 class InformationScreen extends StatelessWidget {
   const InformationScreen({Key? key}) : super(key: key);
@@ -16,7 +14,7 @@ class InformationScreen extends StatelessWidget {
         appBar: _buildAppbar(context),
         body: Container(
           width: double.maxFinite,
-          padding: EdgeInsets.symmetric(vertical: 5.v),
+          padding: EdgeInsets.symmetric(vertical: 43.v),
           child: Column(
             children: [
               SizedBox(
@@ -29,56 +27,29 @@ class InformationScreen extends StatelessWidget {
                   style: theme.textTheme.titleLarge,
                 ),
               ),
-              SizedBox(height: 28.v),
-              Container(
-                height: 200.adaptSize,
-                width: 200.adaptSize,
-                padding: EdgeInsets.all(35.h),
-                decoration: AppDecoration.outlinedGreen.copyWith(
-                  borderRadius: BorderRadiusStyle.roundedBorder15
-                ),
-                child: CustomImageView(
-                  imagePath: ImageConstant.imgLivestockInfo,
-                  height: 120.adaptSize,
-                  width: 120.adaptSize,
-                  alignment: Alignment.center,
+              SizedBox(height: 68.v),
+              Padding(
+                padding: EdgeInsets.only(right: 4.h),
+                child: _BuildChooseInfo(
+                  context,
+                  locationImage: ImageConstant.imgLivestock,
+                  titleText: "VẬT NUÔI",
+                  onTapChooseInfo: () {
+                    onTapChooseInfoLivestock(context);
+                  }
                 ),
               ),
-              SizedBox(height: 27.v),
-              Text(
-                "VẬT NUÔI",
-                style: theme.textTheme.titleLarge,
-              ),
-              SizedBox(height: 28.v),
-              Container(
-                height: 200.adaptSize,
-                width: 200.adaptSize,
-                padding: EdgeInsets.all(35.h),
-                decoration: AppDecoration.outlinedGreen.copyWith(
-                  borderRadius: BorderRadiusStyle.roundedBorder15
+              SizedBox(height: 287.v),
+              Padding(
+                padding: EdgeInsets.only(right: 4.h),
+                child: _BuildChooseInfo(
+                  context,
+                  locationImage: ImageConstant.imgBigLocation,
+                  titleText: "TRANG TRẠI",
+                  onTapChooseInfo: () {
+                    onTapChooseInfoFarm(context);
+                  }
                 ),
-                child: CustomImageView(
-                  imagePath: ImageConstant.imgBigLocation,
-                  height: 120.adaptSize,
-                  width: 120.adaptSize,
-                  alignment: Alignment.center,
-                ),
-              ),
-              SizedBox(height: 29.v),
-              Text(
-                "TRANG TRẠI",
-                style: theme.textTheme.titleLarge,
-              ),
-              SizedBox(height: 29.v),
-              CustomElevatedButton(
-                height: 65.v,
-                width: 230.h,
-                text: "XEM THÔNG TIN",
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL30,
-                buttonTextStyle: CustomTextStyles.titleLargeWhiteA700,
-                onPressed: () {
-                  onTapWatchInformation(context);
-                },
               ),
               SizedBox(height: 5.v)
             ],
@@ -108,13 +79,55 @@ class InformationScreen extends StatelessWidget {
     );
   }
 
+  /// Common Widget
+  Widget _BuildChooseInfo(BuildContext context, { required String locationImage, required String titleText, Function? onTapChooseInfo }) {
+    return GestureDetector(
+      onTap: () {
+        onTapChooseInfo?.call();
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 47.h),
+        child: Column(
+          children: [
+            Container(
+              height: 200.adaptSize,
+              width: 200.adaptSize,
+              padding: EdgeInsets.all(35.h),
+              decoration: AppDecoration.outlineGreen.copyWith(
+                borderRadius: BorderRadiusStyle.roundedBorder15
+              ),
+              child: CustomImageView(
+                imagePath: locationImage,
+                height: 120.adaptSize,
+                width: 120.adaptSize,
+                alignment: Alignment.center,
+              ),
+            ),
+            SizedBox(height: 30.v),
+            Text(
+              titleText,
+              style: theme.textTheme.titleLarge!.copyWith(
+                color: theme.colorScheme.secondaryContainer.withOpacity(1)
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
   /// Navigates back to the previous screen.
   onTapArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 
+  /// Navigates back to the livestockScreen when the action is triggered
+  onTapChooseInfoLivestock(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.livestockScreen);
+  }
+
   /// Navigates back to the infoAllFarmScreen when the action is triggered
-  onTapWatchInformation(BuildContext context) {
+  onTapChooseInfoFarm(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.infoAllFarmScreen);
   }
 }

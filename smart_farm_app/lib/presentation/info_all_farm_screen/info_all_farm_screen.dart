@@ -4,7 +4,7 @@ import '../../widgets/app_bar/appbar_leading_image.dart';
 import '../../widgets/app_bar/appbar_title.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
 import '../../widgets/custom_search_view.dart';
-import 'widgets/viewhierarchy_item_widget.dart';
+import 'widgets/farmlist_item_widget.dart';
 
 // ignore: must_be_immutable
 class InfoAllFarmScreen extends StatelessWidget {
@@ -41,20 +41,20 @@ class InfoAllFarmScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 24.h),
+                  padding: EdgeInsets.only(left: 26.h),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildViewhierarchy(context),
+                      _buildFarmList(context),
                       Padding(
-                        padding: EdgeInsets.only(left: 20.h),
+                        padding: EdgeInsets.only(left: 18.h),
                         child: SizedBox(
-                          height: 530.v,
+                          height: 550.v,
                           child: VerticalDivider(
                             width: 4.h,
                             thickness: 4.v,
-                            endIndent: 490.h,
+                            endIndent: 510.h,
                           ),
                         ),
                       )
@@ -62,8 +62,7 @@ class InfoAllFarmScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Spacer(),
-              SizedBox(height: 7.v),
+              SizedBox(height: 88.v),
               Padding(
                 padding: EdgeInsets.only(
                   left: 72.h,
@@ -80,25 +79,33 @@ class InfoAllFarmScreen extends StatelessWidget {
                         onTapImgClose(context);
                       },
                     ),
-                    Container(
-                      height: 100.adaptSize,
-                      width: 100.adaptSize,
-                      padding: EdgeInsets.all(22.h),
-                      decoration: AppDecoration.outlinedPrimary.copyWith(
-                        borderRadius: BorderRadiusStyle.circleBorder50
-                      ),
-                      child: CustomImageView(
-                        imagePath: ImageConstant.imgEdit,
-                        height: 45.adaptSize,
-                        width: 45.adaptSize,
-                        onTap: () {
-                          onTapImgClose(context);
-                        },
-                      ),
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            onTapStackedUpdate(context);
+                          },
+                          child: Container(
+                            height: 100.adaptSize,
+                            width: 100.adaptSize,
+                            padding: EdgeInsets.all(22.h),
+                            decoration: AppDecoration.outlinePrimary.copyWith(
+                              borderRadius: BorderRadiusStyle.circleBorder50
+                            ),
+                            child: CustomImageView(
+                              imagePath: ImageConstant.imgEdit,
+                              height: 45.adaptSize,
+                              width: 45.adaptSize,
+                              alignment: Alignment.center,
+                            ),
+                          ),
+                        )
+                      ],
                     )
                   ],
                 ),
-              )
+              ),
+              SizedBox(height: 7.v)
             ],
           )
         ),
@@ -127,7 +134,7 @@ class InfoAllFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildViewhierarchy(BuildContext context) {
+  Widget _buildFarmList(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(top: 20.v),
@@ -139,7 +146,11 @@ class InfoAllFarmScreen extends StatelessWidget {
           },
           itemCount: 5,
           itemBuilder: (context, index) {
-            return ViewhierarchyItemWidget();
+            return FarmListItemWidget(
+              onTapViewDetailButton: () {
+                onTapViewDetailButton(context);
+              },
+            );
           },
         ),
       ),
@@ -151,8 +162,18 @@ class InfoAllFarmScreen extends StatelessWidget {
     Navigator.pop(context);
   }
 
+  /// Navigates to the infoFarmScreen when the action is triggered
+  onTapViewDetailButton(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.infoFarmScreen);
+  }
+
   /// Navigates to the createFarmScreen when the action is triggered
   onTapImgClose(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.createFarmScreen);
+  }
+
+  /// Navigates to the updateFarmScreen when the action is triggered
+  onTapStackedUpdate(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.updateFarmScreen);
   }
 }

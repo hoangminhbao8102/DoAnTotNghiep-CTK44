@@ -14,7 +14,7 @@ class UserprofileItemWidget extends StatelessWidget{
             height: 70.adaptSize,
             width: 70.adaptSize,
             padding: EdgeInsets.all(10.h),
-            decoration: AppDecoration.outlinedGreen.copyWith(
+            decoration: AppDecoration.outlineGreen.copyWith(
               borderRadius: BorderRadiusStyle.roundedBorder15,
             ),
             child: CustomImageView(

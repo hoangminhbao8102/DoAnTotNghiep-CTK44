@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
-import '../../widgets/custom_outlined_button.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen ({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class ForgotPasswordScreen extends StatelessWidget {
           width: double.maxFinite,
           padding: EdgeInsets.only(
             left: 60.h,
-            top: 99.v,
+            top: 100.v,
             right: 60.h,
           ),
           child: Column(
@@ -21,7 +20,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               CustomImageView(
                 imagePath: ImageConstant.imgKisspngCompute,
                 height: 205.v,
-                width: 201.h,
+                width: 200.h,
                 radius: BorderRadius.circular(100.h),
               ),
               SizedBox(height: 20.v),
@@ -38,56 +37,34 @@ class ForgotPasswordScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 35.h),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      height: 100.adaptSize,
-                      width: 100.adaptSize,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 11.h,
-                        vertical: 12.v,
-                      ),
-                      decoration: AppDecoration.fillWhiteA.copyWith(
-                        borderRadius: BorderRadiusStyle.roundedBorder15,
-                      ),
-                      child: CustomImageView(
-                        imagePath: ImageConstant.imagePhoneCall,
-                        height: 75.adaptSize,
-                        width: 75.adaptSize,
-                        alignment: Alignment.center,
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 20.h),
+                        child: _buildPhoneCall(
+                          context,
+                          phoneCall: ImageConstant.imagePhoneCall,
+                          onTapStackPhoneCall: () {
+                            onTapStackPhoneCall(context);
+                          },
+                        ),
                       ),
                     ),
-                    Container(
-                      height: 100.adaptSize,
-                      width: 100.adaptSize,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 11.h,
-                        vertical: 12.v,
-                      ),
-                      decoration: AppDecoration.fillWhiteA.copyWith(
-                        borderRadius: BorderRadiusStyle.roundedBorder15,
-                      ),
-                      child: CustomImageView(
-                        imagePath: ImageConstant.imageArroba,
-                        height: 75.adaptSize,
-                        width: 75.adaptSize,
-                        alignment: Alignment.center,
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 20.h),
+                        child: _buildEmail(
+                          context,
+                          arroba: ImageConstant.imageArroba,
+                          onTapStackArroba: () {
+                            onTapStackArroba(context);
+                          },
+                        ),
                       ),
                     )
                   ],
                 ),
-              ),
-              SizedBox(height: 20.v),
-              CustomOutlinedButton(
-                text: "TIẾP TỤC",
-                margin: EdgeInsets.only(
-                  left: 35.h,
-                  right: 45.h,
-                ),
-                buttonTextStyle: theme.textTheme.titleMedium!,
-                onPressed: () {
-                  onTapContinue(context);
-                },
               ),
               SizedBox(height: 5.v)
             ],
@@ -97,7 +74,73 @@ class ForgotPasswordScreen extends StatelessWidget {
     );
   }
 
-  onTapContinue(BuildContext context){
+  /// Common widget
+  Widget _buildPhoneCall(BuildContext context, { required String phoneCall, Function? onTapStackPhoneCall,}) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () {
+            onTapStackPhoneCall?.call();
+          },
+          child: Container(
+            height: 100.adaptSize,
+            width: 100.adaptSize,
+            padding: EdgeInsets.symmetric(
+              horizontal: 6.h,
+              vertical: 7.v,
+            ),
+            decoration: AppDecoration.outlineGreen.copyWith(
+              borderRadius: BorderRadiusStyle.roundedBorder15
+            ),
+            child: CustomImageView(
+              imagePath: phoneCall,
+              height: 75.adaptSize,
+              width: 75.adaptSize,
+              alignment: Alignment.center,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  /// Common widget 
+  Widget _buildEmail(BuildContext context, { required String arroba, Function? onTapStackArroba,}) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () {
+            onTapStackArroba?.call();
+          },
+          child: Container(
+            height: 100.adaptSize,
+            width: 100.adaptSize,
+            padding: EdgeInsets.symmetric(
+              horizontal: 6.h,
+              vertical: 7.v,
+            ),
+            decoration: AppDecoration.outlineGreen.copyWith(
+              borderRadius: BorderRadiusStyle.roundedBorder15
+            ),
+            child: CustomImageView(
+              imagePath: arroba,
+              height: 75.adaptSize,
+              width: 75.adaptSize,
+              alignment: Alignment.center,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  /// Navigates back to the forgotPasswordPhoneScreen when the action is triggered
+  onTapStackPhoneCall(BuildContext context){
     Navigator.pushNamed(context, AppRoutes.forgotPasswordPhoneScreen);
+  }
+
+  /// Navigates back to the forgotPasswordEmailScreen when the action is triggered
+  onTapStackArroba(BuildContext context){
+    Navigator.pushNamed(context, AppRoutes.forgotPasswordEmailScreen);
   }
 }

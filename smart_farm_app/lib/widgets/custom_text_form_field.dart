@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import '../core/app_export.dart';
 
 extension TextFormFieldStyleHelper on CustomTextFormField {
-  static OutlineInputBorder get outlineOnPrimaryContainer => OutlineInputBorder(
+  static OutlineInputBorder get outlineGreen => OutlineInputBorder(
     borderRadius: BorderRadius.circular(20.h),
     borderSide: BorderSide(
-      color: theme.colorScheme.onPrimaryContainer,
-      width: 2
+      color: appTheme.green500,
+      width: 2,
     ),
   );
 }
@@ -86,74 +86,68 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return alignment != null
-        ? Align(
-            alignment: alignment ?? Alignment.center,
-            child: textFormFieldWidget(context))
-        : textFormFieldWidget(context);
+    return alignment != null ? Align(
+      alignment: alignment ?? Alignment.center,
+      child: textFormFieldWidget(context)) : textFormFieldWidget(context);
   }
 
   Widget textFormFieldWidget(BuildContext context) => SizedBox(
-        width: width ?? double.maxFinite,
-        child: TextFormField(
-          scrollPadding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          controller: controller,
-          focusNode: focusNode,
-          onTapOutside: (event) {
-            if (focusNode != null) {
-              focusNode?.unfocus();
-            } else {
-              FocusManager.instance.primaryFocus?.unfocus();
-            }
-          },
-          autofocus: autofocus!,
-          style:
-              textStyle ?? CustomTextStyles.bodySmallRobotoOnPrimaryContainer,
-          obscureText: obscureText!,
-          textInputAction: textInputAction,
-          keyboardType: textInputType,
-          maxLines: maxLines ?? 1,
-          decoration: decoration,
-          validator: validator,
-        ),
-      );
+    width: width ?? double.maxFinite,
+    child: TextFormField(
+      scrollPadding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      controller: controller,
+      focusNode: focusNode,
+      onTapOutside: (event) {
+        if (focusNode != null) {
+          focusNode?.unfocus();
+        } else {
+          FocusManager.instance.primaryFocus?.unfocus();
+        }
+      },
+      autofocus: autofocus!,
+      style: textStyle ?? CustomTextStyles.bodySmallRobotoOnPrimaryContainer,
+      obscureText: obscureText!,
+      textInputAction: textInputAction,
+      keyboardType: textInputType,
+      maxLines: maxLines ?? 1,
+      decoration: decoration,
+      validator: validator,
+    ),
+  );
   InputDecoration get decoration => InputDecoration(
-        hintText: hintText ?? "",
-        hintStyle: hintStyle ?? theme.textTheme.bodySmall,
-        prefixIcon: prefix,
-        prefixIconConstraints: prefixConstraints,
-        suffixIcon: suffix,
-        suffixIconConstraints: suffixConstraints,
-        isDense: true,
-        contentPadding: contentPadding ??
-            EdgeInsets.symmetric(
-              horizontal: 8.h,
-              vertical: 17.v,
-            ),
-        fillColor: fillColor ?? appTheme.whiteA700,
-        filled: filled,
-        border: borderDecoration ?? OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.h),
-          borderSide: BorderSide(
-            color: appTheme.gray300,
-            width: 1,
-          ),
-        ),
-        enabledBorder: borderDecoration ?? OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.h),
-          borderSide: BorderSide(
-            color: appTheme.gray300,
-            width: 1,
-          ),
-        ),
-        focusedBorder: borderDecoration ??
-            OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.h),
-              borderSide: BorderSide(
-                color: appTheme.green500,
-                width: 2,
-              ),
-            ),
-      );
+    hintText: hintText ?? "",
+    hintStyle: hintStyle ?? theme.textTheme.bodySmall,
+    prefixIcon: prefix,
+    prefixIconConstraints: prefixConstraints,
+    suffixIcon: suffix,
+    suffixIconConstraints: suffixConstraints,
+    isDense: true,
+    contentPadding: contentPadding ?? EdgeInsets.symmetric(
+      horizontal: 8.h,
+      vertical: 17.v,
+    ),
+    fillColor: fillColor ?? appTheme.whiteA700,
+    filled: filled,
+    border: borderDecoration ?? OutlineInputBorder(
+      borderRadius: BorderRadius.circular(20.h),
+      borderSide: BorderSide(
+        color: appTheme.green500,
+        width: 2,
+      ),
+    ),
+    enabledBorder: borderDecoration ?? OutlineInputBorder(
+      borderRadius: BorderRadius.circular(20.h),
+      borderSide: BorderSide(
+        color: appTheme.gray300,
+        width: 1,
+      ),
+    ),
+    focusedBorder: borderDecoration ?? OutlineInputBorder(
+      borderRadius: BorderRadius.circular(20.h),
+      borderSide: BorderSide(
+        color: appTheme.green500,
+        width: 2,
+      ),
+    ),
+  );
 }

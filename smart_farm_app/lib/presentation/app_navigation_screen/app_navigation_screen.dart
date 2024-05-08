@@ -20,7 +20,7 @@ class AppNavigationScreen extends StatelessWidget {
               Expanded(
                 child: SingleChildScrollView(
                   child: Container(
-                    decoration: AppDecoration.fillWhiteA,
+                    decoration: AppDecoration.white,
                     child: Column(
                       children: [
                         _buildScreenTitle(
@@ -137,11 +137,6 @@ class AppNavigationScreen extends StatelessWidget {
                           context,
                           screenTitle: "Info product",
                           onTapScreenTitle: () => onTapScreenTitle(context, AppRoutes.infoProductScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "Buyer product",
-                          onTapScreenTitle: () => onTapScreenTitle(context, AppRoutes.buyerInformationScreen),
                         ),
                         _buildScreenTitle(
                           context,

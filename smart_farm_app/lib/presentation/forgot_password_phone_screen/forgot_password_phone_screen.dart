@@ -9,27 +9,26 @@ class ForgotPasswordPhoneScreen extends StatelessWidget {
           key: key,
         );
 
-  TextEditingController phonenumberinputController = TextEditingController();
+  TextEditingController phoneNumberInputController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: appTheme.gray100,
         resizeToAvoidBottomInset: false,
         body: Container(
           width: double.maxFinite,
           padding: EdgeInsets.only(
-            left: 31.h,
-            top: 99.v,
-            right: 31.h,
+            left: 30.h,
+            top: 100.v,
+            right: 30.h,
           ),
           child: Column(
             children: [
               CustomImageView(
                 imagePath: ImageConstant.imgKisspngCompute,
                 height: 205.v,
-                width: 201.h,
+                width: 200.h,
                 radius: BorderRadius.circular(
                   100.h,
                 ),
@@ -40,12 +39,11 @@ class ForgotPasswordPhoneScreen extends StatelessWidget {
                 style: theme.textTheme.displayMedium,
               ),
               SizedBox(height: 37.v),
-              _buildRowcall(context),
+              _buildRowCall(context),
               SizedBox(height: 33.v),
               CustomOutlinedButton(
                 width: 230.h,
                 text: "TIẾP TỤC",
-                buttonTextStyle: theme.textTheme.titleMedium!,
                 onPressed: () {
                   onTapContinue(context);
                 },
@@ -59,7 +57,7 @@ class ForgotPasswordPhoneScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowcall(BuildContext context) {
+  Widget _buildRowCall(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 9.h),
       child: Row(
@@ -78,7 +76,7 @@ class ForgotPasswordPhoneScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 20.h),
               child: CustomTextFormField(
-                controller: phonenumberinputController,
+                controller: phoneNumberInputController,
                 hintText: "Nhập số điện thoại",
                 textInputAction: TextInputAction.done,
               ),

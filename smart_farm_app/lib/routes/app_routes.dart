@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_farm_app/data/api/api_client.dart';
 import '../presentation/app_navigation_screen/app_navigation_screen.dart';
-import '../presentation/buyer_information_screen/buyer_information_screen.dart';
 import '../presentation/cart_screen/cart_screen.dart';
 import '../presentation/change_password_screen/change_password_screen.dart';
 import '../presentation/create_farm_screen/create_farm_screen.dart';
@@ -89,7 +89,7 @@ class AppRoutes {
   static const String initialRoute = '/initialRoute';
 
   static Map<String, WidgetBuilder> routes = {
-    logInScreen: (context) => LogInScreen(),
+    logInScreen: (context) => LogInScreen(apiClient: APIClient()),
     registerScreen: (context) => RegisterScreen(),
     forgotPasswordScreen: (context) => ForgotPasswordScreen(),
     forgotPasswordPhoneScreen: (context) => ForgotPasswordPhoneScreen(),
@@ -112,11 +112,10 @@ class AppRoutes {
     changePasswordScreen: (context) => ChangePasswordScreen(),
     findProductScreen: (context) => FindProductScreen(),
     infoProductScreen: (context) => InfoProductScreen(),
-    buyerInformationScreen:(context) => BuyerInformationScreen(),
     notificationScreen: (context) => NotificationScreen(),
     cartScreen: (context) => CartScreen(),
     statisticalScreen:(context) => StatisticalScreen(),
     appNavigationScreen: (context) => AppNavigationScreen(),
-    initialRoute: (context) => LogInScreen()
+    initialRoute: (context) => LogInScreen(apiClient: APIClient())
   };
 }

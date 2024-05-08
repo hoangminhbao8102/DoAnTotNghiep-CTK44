@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
+import '../../theme/custom_button_style.dart';
 import '../../widgets/custom_drop_down.dart';
 import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart';
@@ -8,13 +9,13 @@ import '../../widgets/custom_text_form_field.dart';
 class CreateFarmScreen extends StatelessWidget {
   CreateFarmScreen({Key? key}) : super(key: key);
 
-  TextEditingController farmnameController = TextEditingController();
+  TextEditingController farmNameController = TextEditingController();
 
   TextEditingController locationController = TextEditingController();
 
   TextEditingController areaController = TextEditingController();
 
-  TextEditingController quantityController = TextEditingController();
+  TextEditingController livestockNumberController = TextEditingController();
   
   List<String> dropdownItemListLivestockType = ["Item 1", "Item 2", "Item 3"];
 
@@ -76,59 +77,69 @@ class CreateFarmScreen extends StatelessWidget {
                 alignment: Alignment.center,
               ),
               SizedBox(height: 34.v),
-              _buildRowfieldtwo(context),
+              _buildRowFarm(context),
               SizedBox(height: 20.v),
-              _buildRowlocation(context),
+              _buildRowLocation(context),
               SizedBox(height: 20.v),
-              _buildRowwide(context),
-              SizedBox(height: 20.v),
-              _buildRowcounter(context),
-              SizedBox(height: 20.v),
-              _buildRowLivestockType(context),
-              SizedBox(height: 4.v),
-              Container(
-                margin: EdgeInsets.only(left: 63.h),
-                padding: EdgeInsets.symmetric(
-                  horizontal: 7.h,
-                  vertical: 9.v,
-                ),
-                decoration: AppDecoration.white.copyWith(
-                  borderRadius: BorderRadiusStyle.roundedBorder20,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Gia súc",
-                          style: CustomTextStyles.bodySmallGray800,
-                        ),
-                        SizedBox(height: 14.v),
-                        Text(
-                          "Gia cầm",
-                          style: CustomTextStyles.bodySmallGray800,
-                        ),
-                        SizedBox(height: 16.v),
-                        Text(
-                          "Thú cưng",
-                          style: CustomTextStyles.bodySmallGray800,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 75.v,
-                      child: VerticalDivider(
-                        width: 4.h,
-                        thickness: 4.v,
-                        endIndent: 35.h,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 8.h),
+                  child: Row(
+                    children: [
+                      CustomImageView(
+                        imagePath: ImageConstant.imgWide,
+                        height: 24.adaptSize,
+                        width: 24.adaptSize,
+                        margin: EdgeInsets.symmetric(vertical: 13.v),
                       ),
-                    )
-                  ],
+                      _buildArea(context),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 2.h,
+                          top: 11.v,
+                          bottom: 13.v,
+                        ),
+                        child: Text(
+                          "M2",
+                          style: CustomTextStyles.titleLarge,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
+              SizedBox(height: 20.v),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 8.h),
+                  child: Row(
+                    children: [
+                      CustomImageView(
+                        imagePath: ImageConstant.imgWide,
+                        height: 24.adaptSize,
+                        width: 24.adaptSize,
+                        margin: EdgeInsets.symmetric(vertical: 13.v),
+                      ),
+                      _buildLivestockNumber(context),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 4.h,
+                          top: 12.v,
+                          bottom: 13.v,
+                        ),
+                        child: Text(
+                          "CON",
+                          style: CustomTextStyles.titleLarge,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20.v),
+              _buildRowLivestockType(context),
               SizedBox(height: 20.v),
               _buildRowLivestock(context),
               SizedBox(height: 7.v)
@@ -141,25 +152,24 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildFarmname(BuildContext context) {
+  Widget _buildFarmName(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsets.only(left: 8.h),
+        padding: EdgeInsets.only(left: 20.h),
         child: CustomTextFormField(
-          controller: farmnameController,
+          controller: farmNameController,
           hintText: "Tên trang trại",
-          borderDecoration: TextFormFieldStyleHelper.outlineOnPrimaryContainer,
         ),
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildRowfieldtwo(BuildContext context) {
+  Widget _buildRowFarm(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 31.h),
+      padding: EdgeInsets.only(left: 8.h),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomImageView(
             imagePath: ImageConstant.imgField,
@@ -167,7 +177,7 @@ class CreateFarmScreen extends StatelessWidget {
             width: 24.adaptSize,
             margin: EdgeInsets.symmetric(vertical: 13.v),
           ),
-          _buildFarmname(context)
+          _buildFarmName(context)
         ],
       ),
     );
@@ -177,20 +187,19 @@ class CreateFarmScreen extends StatelessWidget {
   Widget _buildLocation(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsets.only(left: 8.h),
+        padding: EdgeInsets.only(left: 20.h),
         child: CustomTextFormField(
           controller: locationController,
           hintText: "Vị trí",
-          borderDecoration: TextFormFieldStyleHelper.outlineOnPrimaryContainer,
         ),
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildRowlocation(BuildContext context) {
+  Widget _buildRowLocation(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 31.h),
+      padding: EdgeInsets.only(left: 8.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -208,66 +217,24 @@ class CreateFarmScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildArea(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(left: 8.h),
-        child: CustomTextFormField(
-          controller: areaController,
-          hintText: "Diện tích",
-          borderDecoration: TextFormFieldStyleHelper.outlineOnPrimaryContainer,
-        ),
-      ),
-    );
-  }
-
-  /// Section Widget
-  Widget _buildRowwide(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 31.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgWide,
-            height: 24.adaptSize,
-            width: 24.adaptSize,
-            margin: EdgeInsets.symmetric(vertical: 13.v),
-          ),
-          _buildArea(context)
-        ],
+      padding: EdgeInsets.only(left: 20.h),
+      child: CustomTextFormField(
+        width: 78.h,
+        controller: areaController,
+        hintText: "Diện tích",
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildQuantity(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(left: 8.h),
-        child: CustomTextFormField(
-          controller: quantityController,
-          hintText: "Số lượng con",
-          borderDecoration: TextFormFieldStyleHelper.outlineOnPrimaryContainer,
-        ),
-      ),
-    );
-  }
-
-  /// Section Widget
-  Widget _buildRowcounter(BuildContext context) {
+  Widget _buildLivestockNumber(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 31.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgCounter,
-            height: 24.adaptSize,
-            width: 24.adaptSize,
-            margin: EdgeInsets.symmetric(vertical: 13.v),
-          ),
-          _buildQuantity(context)
-        ],
+      padding: EdgeInsets.only(left: 19.h),
+      child: CustomTextFormField(
+        width: 55.h,
+        controller: livestockNumberController,
+        hintText: "Con",
       ),
     );
   }
@@ -275,9 +242,9 @@ class CreateFarmScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildRowLivestockType(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 31.h),
+      padding: EdgeInsets.only(left: 8.h),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomImageView(
@@ -286,23 +253,70 @@ class CreateFarmScreen extends StatelessWidget {
             width: 24.adaptSize,
             margin: EdgeInsets.only(
               top: 9.v,
-              bottom: 13.v
+              bottom: 115.v
             ),
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(left: 8.h),
-              child: CustomDropDown(
-                icon: Container(
-                  margin: EdgeInsets.symmetric(horizontal: 8.h),
-                  child: CustomImageView(
-                    imagePath: ImageConstant.imgArrowdown,
-                    height: 10.adaptSize,
-                    width: 10.adaptSize,
+              padding: EdgeInsets.only(left: 19.h),
+              child: Column(
+                children: [
+                  CustomDropDown(
+                    icon: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 8.h),
+                      child: CustomImageView(
+                        imagePath: ImageConstant.imgArrowdown,
+                        height: 10.adaptSize,
+                        width: 10.adaptSize,
+                      ),
+                    ),
+                    hintText: "Chọn loại vật nuôi",
+                    items: dropdownItemListLivestockType,
                   ),
-                ),
-                hintText: "Chọn loại vật nuôi",
-                items: dropdownItemListLivestockType,
+                  SizedBox(height: 4.v),
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 7.h,
+                      vertical: 9.v,
+                    ),
+                    decoration: AppDecoration.outlineGreen.copyWith(
+                      borderRadius: BorderRadiusStyle.roundedBorder20
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Gia súc",
+                              style: CustomTextStyles.bodySmallGray800,
+                            ),
+                            SizedBox(height: 14.v),
+                            Text(
+                              "Gia súc",
+                              style: CustomTextStyles.bodySmallGray800,
+                            ),
+                            SizedBox(height: 14.v),
+                            Text(
+                              "Gia súc",
+                              style: CustomTextStyles.bodySmallGray800,
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 75.v,
+                          child: VerticalDivider(
+                            width: 4.h,
+                            thickness: 4.v,
+                            endIndent: 35.h,
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
           )
@@ -322,6 +336,7 @@ class CreateFarmScreen extends StatelessWidget {
         horizontal: 8.h,
         vertical: 11.v,
       ),
+      borderDecoration: TextFormFieldStyleHelper.outlineGreen,
     );
   }
 
@@ -330,7 +345,7 @@ class CreateFarmScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(left: 31.h),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomImageView(
@@ -344,7 +359,7 @@ class CreateFarmScreen extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: EdgeInsets.only(left: 8.h),
+              padding: EdgeInsets.only(left: 19.h),
               child: Column(
                 children: [
                   CustomDropDown(
@@ -377,16 +392,25 @@ class CreateFarmScreen extends StatelessWidget {
       width: 231.h,
       text: "XÁC NHẬN",
       margin: EdgeInsets.only(
-        left: 99.h,
+        left: 100.h,
         right: 100.h,
         bottom: 17.v,
       ),
+      buttonStyle: CustomButtonStyles.outlinePrimaryTL30,
       buttonTextStyle: CustomTextStyles.titleLargeWhiteA700,
+      onPressed: () {
+        onTapConfirm(context);
+      },
     );
   }
 
-  // Navigates back to the previous screen
+  /// Navigates back to the previous screen
   onTapImgArrowleft(BuildContext context) {
     Navigator.pop(context);
+  }
+
+  /// Navigates back to the homePage when the action is triggered
+  onTapConfirm(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.homePage);
   }
 }

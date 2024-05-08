@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
-import '../../widgets/custom_outlined_button.dart';
+import '../../theme/custom_button_style.dart';
+import '../../widgets/custom_elevated_button.dart';
 import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_immutable
 
 class ChangePasswordScreen extends StatelessWidget {
@@ -66,11 +67,11 @@ class ChangePasswordScreen extends StatelessWidget {
                   SizedBox(height: 34.v),
                   CustomImageView(
                     imagePath: ImageConstant.imgImage,
-                    height: 94.v,
-                    width: 93.v,
+                    height: 94.adaptSize,
+                    width: 94.adaptSize,
                     radius: BorderRadius.circular(46.h),
                   ),
-                  SizedBox(height: 34.v),
+                  SizedBox(height: 40.v),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
@@ -310,16 +311,25 @@ class ChangePasswordScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildChangePassword(BuildContext context) {
-    return CustomOutlinedButton(
+    return CustomElevatedButton(
       height: 63.v,
       width: 231.h,
       text: "ĐỔI MẬT KHẨU",
-      buttonTextStyle: theme.textTheme.titleMedium!,
+      buttonStyle: CustomButtonStyles.outlinePrimaryTL30,
+      buttonTextStyle: CustomTextStyles.titleLargeGray50,
+      onPressed: () {
+        onTapChangePassword(context);
+      },
     );
   }
 
   /// Navigates back to the previous screen.
   onTapImgArrowleft(BuildContext context) {
     Navigator.pop(context);
+  }
+
+  /// Navigates back to the settingScreen when the action is triggered
+  onTapChangePassword(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.settingScreen);
   }
 }
