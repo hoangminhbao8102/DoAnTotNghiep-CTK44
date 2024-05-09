@@ -19,13 +19,16 @@ namespace SmartFarmAppAPI.Data.Mappings
                 .HasMaxLength(100);
 
             builder.Property(l => l.Description)
-                .HasMaxLength(100);
+                .HasMaxLength(500);
 
             builder.Property(l => l.ImageUrl)
                 .HasMaxLength(100);
 
             builder.Property(l => l.Breed)
-                .HasMaxLength(100);
+                .HasMaxLength(500);
+
+            builder.Property(l => l.Care)
+                .HasMaxLength(500);
 
             builder.Property(l => l.DateOfBirth)
                 .HasColumnType("date");
@@ -33,11 +36,6 @@ namespace SmartFarmAppAPI.Data.Mappings
             builder.HasOne(l => l.Farm)
                 .WithMany(f => f.Livestocks)
                 .HasForeignKey(l => l.FarmId);
-
-            builder.HasMany(l => l.LivestockCares)
-                .WithOne(lc => lc.Livestock)
-                .HasForeignKey(lc => lc.LivestockId)
-                .OnDelete(DeleteBehavior.Cascade); // Xóa vật nuôi sẽ xóa tất cả các hoạt động chăm sóc của nó
         }
     }
 }

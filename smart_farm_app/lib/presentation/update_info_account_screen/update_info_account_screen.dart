@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
+import '../../theme/custom_button_style.dart';
 import '../../widgets/app_bar/appbar_subtitle.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
 import '../../widgets/custom_elevated_button.dart';
@@ -15,7 +16,7 @@ class UpdateInfoAccountScreen extends StatelessWidget {
 
   TextEditingController addressController = TextEditingController();
 
-  TextEditingController phonenumberController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
 
   TextEditingController emailController = TextEditingController();
 
@@ -67,13 +68,13 @@ class UpdateInfoAccountScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 46.v),
-                    _buildRowlockone(context),
+                    _buildRowFullName(context),
                     SizedBox(height: 20.v),
-                    _buildRowlinkedinone(context),
+                    _buildRowAddress(context),
                     SizedBox(height: 20.v),
-                    _buildRowcallone(context),
+                    _buildRowPhoneNumber(context),
                     SizedBox(height: 20.v),
-                    _buildRowcheckmark(context),
+                    _buildRowEmail(context),
                     SizedBox(height: 64.v),
                     _buildSaveChanged(context),
                     SizedBox(height: 5.v),
@@ -108,7 +109,7 @@ class UpdateInfoAccountScreen extends StatelessWidget {
               width: 24.adaptSize,
               alignment: Alignment.center,
               onTap: () {
-                onTapImgArrowleftone(context);
+                onTapImgArrowLeft(context);
               },
             ),
             CustomImageView(
@@ -126,7 +127,20 @@ class UpdateInfoAccountScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlockone(BuildContext context) {
+  Widget _buildFullName(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.only(left: 10.h),
+        child: CustomTextFormField(
+          controller: fullNameController,
+          hintText: "Họ và tên người dùng",
+        ),
+      ),
+    );
+  }
+
+  /// Section Widget
+  Widget _buildRowFullName(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -158,7 +172,7 @@ class UpdateInfoAccountScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowlinkedinone(BuildContext context) {
+  Widget _buildRowAddress(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -167,8 +181,8 @@ class UpdateInfoAccountScreen extends StatelessWidget {
           height: 24.adaptSize,
           width: 24.adaptSize,
           margin: EdgeInsets.only(
-            top: 11.v,
-            bottom: 15.v,
+            top: 14.v,
+            bottom: 12.v,
           ),
         ),
         _buildAddress(context)
@@ -177,12 +191,12 @@ class UpdateInfoAccountScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildPhonenumber(BuildContext context) {
+  Widget _buildPhoneNumber(BuildContext context) {
     return Expanded(
       child: Padding(
         padding: EdgeInsets.only(left: 10.h),
         child: CustomTextFormField(
-          controller: phonenumberController,
+          controller: phoneNumberController,
           hintText: "Số điện thoại",
         ),
       ),
@@ -190,7 +204,7 @@ class UpdateInfoAccountScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowcallone(BuildContext context) {
+  Widget _buildRowPhoneNumber(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -203,7 +217,7 @@ class UpdateInfoAccountScreen extends StatelessWidget {
             bottom: 15.v,
           ),
         ),
-        _buildPhonenumber(context)
+        _buildPhoneNumber(context)
       ],
     );
   }
@@ -218,13 +232,14 @@ class UpdateInfoAccountScreen extends StatelessWidget {
           hintText: "Email",
           textInputAction: TextInputAction.done,
           textInputType: TextInputType.emailAddress,
+          obscureText: true,
         ),
       ),
     );
   }
 
   /// Section Widget
-  Widget _buildRowcheckmark(BuildContext context) {
+  Widget _buildRowEmail(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -242,30 +257,52 @@ class UpdateInfoAccountScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
-  Widget _buildFullName(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(left: 20.h),
-        child: CustomTextFormField(
-          controller: fullNameController,
-          hintText: "Họ và tên người dùng",
-        ),
-      ),
-    );
-  }
+  
 
   /// Section Widget
   Widget _buildSaveChanged(BuildContext context) {
     return CustomElevatedButton(
+      height: 60.v,
       width: 230.h,
       text: "LƯU THAY ĐỔI",
-      buttonTextStyle: CustomTextStyles.titleLargeGray500,
+      buttonStyle: CustomButtonStyles.fillPrimary,
+      buttonTextStyle: CustomTextStyles.titleLargeGray50,
+      onPressed: () {
+        onTapSaveChanged(context);
+      },
     );
   }
 
   /// Navigates back to the previous screen.
-  onTapImgArrowleftone(BuildContext context) {
+  onTapImgArrowLeft(BuildContext context) {
     Navigator.pop(context);
+  }
+
+  /// Navigates back to the settingScreen when the action is triggered
+  onTapSaveChanged(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("XÁC NHẬN"),
+          content: Text("Bạn có muốn lưu thay đổi không?"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, AppRoutes.settingScreen);
+              },
+              child: Text("Có"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text("Không"),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -9,7 +9,6 @@ namespace SmartFarmAppAPI.Data.Contexts
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Farm> Farms { get; set; }
         public DbSet<Livestock> Livestocks { get; set; }
-        public DbSet<LivestockCare> LivestockCares { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Report> Reports { get; set; }
 
@@ -25,7 +24,6 @@ namespace SmartFarmAppAPI.Data.Contexts
             modelBuilder.ApplyConfiguration(new AccountMap());
             modelBuilder.ApplyConfiguration(new FarmMap());
             modelBuilder.ApplyConfiguration(new LivestockMap());
-            modelBuilder.ApplyConfiguration(new LivestockCareMap());
             modelBuilder.ApplyConfiguration(new ProductMap());
             modelBuilder.ApplyConfiguration(new ReportMap());
         }

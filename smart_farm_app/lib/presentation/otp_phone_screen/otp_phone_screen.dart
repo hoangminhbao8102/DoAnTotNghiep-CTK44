@@ -19,7 +19,7 @@ class OtpPhoneScreen extends StatelessWidget {
           width: double.maxFinite,
           padding: EdgeInsets.only(
             left: 45.h,
-            top: 99.v,
+            top: 100.v,
             right: 45.h,
           ),
           child: Column(
@@ -27,7 +27,7 @@ class OtpPhoneScreen extends StatelessWidget {
               CustomImageView(
                 imagePath: ImageConstant.imgKisspngCompute,
                 height: 205.v,
-                width: 201.h,
+                width: 200.h,
                 radius: BorderRadius.circular(
                   100.h,
                 ),

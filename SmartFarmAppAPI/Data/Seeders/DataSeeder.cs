@@ -24,7 +24,6 @@ namespace SmartFarmAppAPI.Data.Seeders
             var accounts = AddAccounts();
             var farms = AddFarms(accounts);
             var livestock = AddLivestock(farms);
-            var livestockCares = AddLivestockCares(livestock);
             var products = AddProducts(farms);
             var reports = AddReports(farms);
         }
@@ -102,12 +101,8 @@ namespace SmartFarmAppAPI.Data.Seeders
                     Breed = "Angus",
                     DateOfBirth = new DateTime(2019, 5, 15),
                     FarmId = farms.First().Id, // Assuming there's at least one farm in the farms list
-                    Farm = farms.First(), // Assuming there's at least one farm in the farms list
-                    LivestockCares = new List<LivestockCare>()
-                    {
-                        new LivestockCare { Type = "Feeding", Description = "Feed twice a day" },
-                        new LivestockCare { Type = "Health", Description = "Regular checkups with the vet" }
-                    }
+                    Farm = farms.First(),
+                    Care = "Regular checkups with the vet"
                 },
                 new()
                 {
@@ -118,19 +113,7 @@ namespace SmartFarmAppAPI.Data.Seeders
                     Breed = "Broiler",
                     DateOfBirth = new DateTime(2020, 8, 25),
                     Farm = new Farm(),
-                    LivestockCares = new List<LivestockCare>()
-                    {
-                        new LivestockCare
-                        {
-                            Type = "Feeding",
-                            Description = "Provide balanced feed according to age."
-                        },
-                        new LivestockCare
-                        {
-                            Type = "Housing",
-                            Description = "Ensure adequate housing conditions."
-                        }
-                    }
+                    Care = "Provide balanced feed according to age."
                 }
             };
 
@@ -140,33 +123,6 @@ namespace SmartFarmAppAPI.Data.Seeders
             return livestocks;
         }
 
-        private IList<LivestockCare> AddLivestockCares(IList<Livestock> livestock)
-        {
-            var livestockCares = new List<LivestockCare>()
-            {
-                new()
-                {
-                    LivestockId = livestock[0].Id,
-                    Type = "Feeding",
-                    Date = DateTime.Now.AddDays(-2),
-                    Description = "Fed with high-protein diet.",
-                    Livestock = livestock[0]
-                },
-                new()
-                {
-                    LivestockId = livestock[1].Id,
-                    Type = "Health Check",
-                    Date = DateTime.Now.AddDays(-5),
-                    Description = "Checked for any signs of illness.",
-                    Livestock = livestock[1]
-                }
-            };
-
-            _dbContext.LivestockCares.AddRange(livestockCares);
-            _dbContext.SaveChanges();
-
-            return livestockCares;
-        }
 
         private IList<Product> AddProducts(IList<Farm> farms) 
         {
@@ -175,7 +131,7 @@ namespace SmartFarmAppAPI.Data.Seeders
                 new()
                 {
                     ProductName = "Organic Apples",
-                    ImageUrl = "https://example.com/apple-image.jpg",
+                    ImageUrl = "",
                     Description = "Fresh organic apples from our farm.",
                     Category = "Fruits",
                     Amount = 100, // Assume 100 units available
@@ -186,7 +142,7 @@ namespace SmartFarmAppAPI.Data.Seeders
                 new()
                 {
                     ProductName = "Free-Range Eggs",
-                    ImageUrl = "https://example.com/egg-image.jpg",
+                    ImageUrl = "",
                     Description = "Farm-fresh free-range eggs.",
                     Category = "Eggs",
                     Amount = 50, // Assume 50 eggs available

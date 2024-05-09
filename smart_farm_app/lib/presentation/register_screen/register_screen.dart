@@ -386,7 +386,7 @@ class RegisterScreen extends StatelessWidget {
         right: 100.h,
         bottom: 47.v,
       ),
-      buttonStyle: CustomButtonStyles.outlinePrimaryTL301,
+      buttonStyle: CustomButtonStyles.outlineGreen,
       buttonTextStyle: theme.textTheme.titleMedium!,
       onPressed: () {
         onTapRegister(context);

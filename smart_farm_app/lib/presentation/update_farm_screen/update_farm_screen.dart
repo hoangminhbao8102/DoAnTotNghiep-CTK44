@@ -25,10 +25,31 @@ class UpdateFarmScreen extends StatelessWidget {
                 style: theme.textTheme.titleLarge,
               ),
               SizedBox(height: 42.v),
-              Divider(
-                color: theme.colorScheme.secondaryContainer,
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 30.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildUpdateFarm(context),
+                      Padding(
+                        padding: EdgeInsets.only(left: 26.h),
+                        child: SizedBox(
+                          height: 550.v,
+                          child: VerticalDivider(
+                            width: 4.h,
+                            thickness: 4.v,
+                            endIndent: 510.h,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
-              _buildUpdateFarm(context),
+              SizedBox(height: 5.v)
             ],
           ),
         ),
@@ -76,18 +97,21 @@ class UpdateFarmScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildUpdateFarm(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
+    return Expanded(
       child: Padding(
-        padding: EdgeInsets.only(left: 29.h),
+        padding: EdgeInsets.only(top: 20.h),
         child: ListView.separated(
           physics: NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return UpdateFarmItemWidget();
+            return UpdateFarmItemWidget(
+              onTapImgSettingImage: () {
+                onTapImgSettingImage(context);
+              },
+            );
           }, 
           separatorBuilder: (context, index) {
-            return SizedBox(height: 1.v);
+            return SizedBox(height: 20.v);
           }, 
           itemCount: 7,
         ),
@@ -98,5 +122,10 @@ class UpdateFarmScreen extends StatelessWidget {
   /// Navigates back to the previous screen.
   onTapImgArrowleftone(BuildContext context) {
     Navigator.pop(context);
+  }
+
+  /// Navigates to the updateInfoFarmScreen when the action is triggered.
+  onTapImgSettingImage(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.updateInfoFarmScreen);
   }
 }

@@ -1,43 +1,49 @@
+import '../../data/models/Farm.dart';
+
 class Account {
-  final int? id;
-  final String? name;
-  final String? location;
-  final String? phone;
-  final String? email;
-  final String username;
-  final String password;
+  int id;
+  String fullName;
+  String address;
+  String phoneNumber;
+  String email;
+  String username;
+  String password;
+  List<Farm> farms;
 
   Account({
-    this.id,
-    this.name,
-    this.location,
-    this.phone,
-    this.email,
+    required this.id,
+    required this.fullName,
+    required this.address,
+    required this.phoneNumber,
+    required this.email,
     required this.username,
-    required this.password
+    required this.password,
+    required this.farms,
   });
 
   factory Account.fromJson(Map<String, dynamic> json) {
     return Account(
       id: json['id'],
-      name: json['name'],
-      location: json['location'],
-      phone: json['phone'],
+      fullName: json['fullName'],
+      address: json['address'],
+      phoneNumber: json['phoneNumber'],
       email: json['email'],
       username: json['username'],
       password: json['password'],
+      farms: (json['farms'] as List<dynamic>).map((farmJson) => Farm.fromJson(farmJson)).toList(),
     );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['location'] = location;
-    data['phone'] = phone;
-    data['email'] = email;
-    data['username'] = username;
-    data['password'] = password;
-    return data;
+    return {
+      'id': id,
+      'fullName': fullName,
+      'address': address,
+      'phoneNumber': phoneNumber,
+      'email': email,
+      'username': username,
+      'password': password,
+      'farms': farms.map((farm) => farm.toJson()).toList(),
+    };
   }
 }

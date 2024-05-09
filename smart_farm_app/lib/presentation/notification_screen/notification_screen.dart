@@ -102,7 +102,7 @@ class NotificationScreen extends StatelessWidget {
         horizontal: 12.h,
         vertical: 17.v,
       ),
-      decoration: AppDecoration.outlinedSmallPrimary.copyWith(
+      decoration: AppDecoration.outlineSmallPrimary.copyWith(
         borderRadius: BorderRadiusStyle.roundedBorder15
       ),
       child: Row(

@@ -66,7 +66,7 @@ class StatisticalScreen extends StatelessWidget {
           bottom: 14.v
         ),
         onTap: () {
-          onTapArrowleftone(context);
+          onTapArrowleft(context);
         },
       ),
       centerTitle: true,
@@ -75,7 +75,7 @@ class StatisticalScreen extends StatelessWidget {
   }
 
   /// Navigates back to the previous screen.
-  onTapArrowleftone(BuildContext context) {
+  onTapArrowleft(BuildContext context) {
     Navigator.pop(context);
   }
 }

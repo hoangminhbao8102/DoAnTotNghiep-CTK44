@@ -16,12 +16,12 @@ namespace SmartFarmAppAPI.Core.Entities
 
         public string Breed { get; set; }
 
+        public string Care { get; set; }
+
         public DateTime DateOfBirth { get; set; }
 
         public int FarmId { get; set; }
 
         public Farm Farm { get; set; }
-
-        public List<LivestockCare> LivestockCares { get; set; }
     }
 }

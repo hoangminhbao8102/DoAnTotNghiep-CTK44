@@ -63,43 +63,6 @@ namespace SmartFarmAppAPI.Controllers
             return CreatedAtAction("GetAccount", new { id = account.Id }, account);
         }
 
-        // POST: api/Accounts/login
-        [HttpPost("login")]
-        public IActionResult Login([FromBody] Account loginInfo)
-        {
-            var account = _accountRepository.Accounts.FirstOrDefault(a => a.Username == loginInfo.Username && a.Password == loginInfo.Password);
-
-            if (account == null)
-            {
-                return BadRequest("Invalid username or password");
-            }
-
-            // Đăng nhập thành công, trả về thông tin tài khoản
-            return Ok(account);
-        }
-
-        // POST: api/Accounts/register
-        [HttpPost("register")]
-        public IActionResult Register(Account newAccount)
-        {
-            // Kiểm tra xem tài khoản đã tồn tại chưa
-            var existingAccount = _accountRepository.Accounts.FirstOrDefault(a => a.Username == newAccount.Username || a.Email == newAccount.Email);
-
-            if (existingAccount != null)
-            {
-                return BadRequest("Username or email already exists");
-            }
-
-            // Gán Id cho tài khoản mới
-            newAccount.Id = _accountRepository.Accounts.Count() + 1;
-
-            // Thêm tài khoản mới vào danh sách (trong thực tế, bạn sẽ lưu trữ vào cơ sở dữ liệu)
-            _accountRepository.Add(newAccount);
-
-            // Trả về tài khoản đã đăng ký thành công
-            return Ok(newAccount);
-        }
-
         // DELETE: api/Accounts/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAccount(int id)

@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_farm_app/data/api/api_client.dart';
-import 'package:smart_farm_app/presentation/change_password_screen/change_password_screen.dart';
-import 'package:smart_farm_app/presentation/log_in_screen/log_in_screen.dart';
-import 'package:smart_farm_app/presentation/update_info_account_screen/update_info_account_screen.dart';
 import '../../core/app_export.dart';
 import '../../theme/custom_button_style.dart';
 import '../../widgets/app_bar/appbar_leading_image.dart';
@@ -50,10 +46,10 @@ class SettingScreen extends StatelessWidget {
                     width: 24.adaptSize,
                   ),
                 ),
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL302,
+                buttonStyle: CustomButtonStyles.outlineGreen,
                 buttonTextStyle: CustomTextStyles.titleMediumSecondaryContainer,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateInfoAccountScreen()));
+                  onTapUpdateInfoAccount(context);
                 },
               ),
               SizedBox(height: 30.v),
@@ -69,13 +65,13 @@ class SettingScreen extends StatelessWidget {
                     width: 24.adaptSize,
                   ),
                 ),
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL302,
+                buttonStyle: CustomButtonStyles.outlineGreen,
                 buttonTextStyle: CustomTextStyles.titleMediumSecondaryContainer,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => ChangePasswordScreen()));
+                  onTapChangePassword(context);
                 },
               ),
-              SizedBox(height: 35.v),
+              SizedBox(height: 33.v),
               CustomOutlinedButton(
                 height: 65.v,
                 text: "ĐĂNG XUẤT",
@@ -91,7 +87,7 @@ class SettingScreen extends StatelessWidget {
                 buttonStyle: CustomButtonStyles.outlinePrimaryTL302,
                 buttonTextStyle: CustomTextStyles.titleMediumSecondaryContainer,
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LogInScreen(apiClient: APIClient())));
+                  onTapLogout(context);
                 },
               ),
             ],
@@ -113,7 +109,7 @@ class SettingScreen extends StatelessWidget {
           bottom: 15.v,
         ),
         onTap: () {
-          onTapArrowleftone(context);
+          onTapArrowleft(context);
         },
       ),
       centerTitle: true,
@@ -124,7 +120,46 @@ class SettingScreen extends StatelessWidget {
   }
 
   /// Navigates back to the previous
-  onTapArrowleftone(BuildContext context) {
+  onTapArrowleft(BuildContext context) {
     Navigator.pop(context);
+  }
+
+  /// Navigates to the updateInfoAccountScreen when the action is triggered.
+  onTapUpdateInfoAccount(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.updateInfoAccountScreen);
+  }
+
+  /// Navigates to the changePasswordScreen when the action is triggered.
+  onTapChangePassword(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.changePasswordScreen);
+  }
+
+  /// Navigates to the logInScreen when the action is triggered.
+  void onTapLogout(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('XÁC NHẬN ĐĂNG XUẤT'),
+          content: Text('Bạn có chắc chắn muốn đăng xuất không?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, AppRoutes.logInScreen);
+              },
+              child: Text('Có'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pop(context);
+              },
+              child: Text('Không'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

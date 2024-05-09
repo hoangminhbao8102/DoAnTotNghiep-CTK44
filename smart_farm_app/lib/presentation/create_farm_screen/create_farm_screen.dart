@@ -77,7 +77,7 @@ class CreateFarmScreen extends StatelessWidget {
                 alignment: Alignment.center,
               ),
               SizedBox(height: 34.v),
-              _buildRowFarm(context),
+              _buildRowFarmName(context),
               SizedBox(height: 20.v),
               _buildRowLocation(context),
               SizedBox(height: 20.v),
@@ -117,7 +117,7 @@ class CreateFarmScreen extends StatelessWidget {
                   child: Row(
                     children: [
                       CustomImageView(
-                        imagePath: ImageConstant.imgWide,
+                        imagePath: ImageConstant.imgCounter,
                         height: 24.adaptSize,
                         width: 24.adaptSize,
                         margin: EdgeInsets.symmetric(vertical: 13.v),
@@ -165,7 +165,7 @@ class CreateFarmScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildRowFarm(BuildContext context) {
+  Widget _buildRowFarmName(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 8.h),
       child: Row(
