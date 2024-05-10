@@ -55,6 +55,46 @@ namespace SmartFarmAppAPI.Controllers
             return NoContent();
         }
 
+        // POST: api/Accounts/login
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] Account loginInfo)
+        {
+            var accounts = await _accountRepository.GetAllAccountsAsync(); // Sử dụng await để chờ cho kết quả trả về
+            var account = accounts.FirstOrDefault(a => a.Username == loginInfo.Username && a.Password == loginInfo.Password);
+            if (account == null)
+            {
+                return Unauthorized(); // Trả về mã trạng thái 401 Unauthorized nếu không tìm thấy tài khoản
+            }
+
+            // Trả về thông tin tài khoản nếu đăng nhập thành công
+            return Ok(account);
+        }
+
+        // POST: api/Accounts/register
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(Account account)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            // Lấy tất cả các tài khoản từ cơ sở dữ liệu
+            var allAccounts = await _accountRepository.GetAllAccountsAsync();
+
+            // Kiểm tra xem tài khoản đã tồn tại chưa
+            var existingAccount = allAccounts.FirstOrDefault(a => a.Email == account.Email);
+            if (existingAccount != null)
+            {
+                return Conflict("Email already exists.");
+            }
+
+            // Thêm tài khoản mới vào cơ sở dữ liệu
+            await _accountRepository.AddAccountAsync(account);
+
+            return Ok("Registration successful.");
+        }
+
         // POST: api/Accounts/
         [HttpPost]
         public async Task<ActionResult<Account>> PostAccount(Account account)

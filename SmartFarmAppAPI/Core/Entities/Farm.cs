@@ -12,14 +12,16 @@ namespace SmartFarmAppAPI.Core.Entities
 
         public int Area { get; set; }
 
-        public int OwnerId { get; set; }
+        public int Number { get; set; }
 
-        public Account Owner { get; set; }
+        public int AccountId { get; set; }
+
+        public int ReportId { get; set; }
+
+        public Account Account { get; set; }
 
         public List<Livestock> Livestocks { get; set; }
 
-        public List<Product> Products { get; set; }
-
-        public List<Report> Reports { get; set; }
+        public Report Report { get; set; }
     }
 }

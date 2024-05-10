@@ -13,15 +13,11 @@ class APIClient extends ChangeNotifier {
   Account? get loggedInUser => _loggedInUser;
 
   Future<void> Login(String username, String password) async {
-    // Call your login API here, for demonstration purposes let's assume success
-    _loggedInUser = Account(username: username, password: password);
-    notifyListeners();
+    
   }
 
   Future<void> register(Account account) async {
-    // Call your register API here, for demonstration purposes let's assume success
-    _loggedInUser = account;
-    notifyListeners();
+    
   }
 
   static Future<CheckAndDetail> forgotPasswordPhone(String phone) async {

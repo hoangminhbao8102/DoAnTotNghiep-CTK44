@@ -10,8 +10,6 @@ namespace SmartFarmAppAPI.Services.Repositories.LivestockRepository
 
         Task<List<Livestock>> GetLivestocksByTypeAsync(string livestockType, CancellationToken cancellationToken = default);
 
-        Task<List<Livestock>> GetLivestocksByFarmIdAsync(int farmId, CancellationToken cancellationToken = default);
-
         Task<List<Livestock>> GetLivestocksByBreedAsync(string breed, CancellationToken cancellationToken = default);
 
         Task AddLivestockAsync(Livestock livestock, CancellationToken cancellationToken = default);

@@ -1,41 +1,57 @@
+import '../models/Farm.dart';
+
 class Product {
-  int? id;
-  String? productName;
-  String? description;
-  DateTime? productDate;
-  int? quantity;
-  double? unitPrice;
-  String? imageUrl;
+  int id;
+  String productName;
+  String imageUrl;
+  String description;
+  String category;
+  int amount;
+  double price;
+  bool isSold;
+  int farmId;
+  Farm farm;
 
   Product({
     required this.id,
     required this.productName,
+    required this.imageUrl,
     required this.description,
-    required this.productDate,
-    required this.quantity,
-    required this.unitPrice,
-    required this.imageUrl
+    required this.category,
+    required this.amount,
+    required this.price,
+    required this.isSold,
+    required this.farmId,
+    required this.farm,
   });
 
-  Product.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    productName = json['product_name'];
-    description = json['description'];
-    productDate = json['product_date'];
-    quantity = json['quantity'];
-    unitPrice = json['unit_price'];
-    imageUrl = json['image_url'];
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['id'],
+      productName: json['productName'],
+      imageUrl: json['imageUrl'],
+      description: json['description'],
+      category: json['category'],
+      amount: json['amount'],
+      price: json['price'].toDouble(),
+      isSold: json['isSold'],
+      farmId: json['farmId'],
+      farm: Farm.fromJson(json['farm']),
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['product_name'] = productName;
-    data['description'] = description;
-    data['product_date'] = productDate;
-    data['quantityr'] = quantity;
-    data['unit_price'] = unitPrice;
-    data['image_url'] = imageUrl;
-    return data;
+    return {
+      'id': id,
+      'productName': productName,
+      'imageUrl': imageUrl,
+      'description': description,
+      'category': category,
+      'amount': amount,
+      'price': price,
+      'isSold': isSold,
+      'farmId': farmId,
+      'farm': farm.toJson(),
+    };
   }
 }

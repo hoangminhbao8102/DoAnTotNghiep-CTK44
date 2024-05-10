@@ -8,34 +8,45 @@ namespace SmartFarmAppAPI.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Livestock> builder)
         {
+            // Đặt tên bảng
             builder.ToTable("Livestocks");
 
+            // Đặt khóa chính
             builder.HasKey(l => l.Id);
 
-            builder.Property(l => l.LivestockType)
+            // Thiết lập các thuộc tính
+            builder.Property(l => l.Type)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            builder.Property(l => l.Name)
                 .HasMaxLength(100);
 
-            builder.Property(l => l.LivestockName)
+            builder.Property(l => l.ImageUrl)
                 .HasMaxLength(100);
 
             builder.Property(l => l.Description)
                 .HasMaxLength(500);
 
-            builder.Property(l => l.ImageUrl)
-                .HasMaxLength(100);
-
             builder.Property(l => l.Breed)
                 .HasMaxLength(500);
 
-            builder.Property(l => l.Care)
-                .HasMaxLength(500);
+            builder.Property(l => l.Care).HasMaxLength(500);
 
             builder.Property(l => l.DateOfBirth)
-                .HasColumnType("date");
+                .HasColumnType("date"); ;
 
+            // Ánh xạ quan hệ với Farm
             builder.HasOne(l => l.Farm)
                 .WithMany(f => f.Livestocks)
-                .HasForeignKey(l => l.FarmId);
+                .HasForeignKey(l => l.FarmId)
+                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
+
+            // Ánh xạ quan hệ với Report
+            builder.HasOne(l => l.Report)
+                .WithMany(r => r.Livestocks)
+                .HasForeignKey(l => l.ReportId)
+                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
         }
     }
 }

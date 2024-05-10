@@ -10,8 +10,6 @@ namespace SmartFarmAppAPI.Services.Repositories.ProductRepository
 
         Task<List<Product>> GetProductsByCategoryAsync(string category, CancellationToken cancellationToken = default);
 
-        Task<List<Product>> GetProductsByFarmIdAsync(int farmId, CancellationToken cancellationToken = default);
-
         Task AddProductAsync(Product product, CancellationToken cancellationToken = default);
 
         Task UpdateProductAsync(int id, Product product, CancellationToken cancellationToken = default);

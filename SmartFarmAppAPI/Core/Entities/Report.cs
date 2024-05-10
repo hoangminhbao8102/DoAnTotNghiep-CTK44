@@ -6,10 +6,6 @@ namespace SmartFarmAppAPI.Core.Entities
     {
         public int Id { get; set; }
 
-        public DateTime Date { get; set; }
-
-        public string Content { get; set; }
-
         public int RegisteredAccounts { get; set; }
 
         public int TotalFarms { get; set; }
@@ -18,8 +14,12 @@ namespace SmartFarmAppAPI.Core.Entities
 
         public int SoldProducts { get; set; }
 
-        public int FarmId { get; set; }
+        public List<Account> Accounts { get; set; }
 
-        public Farm Farm { get; set; }
+        public List<Farm> Farms { get; set; }
+
+        public List<Livestock> Livestocks { get; set; }
+
+        public List<Product> Products { get; set; }
     }
 }

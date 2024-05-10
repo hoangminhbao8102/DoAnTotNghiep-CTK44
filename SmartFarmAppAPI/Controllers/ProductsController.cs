@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartFarmAppAPI.Core.Entities;
 using SmartFarmAppAPI.Data.Contexts;
+using SmartFarmAppAPI.Services.Repositories.ProductRepository;
 
 namespace SmartFarmAppAPI.Controllers
 {
@@ -14,25 +15,26 @@ namespace SmartFarmAppAPI.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly FarmDbContext _context;
+        private readonly ProductRepository _productRepository;
 
-        public ProductsController(FarmDbContext context)
+        public ProductsController(ProductRepository productRepository)
         {
-            _context = context;
+            _productRepository = productRepository;
         }
 
         // GET: api/Products
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.ToListAsync();
+            var products = await _productRepository.GetAllProductsAsync();
+            return Ok(products);
         }
 
         // GET: api/Products/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _productRepository.GetProductByIdAsync(id);
 
             if (product == null)
             {
@@ -43,7 +45,6 @@ namespace SmartFarmAppAPI.Controllers
         }
 
         // PUT: api/Products/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
         {
@@ -52,35 +53,30 @@ namespace SmartFarmAppAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(product).State = EntityState.Modified;
+            var existingProduct = await _productRepository.GetProductByIdAsync(id);
+            if (existingProduct == null)
+            {
+                return NotFound();
+            }
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _productRepository.UpdateProductAsync(id, product);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                // Handle concurrency exception if needed
+                throw;
             }
 
             return NoContent();
         }
 
         // POST: api/Products
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
-
+            await _productRepository.AddProductAsync(product);
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
@@ -88,21 +84,15 @@ namespace SmartFarmAppAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var product = await _context.Products.FindAsync(id);
+            var product = await _productRepository.GetProductByIdAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            await _productRepository.DeleteProductAsync(id);
 
             return NoContent();
-        }
-
-        private bool ProductExists(int id)
-        {
-            return _context.Products.Any(e => e.Id == id);
         }
     }
 }

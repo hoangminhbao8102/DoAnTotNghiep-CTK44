@@ -25,11 +25,9 @@ class LocalStorage {
   }
 
   static Future<void> writeAccount(Account account) async {
-    if (account.id != null) {
-      await _preferences.setInt('id', account.id!);
-    }
-    await _preferences.setString('username', account.username);
-    await _preferences.setString('email', account.email ?? '');
+    await _preferences.setInt('id', account.id);
+      await _preferences.setString('username', account.username);
+    await _preferences.setString('email', account.email);
     // Thêm các thuộc tính khác của tài khoản nếu cần
   }
 
@@ -39,9 +37,9 @@ class LocalStorage {
     String? email = _preferences.getString('email');
     // Đọc các thuộc tính khác của tài khoản nếu cần
     if (accountId != null && username != null && email != null) {
-      return Account(id: accountId, username: username, email: email, password: '');
+      return Account(id: accountId, username: username, email: email, password: '', fullName: '', address: '', phoneNumber: '', farms: []);
     } else {
-      return Account(id: 0, username: '', email: '', password: '');
+      return Account(id: 0, username: '', email: '', password: '', fullName: '', address: '', phoneNumber: '', farms: []);
     }
   }
 

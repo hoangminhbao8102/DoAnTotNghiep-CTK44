@@ -1,45 +1,57 @@
+import '../models/Farm.dart';
+
 class Livestock {
-  int? id;
-  String? livestockName;
-  String? livestockType;
-  String? description;
-  String? raisingProcess;
-  String? care;
-  int? number;
-  String? imageUrl;
+  int id;
+  String livestockType;
+  String livestockName;
+  String imageUrl;
+  String description;
+  String breed;
+  DateTime dateOfBirth;
+  int farmId;
+  Farm farm;
+  String care;
 
   Livestock({
     required this.id,
-    required this.livestockName,
     required this.livestockType,
+    required this.livestockName,
+    required this.imageUrl,
     required this.description,
-    required this.raisingProcess,
+    required this.breed,
+    required this.dateOfBirth,
+    required this.farmId,
+    required this.farm,
     required this.care,
-    required this.number,
-    required this.imageUrl
   });
 
-  Livestock.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    livestockName = json['livestock_name'];
-    livestockType = json['livestock_type'];
-    description = json['description'];
-    raisingProcess = json['raising_process'];
-    care = json['care'];
-    number = json['number'];
-    imageUrl = json['image_url'];
+  factory Livestock.fromJson(Map<String, dynamic> json) {
+    return Livestock(
+      id: json['id'],
+      livestockType: json['livestockType'],
+      livestockName: json['livestockName'],
+      imageUrl: json['imageUrl'],
+      description: json['description'],
+      breed: json['breed'],
+      dateOfBirth: DateTime.parse(json['dateOfBirth']),
+      farmId: json['farmId'],
+      farm: Farm.fromJson(json['farm']),
+      care: json['livestockCares'],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['livestock_name'] = livestockName;
-    data['livestock_type'] = livestockType;
-    data['description'] = description;
-    data['raising_process'] = raisingProcess;
-    data['care'] = care;
-    data['number'] = number;
-    data['image_url'] = imageUrl;
-    return data;
+    return {
+      'id': id,
+      'livestockType': livestockType,
+      'livestockName': livestockName,
+      'imageUrl': imageUrl,
+      'description': description,
+      'breed': breed,
+      'dateOfBirth': dateOfBirth.toIso8601String(),
+      'farmId': farmId,
+      'farm': farm.toJson(),
+      'livestockCares': care,
+    };
   }
 }

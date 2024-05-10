@@ -44,11 +44,6 @@ namespace SmartFarmAppAPI.Services.Repositories.ProductRepository
             return await _context.Products.Where(p => p.Category == category).ToListAsync(cancellationToken);
         }
 
-        public async Task<List<Product>> GetProductsByFarmIdAsync(int farmId, CancellationToken cancellationToken = default)
-        {
-            return await _context.Products.Where(p => p.FarmId == farmId).ToListAsync(cancellationToken);
-        }
-
         public async Task UpdateProductAsync(int id, Product product, CancellationToken cancellationToken = default)
         {
             var existingProduct = await _context.Products.FindAsync(new object[] { id }, cancellationToken);
@@ -60,8 +55,6 @@ namespace SmartFarmAppAPI.Services.Repositories.ProductRepository
                 existingProduct.Category = product.Category;
                 existingProduct.Amount = product.Amount;
                 existingProduct.Price = product.Price;
-                existingProduct.FarmId = product.FarmId;
-                existingProduct.Farm = product.Farm;
 
                 await _context.SaveChangesAsync(cancellationToken);
             }

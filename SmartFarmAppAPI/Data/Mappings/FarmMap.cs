@@ -8,40 +8,43 @@ namespace SmartFarmAppAPI.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Farm> builder)
         {
+            // Đặt tên bảng
             builder.ToTable("Farms");
 
+            // Đặt khóa chính
             builder.HasKey(f => f.Id);
 
+            // Thiết lập các thuộc tính
             builder.Property(f => f.FarmName)
-                .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(100)
+                .IsRequired();
 
             builder.Property(f => f.Location)
-                .IsRequired()
-                .HasMaxLength(255);
+                .HasMaxLength(200);
 
             builder.Property(f => f.Area)
-                .IsRequired();
+                .HasColumnType("int");
 
-            builder.HasOne(f => f.Owner)
+            builder.Property(f => f.Number)
+                .HasColumnType("int");
+
+            // Ánh xạ quan hệ với Account
+            builder.HasOne(f => f.Account)
                 .WithMany(a => a.Farms)
-                .HasForeignKey(f => f.OwnerId)
-                .IsRequired();
+                .HasForeignKey(f => f.AccountId)
+                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
 
+            // Ánh xạ quan hệ nhiều nhiều với Livestock
             builder.HasMany(f => f.Livestocks)
                 .WithOne(l => l.Farm)
                 .HasForeignKey(l => l.FarmId)
-                .OnDelete(DeleteBehavior.Cascade); // Xóa trang trại sẽ xóa tất cả vật nuôi của nó
+                .OnDelete(DeleteBehavior.Cascade); // Thiết lập hành vi xóa
 
-            builder.HasMany(f => f.Products)
-                .WithOne(p => p.Farm)
-                .HasForeignKey(p => p.FarmId)
-                .OnDelete(DeleteBehavior.Cascade); // Xóa trang trại sẽ xóa tất cả sản phẩm của nó
-
-            builder.HasMany(f => f.Reports)
-                .WithOne(r => r.Farm)
-                .HasForeignKey(r => r.FarmId)
-                .OnDelete(DeleteBehavior.Cascade); // Xóa trang trại sẽ xóa tất cả báo cáo của nó
+            // Ánh xạ quan hệ với Report
+            builder.HasOne(f => f.Report)
+                .WithMany(r => r.Farms)
+                .HasForeignKey(f => f.ReportId)
+                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
         }
     }
 }

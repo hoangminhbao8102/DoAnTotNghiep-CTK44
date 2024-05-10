@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartFarmAppAPI.Core.Entities;
 using SmartFarmAppAPI.Data.Contexts;
+using SmartFarmAppAPI.Services.Repositories.LivestockRepository;
 
 namespace SmartFarmAppAPI.Controllers
 {
@@ -14,25 +15,26 @@ namespace SmartFarmAppAPI.Controllers
     [ApiController]
     public class LivestocksController : ControllerBase
     {
-        private readonly FarmDbContext _context;
+        private readonly LivestockRepository _livestockRepository;
 
-        public LivestocksController(FarmDbContext context)
+        public LivestocksController(LivestockRepository livestockRepository)
         {
-            _context = context;
+            _livestockRepository = livestockRepository;
         }
 
         // GET: api/Livestocks
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Livestock>>> GetLivestocks()
         {
-            return await _context.Livestocks.ToListAsync();
+            var livestock = await _livestockRepository.GetAllLivestocksAsync();
+            return livestock;
         }
 
         // GET: api/Livestocks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Livestock>> GetLivestock(int id)
         {
-            var livestock = await _context.Livestocks.FindAsync(id);
+            var livestock = await _livestockRepository.GetLivestockByIdAsync(id);
 
             if (livestock == null)
             {
@@ -43,7 +45,6 @@ namespace SmartFarmAppAPI.Controllers
         }
 
         // PUT: api/Livestocks/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLivestock(int id, Livestock livestock)
         {
@@ -52,15 +53,13 @@ namespace SmartFarmAppAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(livestock).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await _livestockRepository.UpdateLivestockAsync(livestock);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!LivestockExists(id))
+                if (!await LivestockExists(id))
                 {
                     return NotFound();
                 }
@@ -78,9 +77,7 @@ namespace SmartFarmAppAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Livestock>> PostLivestock(Livestock livestock)
         {
-            _context.Livestocks.Add(livestock);
-            await _context.SaveChangesAsync();
-
+            await _livestockRepository.AddLivestockAsync(livestock);
             return CreatedAtAction("GetLivestock", new { id = livestock.Id }, livestock);
         }
 
@@ -88,21 +85,21 @@ namespace SmartFarmAppAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLivestock(int id)
         {
-            var livestock = await _context.Livestocks.FindAsync(id);
+            var livestock = await _livestockRepository.GetLivestockByIdAsync(id);
             if (livestock == null)
             {
                 return NotFound();
             }
 
-            _context.Livestocks.Remove(livestock);
-            await _context.SaveChangesAsync();
+            await _livestockRepository.DeleteLivestockAsync(id);
 
             return NoContent();
         }
 
-        private bool LivestockExists(int id)
+        private async Task<bool> LivestockExists(int id)
         {
-            return _context.Livestocks.Any(e => e.Id == id);
+            var livestock = await _livestockRepository.GetLivestockByIdAsync(id);
+            return livestock != null;
         }
     }
 }

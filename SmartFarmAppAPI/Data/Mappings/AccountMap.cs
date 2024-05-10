@@ -8,37 +8,40 @@ namespace SmartFarmAppAPI.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Account> builder)
         {
+            // Đặt tên bảng
             builder.ToTable("Accounts");
 
+            // Đặt khóa chính
             builder.HasKey(a => a.Id);
 
+            // Thiết lập các thuộc tính
             builder.Property(a => a.FullName)
-                .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(100)
+                .IsRequired();
 
             builder.Property(a => a.Address)
-                .HasMaxLength(255);
+                .HasMaxLength(200);
 
             builder.Property(a => a.PhoneNumber)
-                .HasMaxLength(15);
+                .HasMaxLength(20);
 
             builder.Property(a => a.Email)
-                .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(100)
+                .IsRequired();
 
             builder.Property(a => a.Username)
-                .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(50)
+                .IsRequired();
 
             builder.Property(a => a.Password)
-                .IsRequired()
-                .HasMaxLength(255);
+                .HasMaxLength(50)
+                .IsRequired();
 
-            // Một tài khoản có thể có nhiều trang trại
-            builder.HasMany(a => a.Farms)
-                .WithOne(f => f.Owner)
-                .HasForeignKey(f => f.OwnerId)
-                .OnDelete(DeleteBehavior.Cascade); // Xóa tài khoản sẽ xóa tất cả trang trại của nó
+            // Ánh xạ quan hệ với Report
+            builder.HasOne(a => a.Report)
+                .WithMany(r => r.Accounts)
+                .HasForeignKey(a => a.ReportId)
+                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
         }
     }
 }

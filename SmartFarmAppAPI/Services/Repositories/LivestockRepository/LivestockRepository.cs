@@ -44,14 +44,9 @@ namespace SmartFarmAppAPI.Services.Repositories.LivestockRepository
             return await _context.Livestocks.Where(l => l.Breed == breed).ToListAsync(cancellationToken);
         }
 
-        public async Task<List<Livestock>> GetLivestocksByFarmIdAsync(int farmId, CancellationToken cancellationToken = default)
-        {
-            return await _context.Livestocks.Where(l => l.FarmId == farmId).ToListAsync(cancellationToken);
-        }
-
         public async Task<List<Livestock>> GetLivestocksByTypeAsync(string livestockType, CancellationToken cancellationToken = default)
         {
-            return await _context.Livestocks.Where(l => l.LivestockType == livestockType).ToListAsync(cancellationToken);
+            return await _context.Livestocks.Where(l => l.Type == livestockType).ToListAsync(cancellationToken);
         }
 
         public async Task UpdateLivestockAsync(Livestock livestock, CancellationToken cancellationToken = default)

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartFarmAppAPI.Core.Entities;
 using SmartFarmAppAPI.Data.Contexts;
+using SmartFarmAppAPI.Services.Repositories.ReportRepository;
 
 namespace SmartFarmAppAPI.Controllers
 {
@@ -14,25 +15,27 @@ namespace SmartFarmAppAPI.Controllers
     [ApiController]
     public class ReportsController : ControllerBase
     {
-        private readonly FarmDbContext _context;
+        private readonly ReportRepository _reportRepository;
 
-        public ReportsController(FarmDbContext context)
+        public ReportsController(ReportRepository reportRepository)
         {
-            _context = context;
+            _reportRepository = reportRepository;
         }
 
-        // GET: api/Reports
+        /*// GET: api/Reports
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Report>>> GetReports()
         {
-            return await _context.Reports.ToListAsync();
+            var reports = await _reportRepository.GetReportsAsync(DateTime.MinValue, DateTime.MaxValue);
+            return reports;
         }
 
         // GET: api/Reports/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Report>> GetReport(int id)
         {
-            var report = await _context.Reports.FindAsync(id);
+            var reports = await _reportRepository.GetReportsAsync(DateTime.MinValue, DateTime.MaxValue);
+            var report = reports.FirstOrDefault(r => r.Id == id);
 
             if (report == null)
             {
@@ -43,7 +46,6 @@ namespace SmartFarmAppAPI.Controllers
         }
 
         // PUT: api/Reports/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutReport(int id, Report report)
         {
@@ -52,34 +54,23 @@ namespace SmartFarmAppAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(report).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await _reportRepository.UpdateReportAsync(report);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (ReportNotFoundException)
             {
-                if (!ReportExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound();
             }
 
             return NoContent();
         }
 
         // POST: api/Reports
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Report>> PostReport(Report report)
         {
-            _context.Reports.Add(report);
-            await _context.SaveChangesAsync();
+            await _reportRepository.AddReportAsync(report);
 
             return CreatedAtAction("GetReport", new { id = report.Id }, report);
         }
@@ -88,14 +79,14 @@ namespace SmartFarmAppAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReport(int id)
         {
-            var report = await _context.Reports.FindAsync(id);
-            if (report == null)
+            try
+            {
+                await _reportRepository.DeleteReportAsync(id);
+            }
+            catch (ReportNotFoundException)
             {
                 return NotFound();
             }
-
-            _context.Reports.Remove(report);
-            await _context.SaveChangesAsync();
 
             return NoContent();
         }
@@ -103,6 +94,6 @@ namespace SmartFarmAppAPI.Controllers
         private bool ReportExists(int id)
         {
             return _context.Reports.Any(e => e.Id == id);
-        }
+        }*/
     }
 }

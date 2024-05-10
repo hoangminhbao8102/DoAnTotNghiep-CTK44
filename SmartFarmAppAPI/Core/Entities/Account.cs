@@ -17,7 +17,11 @@ namespace SmartFarmAppAPI.Core.Entities
         public string Username { get; set; }
 
         public string Password { get; set; }
-            
+
+        public int ReportId { get; set; }
+
+        public Report Report { get; set; }
+
         public List<Farm> Farms { get; set; }
     }
 }

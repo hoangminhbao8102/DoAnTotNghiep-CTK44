@@ -17,12 +17,5 @@ namespace SmartFarmAppAPI.Services.Repositories.ReportRepository
         {
             return await _context.Reports.CountAsync(cancellationToken);
         }
-
-        public async Task<List<Report>> GetReportsAsync(DateTime startDate, DateTime endDate, CancellationToken cancellationToken = default)
-        {
-            return await _context.Reports
-                .Where(r => r.Date >= startDate && r.Date <= endDate)
-                .ToListAsync(cancellationToken);
-        }
     }
 }
