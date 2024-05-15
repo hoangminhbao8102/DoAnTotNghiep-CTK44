@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "DO0bzVG7Fqhsml7Tijo9ifF2QIzsUDxQIrbqJxWayOw=",
+  "Source": "SmartFarm.WebApi",
+  "BasePath": "_content/SmartFarm.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

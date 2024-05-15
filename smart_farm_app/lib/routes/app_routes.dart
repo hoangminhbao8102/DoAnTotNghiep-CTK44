@@ -16,7 +16,7 @@ import '../presentation/info_livestock_screen/info_livestock_screen.dart';
 import '../presentation/info_product_screen/info_product_screen.dart';
 import '../presentation/information_screen/information_screen.dart';
 import '../presentation/livestock_screen/livestock_screen.dart';
-import '../presentation/log_in_screen/log_in_screen.dart';
+import '../presentation/LoginScreen/log_in_screen.dart';
 import '../presentation/notification_screen/notification_screen.dart';
 import '../presentation/otp_email_screen/otp_email_screen.dart';
 import '../presentation/otp_phone_screen/otp_phone_screen.dart';

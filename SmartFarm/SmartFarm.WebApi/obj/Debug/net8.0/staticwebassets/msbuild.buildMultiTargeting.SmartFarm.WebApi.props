@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\SmartFarm.WebApi.props" />
+</Project>

@@ -1,142 +1,85 @@
-import 'package:flutter/material.dart';
-import '../../core/app_export.dart';
-import '../../widgets/custom_outlined_button.dart';
-import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_immutable
+import 'package:flutter/material.dart'; // ignore_for_file: must_be_immutable
 
 class SetPasswordScreen extends StatelessWidget {
-  SetPasswordScreen({Key? key})
-      : super(
-          key: key,
-        );
+  SetPasswordScreen({Key? key}) : super(key: key);
 
   TextEditingController newPasswordController = TextEditingController();
 
   TextEditingController confirmNewPasswordController = TextEditingController();
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: appTheme.gray100,
-        resizeToAvoidBottomInset: false,
-        body: SizedBox(
-          width: SizeUtils.width,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Spacer(),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.blue,
+              child: Icon(Icons.lock, size: 50, color: Colors.orange),
             ),
-            child: Form(
-              key: _formKey,
-              child: Container(
-                width: double.maxFinite,
-                padding: EdgeInsets.only(
-                  left: 30.h,
-                  top: 109.v,
-                  right: 30.h,
+            SizedBox(height: 30),
+            Text(
+              'Đặt lại mật khẩu',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.lock),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                  borderSide: BorderSide.none,
                 ),
-                child: Column(
-                  children: [
-                    CustomImageView(
-                      imagePath: ImageConstant.imgKisspngCompute,
-                      height: 205.v,
-                      width: 200.h,
-                      radius: BorderRadius.circular(
-                        100.h,
-                      ),
-                    ),
-                    SizedBox(height: 43.v),
-                    Text(
-                      "Đặt lại mật khẩu",
-                      style: theme.textTheme.displayMedium,
-                    ),
-                    SizedBox(height: 37.v),
-                    _buildRowlocationNewPassword(context),
-                    SizedBox(height: 40.v),
-                    _buildRowlocationConfirmNewPassword(context),
-                    SizedBox(height: 42.v),
-                    CustomOutlinedButton(
-                      width: 230.h,
-                      text: "ĐẶT LẠI MẬT KHẨU",
-                      buttonTextStyle: theme.textTheme.titleMedium!,
-                      onPressed: () {
-                        onTapSetPassword(context);
-                      },
-                    ),
-                    SizedBox(height: 5.v)
-                  ],
-                ),
+                filled: true,
+                fillColor: Colors.green.withOpacity(0.1),
+                hintText: 'Mật khẩu mới',
               ),
             ),
-          ),
+            SizedBox(height: 20),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.lock),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: Colors.green.withOpacity(0.1),
+                hintText: 'Nhập lại mật khẩu mới',
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Xử lý khi nhấn nút đặt lại mật khẩu
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 100),
+              ),
+              child: Text(
+                'ĐẶT LẠI MẬT KHẨU',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+            Spacer(),
+          ],
         ),
       ),
     );
-  }
-
-  /// Section Widget
-  Widget _buildRowlocationNewPassword(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 11.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgLocation,
-            height: 24.adaptSize,
-            width: 24.adaptSize,
-            margin: EdgeInsets.only(
-              top: 15.v,
-              bottom: 11.v,
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.h),
-              child: CustomTextFormField(
-                controller: newPasswordController,
-                hintText: "Mật khẩu mới",
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  /// Section Widget
-  Widget _buildRowlocationConfirmNewPassword(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 11.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgLocation,
-            height: 24.adaptSize,
-            width: 24.adaptSize,
-            margin: EdgeInsets.symmetric(vertical: 13.v),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.h),
-              child: CustomTextFormField(
-                controller: confirmNewPasswordController,
-                hintText: "Nhập lại mật khẩu mới",
-                textInputAction: TextInputAction.done,
-                textInputType: TextInputType.visiblePassword,
-                obscureText: true,
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  /// Navigates to the logInScreen when the action is triggered.
-  onTapSetPassword(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.logInScreen);
   }
 }

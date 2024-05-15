@@ -1,72 +1,66 @@
 import 'package:flutter/material.dart';
-import '../../core/app_export.dart';
+
+import '../forgot_password_gmail_screen/forgot_password_gmail_screen.dart';
+import '../forgot_password_phone_screen/forgot_password_phone_screen.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen ({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.only(
-            left: 60.h,
-            top: 100.v,
-            right: 60.h,
-          ),
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
-            children: [
-              CustomImageView(
-                imagePath: ImageConstant.imgKisspngCompute,
-                height: 205.v,
-                width: 200.h,
-                radius: BorderRadius.circular(100.h),
-              ),
-              SizedBox(height: 20.v),
-              Text(
-                "QUÊN MẬT KHẨU",
-                style: theme.textTheme.displayMedium,
-              ),
-              SizedBox(height: 20.v),
-              Text(
-                "CHỌN SỐ ĐIỆN THOẠI HAY EMAIL",
-                style: CustomTextStyles.titleMediumSecondaryContainerMedium,
-              ),
-              SizedBox(height: 23.v),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 35.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 20.h),
-                        child: _buildPhoneCall(
-                          context,
-                          phoneCall: ImageConstant.imagePhoneCall,
-                          onTapStackPhoneCall: () {
-                            onTapStackPhoneCall(context);
-                          },
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 20.h),
-                        child: _buildEmail(
-                          context,
-                          arroba: ImageConstant.imageArroba,
-                          onTapStackArroba: () {
-                            onTapStackArroba(context);
-                          },
-                        ),
-                      ),
-                    )
-                  ],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.blue,
+                child: Icon(
+                  Icons.lock,
+                  color: Colors.orange,
+                  size: 50,
                 ),
               ),
-              SizedBox(height: 5.v)
+              SizedBox(height: 20),
+              Text(
+                'QUÊN MẬT KHẨU',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'CHỌN SỐ ĐIỆN THOẠI HAY EMAIL',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
+              ),
+              SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildOptionButton(
+                    icon: Icons.phone,
+                    color: Colors.green,
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordPhoneScreen()));
+                    },
+                  ),
+                  SizedBox(width: 30),
+                  _buildOptionButton(
+                    icon: Icons.email,
+                    color: Colors.black,
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordEmailScreen()));
+                    },
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -74,73 +68,24 @@ class ForgotPasswordScreen extends StatelessWidget {
     );
   }
 
-  /// Common widget
-  Widget _buildPhoneCall(BuildContext context, { required String phoneCall, Function? onTapStackPhoneCall,}) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: () {
-            onTapStackPhoneCall?.call();
-          },
-          child: Container(
-            height: 100.adaptSize,
-            width: 100.adaptSize,
-            padding: EdgeInsets.symmetric(
-              horizontal: 6.h,
-              vertical: 7.v,
-            ),
-            decoration: AppDecoration.outlineGreen.copyWith(
-              borderRadius: BorderRadiusStyle.roundedBorder15
-            ),
-            child: CustomImageView(
-              imagePath: phoneCall,
-              height: 75.adaptSize,
-              width: 75.adaptSize,
-              alignment: Alignment.center,
-            ),
-          ),
-        )
-      ],
+  Widget _buildOptionButton({required IconData icon, required Color color, required VoidCallback onPressed}) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        foregroundColor: color, 
+        backgroundColor: Colors.white,
+        shadowColor: Colors.transparent,
+        side: BorderSide(color: color),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: EdgeInsets.all(20),
+      ),
+      child: Icon(
+        icon,
+        size: 50,
+        color: color,
+      ),
     );
-  }
-
-  /// Common widget 
-  Widget _buildEmail(BuildContext context, { required String arroba, Function? onTapStackArroba,}) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: () {
-            onTapStackArroba?.call();
-          },
-          child: Container(
-            height: 100.adaptSize,
-            width: 100.adaptSize,
-            padding: EdgeInsets.symmetric(
-              horizontal: 6.h,
-              vertical: 7.v,
-            ),
-            decoration: AppDecoration.outlineGreen.copyWith(
-              borderRadius: BorderRadiusStyle.roundedBorder15
-            ),
-            child: CustomImageView(
-              imagePath: arroba,
-              height: 75.adaptSize,
-              width: 75.adaptSize,
-              alignment: Alignment.center,
-            ),
-          ),
-        )
-      ],
-    );
-  }
-
-  /// Navigates back to the forgotPasswordPhoneScreen when the action is triggered
-  onTapStackPhoneCall(BuildContext context){
-    Navigator.pushNamed(context, AppRoutes.forgotPasswordPhoneScreen);
-  }
-
-  /// Navigates back to the forgotPasswordEmailScreen when the action is triggered
-  onTapStackArroba(BuildContext context){
-    Navigator.pushNamed(context, AppRoutes.forgotPasswordEmailScreen);
   }
 }

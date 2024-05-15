@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/app_export.dart';
-import '../../widgets/custom_outlined_button.dart';
-import '../../widgets/custom_text_form_field.dart'; // ignore_for_file: must_be_immutable
+
+import '../otp_email_screen/otp_email_screen.dart'; // ignore_for_file: must_be_immutable
 
 class ForgotPasswordEmailScreen extends StatelessWidget {
   ForgotPasswordEmailScreen({Key? key})
@@ -11,92 +10,64 @@ class ForgotPasswordEmailScreen extends StatelessWidget {
 
   TextEditingController emailController = TextEditingController();
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: SingleChildScrollView(
-          padding: EdgeInsets.only(
-            bottom: MediaQuery.of(context).viewInsets.bottom,
-          ),
-          child: Form(
-            key: _formKey,
-            child: Container(
-              width: double.maxFinite,
-              padding: EdgeInsets.only(
-                left: 30.h,
-                top: 100.v,
-                right: 30.h,
-              ),
-              child: Column(
-                children: [
-                  CustomImageView(
-                    imagePath: ImageConstant.imgKisspngCompute,
-                    height: 205.v,
-                    width: 200.h,
-                    radius: BorderRadius.circular(100.h),
-                  ),
-                  SizedBox(height: 40.h),
-                  Text(
-                    "QUÊN MẬT KHẨU",
-                    style: theme.textTheme.displayMedium,
-                  ),
-                  SizedBox(height: 37.v),
-                  _buildRowCheckMark(context),
-                  SizedBox(height: 33.v),
-                  CustomOutlinedButton(
-                    width: 230.h,
-                    text: "TIẾP TỤC",
-                    onPressed: () {
-                      onTapContinue(context);
-                    }
-                  ),
-                  SizedBox(height: 5.v)
-                ],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Spacer(),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.blue,
+              child: Icon(Icons.lock, size: 50, color: Colors.orange),
+            ),
+            SizedBox(height: 30),
+            Text(
+              'QUÊN MẬT KHẨU',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 20),
+            TextField(
+              keyboardType: TextInputType.phone,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.email),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: Colors.green.withOpacity(0.1),
+                hintText: 'Nhập email',
               ),
             ),
-          ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => OtpEmailScreen()));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 100),
+              ),
+              child: Text(
+                'TIẾP TỤC',
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
+            Spacer(),
+          ],
         ),
       ),
     );
-  }
-
-  /// Section Widget
-  Widget _buildRowCheckMark(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 9.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgCheckmark,
-            height: 24.adaptSize,
-            width: 24.adaptSize,
-            margin: EdgeInsets.only(
-              top: 16.v,
-              bottom: 10.v,
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 20.h),
-              child: CustomTextFormField(
-                controller: emailController,
-                hintText: "Nhập email",
-                textInputAction: TextInputAction.done,
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
-  /// Navigates to the otpEmailScreen when the action is triggered.
-  onTapContinue(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.otpEmailScreen);
   }
 }

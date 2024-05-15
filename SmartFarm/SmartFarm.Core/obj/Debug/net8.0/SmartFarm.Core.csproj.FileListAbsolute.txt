@@ -1,0 +1,12 @@
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\bin\Debug\net8.0\SmartFarm.Core.deps.json
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\bin\Debug\net8.0\SmartFarm.Core.dll
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\bin\Debug\net8.0\SmartFarm.Core.pdb
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\obj\Debug\net8.0\SmartFarm.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\obj\Debug\net8.0\SmartFarm.Core.AssemblyInfoInputs.cache
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\obj\Debug\net8.0\SmartFarm.Core.AssemblyInfo.cs
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\obj\Debug\net8.0\SmartFarm.Core.csproj.CoreCompileInputs.cache
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\obj\Debug\net8.0\SmartFarm.Core.sourcelink.json
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\obj\Debug\net8.0\SmartFarm.Core.dll
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\obj\Debug\net8.0\refint\SmartFarm.Core.dll
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\obj\Debug\net8.0\SmartFarm.Core.pdb
+E:\DATN-CTK44\DoAnTotNghiep-CTK44\SmartFarm\SmartFarm.Core\obj\Debug\net8.0\ref\SmartFarm.Core.dll

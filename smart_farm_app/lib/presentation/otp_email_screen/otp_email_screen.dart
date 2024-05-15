@@ -1,109 +1,115 @@
 import 'package:flutter/material.dart';
-import '../../core/app_export.dart';
-import '../../widgets/custom_outlined_button.dart';
-import '../../widgets/custom_pin_code_text_field.dart';
+
+import '../set_password_screen/set_password_screen.dart';
 
 class OtpEmailScreen extends StatelessWidget {
-  const OtpEmailScreen({Key? key})
-      : super(
-          key: key,
-        );
+  const OtpEmailScreen({Key? key}): super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.only(
-            left: 45.h,
-            top: 100.v,
-            right: 45.h,
-          ),
-          child: Column(
-            children: [
-              CustomImageView(
-                imagePath: ImageConstant.imgKisspngCompute,
-                height: 205.v,
-                width: 200.h,
-                radius: BorderRadius.circular(
-                  100.h,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.green,
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Spacer(),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.blue,
+              child: Icon(Icons.lock, size: 50, color: Colors.orange),
+            ),
+            SizedBox(height: 30),
+            Text(
+              'NHẬP OTP',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Một mã code 4 số đã được gửi tới email của bạn',
+              style: TextStyle(fontSize: 16, color: Colors.grey),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OtpInput(),
+                OtpInput(),
+                OtpInput(),
+                OtpInput(),
+              ],
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Không nhận được mã?',
+                  style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
-              ),
-              SizedBox(height: 42.v),
-              Text(
-                "NHẬP OTP",
-                style: theme.textTheme.displayMedium,
-              ),
-              SizedBox(height: 6.v),
-              Container(
-                width: 287.h,
-                margin: EdgeInsets.only(
-                  left: 28.h,
-                  right: 23.h,
+                TextButton(
+                  onPressed: () {
+                    // Xử lý gửi lại mã
+                  },
+                  child: Text(
+                    'Gửi lại mã',
+                    style: TextStyle(fontSize: 16, color: Colors.green),
+                  ),
                 ),
-                child: Text(
-                  "Một mã code 4 số đã được gửi Email của bạn",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: CustomTextStyles.titleLargeGray400,
+              ],
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SetPasswordScreen()));
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30.0),
                 ),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 100),
               ),
-              SizedBox(height: 79.v),
-              CustomPinCodeTextField(
-                context: context,
-                onChanged: (value) {},
+              child: Text(
+                'XÁC NHẬN',
+                style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 48.v),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 35.h,
-                  right: 27.h,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 1.v),
-                      child: Text(
-                        "Không nhận được mã?",
-                        style: CustomTextStyles.titleLargeGray400,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 1.h,
-                        bottom: 2.v,
-                      ),
-                      child: Text(
-                        "Gửi lại mã",
-                        style: theme.textTheme.bodyLarge,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: 37.v),
-              CustomOutlinedButton(
-                width: 230.h,
-                text: "XÁC NHẬN",
-                buttonTextStyle: theme.textTheme.titleMedium!,
-                onPressed: () {
-                  onTapConfirm(context);
-                },
-              ),
-              SizedBox(height: 5.v)
-            ],
-          ),
+            ),
+            Spacer(),
+          ],
         ),
       ),
     );
   }
+}
 
-  /// Navigates to the setPasswordScreen when the action is triggered.
-  onTapConfirm(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.setPasswordScreen);
+class OtpInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 60,
+      height: 60,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.green),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Center(
+        child: TextField(
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 24),
+          maxLength: 1,
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            counterText: '',
+          ),
+        ),
+      ),
+    );
   }
 }
