@@ -46,7 +46,7 @@ namespace SmartFarmAppAPI.Services.Repositories.LivestockRepository
 
         public async Task<List<Livestock>> GetLivestocksByTypeAsync(string livestockType, CancellationToken cancellationToken = default)
         {
-            return await _context.Livestocks.Where(l => l.Type == livestockType).ToListAsync(cancellationToken);
+            return await _context.Livestocks.Where(l => l.LivestockType == livestockType).ToListAsync(cancellationToken);
         }
 
         public async Task UpdateLivestockAsync(Livestock livestock, CancellationToken cancellationToken = default)

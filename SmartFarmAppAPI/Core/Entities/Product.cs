@@ -1,4 +1,5 @@
 ﻿using SmartFarmAppAPI.Core.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SmartFarmAppAPI.Core.Entities
 {
@@ -18,8 +19,11 @@ namespace SmartFarmAppAPI.Core.Entities
 
         public int Price { get; set; }
 
-        public int ReportId { get; set; }
+        public bool IsSold { get; set; }
 
-        public Report Report { get; set; }
+        [ForeignKey("Report")]
+        public int ReportId { get; set; }  // Khóa ngoại
+
+        public virtual Report Report { get; set; }  // Navigation property
     }
 }

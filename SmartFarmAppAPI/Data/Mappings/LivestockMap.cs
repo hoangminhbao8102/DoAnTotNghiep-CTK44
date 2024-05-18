@@ -15,11 +15,11 @@ namespace SmartFarmAppAPI.Data.Mappings
             builder.HasKey(l => l.Id);
 
             // Thiết lập các thuộc tính
-            builder.Property(l => l.Type)
+            builder.Property(l => l.LivestockType)
                 .HasMaxLength(50)
                 .IsRequired();
 
-            builder.Property(l => l.Name)
+            builder.Property(l => l.LivestockName)
                 .HasMaxLength(100);
 
             builder.Property(l => l.ImageUrl)
@@ -31,21 +31,16 @@ namespace SmartFarmAppAPI.Data.Mappings
             builder.Property(l => l.Breed)
                 .HasMaxLength(500);
 
-            builder.Property(l => l.Care).HasMaxLength(500);
+            builder.Property(l => l.Care)
+                .HasMaxLength(500);
 
             builder.Property(l => l.DateOfBirth)
-                .HasColumnType("date"); ;
+                .HasColumnType("date");
 
             // Ánh xạ quan hệ với Farm
             builder.HasOne(l => l.Farm)
-                .WithMany(f => f.Livestocks)
-                .HasForeignKey(l => l.FarmId)
-                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
-
-            // Ánh xạ quan hệ với Report
-            builder.HasOne(l => l.Report)
-                .WithMany(r => r.Livestocks)
-                .HasForeignKey(l => l.ReportId)
+                .WithOne(f => f.Livestock)
+                .HasForeignKey<Livestock>(l => l.FarmId)  // Thiết lập FarmId là khóa ngoại
                 .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
         }
     }

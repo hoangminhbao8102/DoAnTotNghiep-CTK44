@@ -3,36 +3,20 @@
   "WorkspaceRootPath": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\data\\seeders\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:data\\seeders\\dataseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\data\\mappings\\reportmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:data\\mappings\\reportmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\core\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:core\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\data\\mappings\\productmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:data\\mappings\\productmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\data\\mappings\\farmmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:data\\mappings\\farmmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\services\\repositories\\farmrepository\\farmrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:services\\repositories\\farmrepository\\farmrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\core\\entities\\livestock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:core\\entities\\livestock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\core\\entities\\farm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:core\\entities\\farm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\data\\mappings\\accountmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:data\\mappings\\accountmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\data\\mappings\\reportmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|solutionrelative:data\\mappings\\reportmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9695075C-60F6-4EE6-BD99-EA7EADBC7C97}|SmartFarmAppAPI.csproj|e:\\datn-ctk44\\doantotnghiep-ctk44\\smartfarmappapi\\data\\mappings\\livestockmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -60,119 +44,68 @@
               "RelativeDocumentMoniker": "Core\\Entities\\Product.cs",
               "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Core\\Entities\\Product.cs",
               "RelativeToolTip": "Core\\Entities\\Product.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAASAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T08:22:34.487Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-17T13:44:12.257Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FarmRepository.cs",
-              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Services\\Repositories\\FarmRepository\\FarmRepository.cs",
-              "RelativeDocumentMoniker": "Services\\Repositories\\FarmRepository\\FarmRepository.cs",
-              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Services\\Repositories\\FarmRepository\\FarmRepository.cs",
-              "RelativeToolTip": "Services\\Repositories\\FarmRepository\\FarmRepository.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAADgvyUAAAAJAAAA",
+              "DocumentIndex": 2,
+              "Title": "Livestock.cs",
+              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Core\\Entities\\Livestock.cs",
+              "RelativeDocumentMoniker": "Core\\Entities\\Livestock.cs",
+              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Core\\Entities\\Livestock.cs",
+              "RelativeToolTip": "Core\\Entities\\Livestock.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBcAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T08:13:54.162Z"
+              "WhenOpened": "2024-05-17T13:43:58.898Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Farm.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Core\\Entities\\Farm.cs",
               "RelativeDocumentMoniker": "Core\\Entities\\Farm.cs",
               "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Core\\Entities\\Farm.cs",
               "RelativeToolTip": "Core\\Entities\\Farm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAsAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAqwCMAAABKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T08:13:27.373Z"
+              "WhenOpened": "2024-05-17T13:43:10.031Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataSeeder.cs",
-              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Seeders\\DataSeeder.cs",
-              "RelativeDocumentMoniker": "Data\\Seeders\\DataSeeder.cs",
-              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Seeders\\DataSeeder.cs",
-              "RelativeToolTip": "Data\\Seeders\\DataSeeder.cs",
-              "ViewState": "AQIAAHIAAAAAAAAAAADgv40AAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T08:13:18.015Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AccountMap.cs",
-              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\AccountMap.cs",
-              "RelativeDocumentMoniker": "Data\\Mappings\\AccountMap.cs",
-              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\AccountMap.cs",
-              "RelativeToolTip": "Data\\Mappings\\AccountMap.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACUAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T08:12:04.159Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FarmMap.cs",
-              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\FarmMap.cs",
-              "RelativeDocumentMoniker": "Data\\Mappings\\FarmMap.cs",
-              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\FarmMap.cs",
-              "RelativeToolTip": "Data\\Mappings\\FarmMap.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAADgvx8AAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T08:11:15.715Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "LivestockMap.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\LivestockMap.cs",
               "RelativeDocumentMoniker": "Data\\Mappings\\LivestockMap.cs",
               "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\LivestockMap.cs",
               "RelativeToolTip": "Data\\Mappings\\LivestockMap.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwCQAAAAQAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T08:09:09.252Z"
+              "WhenOpened": "2024-05-17T13:36:43.13Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductMap.cs",
-              "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\ProductMap.cs",
-              "RelativeDocumentMoniker": "Data\\Mappings\\ProductMap.cs",
-              "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\ProductMap.cs",
-              "RelativeToolTip": "Data\\Mappings\\ProductMap.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwCIAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T08:07:11.748Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "ReportMap.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\ReportMap.cs",
               "RelativeDocumentMoniker": "Data\\Mappings\\ReportMap.cs",
               "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Data\\Mappings\\ReportMap.cs",
               "RelativeToolTip": "Data\\Mappings\\ReportMap.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAAAAAAA",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAswB0AAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-10T08:06:42.85Z"
+              "WhenOpened": "2024-05-10T08:06:42.85Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "Report.cs",
               "DocumentMoniker": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Core\\Entities\\Report.cs",
               "RelativeDocumentMoniker": "Core\\Entities\\Report.cs",
               "ToolTip": "E:\\DATN-CTK44\\DoAnTotNghiep-CTK44\\SmartFarmAppAPI\\Core\\Entities\\Report.cs",
               "RelativeToolTip": "Core\\Entities\\Report.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAFAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-10T07:30:11.488Z"
             }

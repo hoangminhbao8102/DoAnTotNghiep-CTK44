@@ -8,41 +8,32 @@ namespace SmartFarmAppAPI.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Report> builder)
         {
+            // Đặt tên bảng
             builder.ToTable("Reports");
 
-            builder.HasKey(r => r.Id);
+            // Đặt khóa chính
+            builder.HasKey(f => f.Id);
 
-            builder.Property(r => r.RegisteredAccounts)
-                .HasColumnType("int");
+            // Thiết lập các thuộc tính
+            builder.Property(r => r.ReportName)
+            .IsRequired()
+            .HasMaxLength(256);
 
-            builder.Property(r => r.TotalFarms)
-                .HasColumnType("int");
+            builder.Property(r => r.CreatedDate)
+                .IsRequired();
 
-            builder.Property(r => r.TotalLivestocks)
-                .HasColumnType("int");
-
-            builder.Property(r => r.SoldProducts)
-                .HasColumnType("int");
-
-            builder.HasMany(r => r.Accounts)
-                .WithOne(a => a.Report)
-                .HasForeignKey(a => a.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
+            // Các mối quan hệ
             builder.HasMany(r => r.Farms)
                 .WithOne(f => f.Report)
-                .HasForeignKey(f => f.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(f => f.ReportId);
 
             builder.HasMany(r => r.Livestocks)
                 .WithOne(l => l.Report)
-                .HasForeignKey(l => l.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(l => l.ReportId);
 
             builder.HasMany(r => r.Products)
                 .WithOne(p => p.Report)
-                .HasForeignKey(p => p.Id)
-                .OnDelete(DeleteBehavior.Cascade);
+                .HasForeignKey(p => p.ReportId);
         }
     }
 }

@@ -25,7 +25,10 @@ namespace SmartFarmAppAPI.Migrations
             modelBuilder.Entity("SmartFarmAppAPI.Core.Entities.Account", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
                         .HasMaxLength(200)
@@ -50,9 +53,6 @@ namespace SmartFarmAppAPI.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("ReportId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -66,7 +66,10 @@ namespace SmartFarmAppAPI.Migrations
             modelBuilder.Entity("SmartFarmAppAPI.Core.Entities.Farm", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccountId")
                         .HasColumnType("int");
@@ -74,10 +77,16 @@ namespace SmartFarmAppAPI.Migrations
                     b.Property<int>("Area")
                         .HasColumnType("int");
 
+                    b.Property<DateOnly>("FarmCreated")
+                        .HasColumnType("date");
+
                     b.Property<string>("FarmName")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("LivestockId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Location")
                         .HasMaxLength(200)
@@ -93,13 +102,18 @@ namespace SmartFarmAppAPI.Migrations
 
                     b.HasIndex("AccountId");
 
+                    b.HasIndex("ReportId");
+
                     b.ToTable("Farms", (string)null);
                 });
 
             modelBuilder.Entity("SmartFarmAppAPI.Core.Entities.Livestock", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Breed")
                         .HasMaxLength(500)
@@ -109,7 +123,7 @@ namespace SmartFarmAppAPI.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<DateOnly>("DateOfBirth")
                         .HasColumnType("date");
 
                     b.Property<string>("Description")
@@ -123,21 +137,24 @@ namespace SmartFarmAppAPI.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("LivestockName")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("ReportId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Type")
+                    b.Property<string>("LivestockType")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("ReportId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("FarmId");
+                    b.HasIndex("FarmId")
+                        .IsUnique();
+
+                    b.HasIndex("ReportId");
 
                     b.ToTable("Livestocks", (string)null);
                 });
@@ -145,7 +162,10 @@ namespace SmartFarmAppAPI.Migrations
             modelBuilder.Entity("SmartFarmAppAPI.Core.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Amount")
                         .HasColumnType("int");
@@ -162,6 +182,11 @@ namespace SmartFarmAppAPI.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<bool>("IsSold")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -175,6 +200,8 @@ namespace SmartFarmAppAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ReportId");
+
                     b.ToTable("Products", (string)null);
                 });
 
@@ -186,32 +213,17 @@ namespace SmartFarmAppAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("RegisteredAccounts")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
-                    b.Property<int>("SoldProducts")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalFarms")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalLivestocks")
-                        .HasColumnType("int");
+                    b.Property<string>("ReportName")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Reports", (string)null);
-                });
-
-            modelBuilder.Entity("SmartFarmAppAPI.Core.Entities.Account", b =>
-                {
-                    b.HasOne("SmartFarmAppAPI.Core.Entities.Report", "Report")
-                        .WithMany("Accounts")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Report");
                 });
 
             modelBuilder.Entity("SmartFarmAppAPI.Core.Entities.Farm", b =>
@@ -219,12 +231,12 @@ namespace SmartFarmAppAPI.Migrations
                     b.HasOne("SmartFarmAppAPI.Core.Entities.Account", "Account")
                         .WithMany("Farms")
                         .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SmartFarmAppAPI.Core.Entities.Report", "Report")
                         .WithMany("Farms")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("ReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -236,14 +248,14 @@ namespace SmartFarmAppAPI.Migrations
             modelBuilder.Entity("SmartFarmAppAPI.Core.Entities.Livestock", b =>
                 {
                     b.HasOne("SmartFarmAppAPI.Core.Entities.Farm", "Farm")
-                        .WithMany("Livestocks")
-                        .HasForeignKey("FarmId")
+                        .WithOne("Livestock")
+                        .HasForeignKey("SmartFarmAppAPI.Core.Entities.Livestock", "FarmId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SmartFarmAppAPI.Core.Entities.Report", "Report")
                         .WithMany("Livestocks")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("ReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -256,7 +268,7 @@ namespace SmartFarmAppAPI.Migrations
                 {
                     b.HasOne("SmartFarmAppAPI.Core.Entities.Report", "Report")
                         .WithMany("Products")
-                        .HasForeignKey("Id")
+                        .HasForeignKey("ReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -270,13 +282,11 @@ namespace SmartFarmAppAPI.Migrations
 
             modelBuilder.Entity("SmartFarmAppAPI.Core.Entities.Farm", b =>
                 {
-                    b.Navigation("Livestocks");
+                    b.Navigation("Livestock");
                 });
 
             modelBuilder.Entity("SmartFarmAppAPI.Core.Entities.Report", b =>
                 {
-                    b.Navigation("Accounts");
-
                     b.Navigation("Farms");
 
                     b.Navigation("Livestocks");

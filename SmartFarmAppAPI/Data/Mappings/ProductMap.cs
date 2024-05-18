@@ -34,11 +34,8 @@ namespace SmartFarmAppAPI.Data.Mappings
             builder.Property(p => p.Price)
                 .HasColumnType("int");
 
-            // Ánh xạ quan hệ với Report
-            builder.HasOne(p => p.Report)
-                .WithMany(r => r.Products)
-                .HasForeignKey(p => p.ReportId)
-                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
+            builder.Property(p => p.IsSold)
+                .HasDefaultValue(false);
         }
     }
 }

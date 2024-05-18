@@ -42,7 +42,7 @@ namespace SmartFarmAppAPI.Services.Repositories.FarmRepository
         public async Task UpdateFarmAsync(int farmId, Farm updatedFarm, CancellationToken cancellationToken = default)
         {
             var existingFarm = await _context.Farms.Include(f => f.Account)
-                                                .Include(f => f.Livestocks)
+                                                .Include(f => f.Livestock)
                                                 .Include(f => f.Report)
                                                 .FirstOrDefaultAsync(f => f.Id == farmId, cancellationToken);
             if (existingFarm != null)

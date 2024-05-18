@@ -1,4 +1,5 @@
 ﻿using SmartFarmAppAPI.Core.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SmartFarmAppAPI.Core.Entities
 {
@@ -6,20 +7,15 @@ namespace SmartFarmAppAPI.Core.Entities
     {
         public int Id { get; set; }
 
-        public int RegisteredAccounts { get; set; }
+        public string ReportName { get; set; }
 
-        public int TotalFarms { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-        public int TotalLivestocks { get; set; }
+        // Thuộc tính điều hướng
+        public virtual ICollection<Farm> Farms { get; set; }
 
-        public int SoldProducts { get; set; }
+        public virtual ICollection<Livestock> Livestocks { get; set; }
 
-        public List<Account> Accounts { get; set; }
-
-        public List<Farm> Farms { get; set; }
-
-        public List<Livestock> Livestocks { get; set; }
-
-        public List<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

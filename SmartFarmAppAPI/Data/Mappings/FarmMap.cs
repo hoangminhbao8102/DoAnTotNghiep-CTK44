@@ -19,6 +19,9 @@ namespace SmartFarmAppAPI.Data.Mappings
                 .HasMaxLength(100)
                 .IsRequired();
 
+            builder.Property(f => f.FarmCreated)
+                .HasColumnType("date");
+
             builder.Property(f => f.Location)
                 .HasMaxLength(200);
 
@@ -28,23 +31,11 @@ namespace SmartFarmAppAPI.Data.Mappings
             builder.Property(f => f.Number)
                 .HasColumnType("int");
 
-            // Ánh xạ quan hệ với Account
+            // Các mối quan hệ
             builder.HasOne(f => f.Account)
                 .WithMany(a => a.Farms)
                 .HasForeignKey(f => f.AccountId)
-                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
-
-            // Ánh xạ quan hệ nhiều nhiều với Livestock
-            builder.HasMany(f => f.Livestocks)
-                .WithOne(l => l.Farm)
-                .HasForeignKey(l => l.FarmId)
-                .OnDelete(DeleteBehavior.Cascade); // Thiết lập hành vi xóa
-
-            // Ánh xạ quan hệ với Report
-            builder.HasOne(f => f.Report)
-                .WithMany(r => r.Farms)
-                .HasForeignKey(f => f.ReportId)
-                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
+                .OnDelete(DeleteBehavior.Cascade); // Chính sách xóa: xóa mềm
         }
     }
 }

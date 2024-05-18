@@ -36,12 +36,6 @@ namespace SmartFarmAppAPI.Data.Mappings
             builder.Property(a => a.Password)
                 .HasMaxLength(50)
                 .IsRequired();
-
-            // Ánh xạ quan hệ với Report
-            builder.HasOne(a => a.Report)
-                .WithMany(r => r.Accounts)
-                .HasForeignKey(a => a.ReportId)
-                .OnDelete(DeleteBehavior.Restrict); // Thiết lập hành vi xóa
         }
     }
 }

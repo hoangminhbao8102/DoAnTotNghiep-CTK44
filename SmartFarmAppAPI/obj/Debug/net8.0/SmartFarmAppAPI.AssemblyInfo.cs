@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartFarmAppAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8dc84e6d6328ad40197da0589f23f6226f427222")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce983f5f971827ea2ef8322ada691c9ca6c9917d")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartFarmAppAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartFarmAppAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

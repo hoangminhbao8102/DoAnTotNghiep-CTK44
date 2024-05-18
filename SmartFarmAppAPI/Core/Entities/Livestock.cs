@@ -1,14 +1,17 @@
 ﻿using SmartFarmAppAPI.Core.Contracts;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace SmartFarmAppAPI.Core.Entities
 {
     public class Livestock : IEntity
     {
+        [Key]
         public int Id { get; set; }
 
-        public string Type { get; set; }
+        public string LivestockType { get; set; }
 
-        public string Name { get; set; }
+        public string LivestockName { get; set; }
 
         public string ImageUrl { get; set; }
 
@@ -18,14 +21,16 @@ namespace SmartFarmAppAPI.Core.Entities
 
         public string Care { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public DateOnly DateOfBirth { get; set; }
 
+        [ForeignKey("Farm")]
         public int FarmId { get; set; }
 
-        public int ReportId { get; set; }
+        public virtual Farm Farm { get; set; }
 
-        public Farm Farm { get; set; }
+        [ForeignKey("Report")]
+        public int ReportId { get; set; }  // Khóa ngoại
 
-        public Report Report { get; set; }
+        public virtual Report Report { get; set; }  // Navigation property
     }
 }
