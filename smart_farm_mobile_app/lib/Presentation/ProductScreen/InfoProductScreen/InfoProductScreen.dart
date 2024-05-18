@@ -92,10 +92,10 @@ class InfoProductScreen extends StatelessWidget {
                 const SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: () {},
-                  child: const Text('MUA NGAY'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                   ),
+                  child: const Text('MUA NGAY'),
                 ),
               ],
             ),

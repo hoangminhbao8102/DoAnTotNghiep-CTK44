@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartFarmAppAPI.Core.Entities;
 using SmartFarmAppAPI.Data.Contexts;
-using SmartFarmAppAPI.Services.Repositories.LivestockRepository;
+using SmartFarmAppAPI.Services.LivestockRepository;
 
 namespace SmartFarmAppAPI.Controllers
 {

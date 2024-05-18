@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using SmartFarmAppAPI.Core.Entities;
 using SmartFarmAppAPI.Data.Contexts;
-using SmartFarmAppAPI.Services.Repositories.AccountRepository;
+using SmartFarmAppAPI.Services.AccountRepository;
 
 namespace SmartFarmAppAPI.Controllers
 {

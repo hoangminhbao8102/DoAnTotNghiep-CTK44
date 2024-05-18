@@ -20,7 +20,7 @@ class OTPEmailScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Spacer(),
+            const SizedBox(height: 50),
             const CircleAvatar(
               radius: 50,
               backgroundColor: Colors.blue,
@@ -83,7 +83,7 @@ class OTPEmailScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18),
               ),
             ),
-            const Spacer(),
+            const SizedBox(height: 20),
           ],
         ),
       ),
