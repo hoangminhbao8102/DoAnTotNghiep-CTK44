@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartFarmAppAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5322cb094ef0b52ce2fc3b55367615f38da39e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6ba9665c8f5cf0f3816d22d7aa3d68c9982a4b86")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartFarmAppAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartFarmAppAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

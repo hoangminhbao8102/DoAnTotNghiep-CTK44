@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../../../Models/Farm.dart';
+
 class UpdateFarmScreen extends StatefulWidget {
   const UpdateFarmScreen({super.key});
 
@@ -10,9 +12,40 @@ class UpdateFarmScreen extends StatefulWidget {
 }
 
 class _UpdateFarmScreenState extends State<UpdateFarmScreen> {
-  String? selectedAnimalType;
-  String? selectedAnimal;
+  final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController _nameController = TextEditingController();
+
+  final TextEditingController _locationController = TextEditingController();
+
+  final TextEditingController _areaController = TextEditingController();
+
+  final TextEditingController _numberController = TextEditingController();
+
+  final TextEditingController _livestockTypeController = TextEditingController();
+
+  final TextEditingController _livestockNameController = TextEditingController();
+
+  void _createFarm() {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      // Tạo một đối tượng Farm mới
+      Farm newFarm = Farm(
+        farmName: _nameController.text, 
+        location: _locationController.text, 
+        creationDate: DateTime.now(),
+        area: double.parse(_areaController.text), 
+        account: '',
+        number: int.parse(_numberController.text),
+        livestockType: _livestockTypeController.text,
+        livestockName: _livestockNameController.text,
+        livestockCount: 0
+      );
+      // Bạn có thể lưu trữ đối tượng Farm ở đây
+      Navigator.pop(context);
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,26 +70,26 @@ class _UpdateFarmScreenState extends State<UpdateFarmScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: Image.network(
-                  'https://example.com/your-image.png', // Replace with your image URL
-                  height: 150,
-                ),
+                child: Image.asset('assets/icons/farm_icon.png', width: 120, height: 120),
               ),
               const SizedBox(height: 20),
               buildTextField(
                 context,
+                controller: _nameController,
                 icon: Icons.agriculture,
                 hintText: 'Tên trang trại',
               ),
               const SizedBox(height: 20),
               buildTextField(
                 context,
+                controller: _locationController,
                 icon: Icons.location_on,
                 hintText: 'Vị trí',
               ),
               const SizedBox(height: 20),
               buildTextField(
                 context,
+                controller: _areaController,
                 icon: Icons.square_foot,
                 hintText: 'Diện tích',
                 suffixText: 'M2',
@@ -64,42 +97,29 @@ class _UpdateFarmScreenState extends State<UpdateFarmScreen> {
               const SizedBox(height: 20),
               buildTextField(
                 context,
+                controller: _numberController,
                 icon: Icons.numbers,
-                hintText: 'Con',
+                hintText: 'Số lượng con',
                 suffixText: 'CON',
               ),
               const SizedBox(height: 20),
-              buildDropdown(
+              buildTextField(
                 context,
+                controller: _livestockTypeController,
                 icon: Icons.pets,
-                hintText: 'Chọn loại vật nuôi',
-                value: selectedAnimalType,
-                items: ['Gia súc', 'Gia cầm', 'Thú cưng'],
-                onChanged: (value) {
-                  setState(() {
-                    selectedAnimalType = value;
-                  });
-                },
+                hintText: 'Loại vật nuôi',
               ),
               const SizedBox(height: 20),
-              buildDropdown(
+              buildTextField(
                 context,
+                controller: _livestockNameController,
                 icon: Icons.pets,
-                hintText: 'Chọn vật nuôi',
-                value: selectedAnimal,
-                items: ['Bò', 'Dê', 'Cừu'],
-                onChanged: (value) {
-                  setState(() {
-                    selectedAnimal = value;
-                  });
-                },
+                hintText: 'Tên vật nuôi',
               ),
               const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Handle confirm action
-                  },
+                  onPressed: _createFarm,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
@@ -108,7 +128,7 @@ class _UpdateFarmScreenState extends State<UpdateFarmScreen> {
                     ),
                   ),
                   child: const Text(
-                    'CẬP NHẬT',
+                    'XÁC NHẬN',
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
@@ -121,8 +141,9 @@ class _UpdateFarmScreenState extends State<UpdateFarmScreen> {
   }
 
   Widget buildTextField(BuildContext context,
-      {required IconData icon, required String hintText, String? suffixText}) {
+      {required IconData icon, required String hintText, String? suffixText, TextEditingController? controller}) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
         prefixIcon: Icon(icon, color: Colors.green),
         hintText: hintText,
@@ -134,40 +155,6 @@ class _UpdateFarmScreenState extends State<UpdateFarmScreen> {
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.green),
           borderRadius: BorderRadius.circular(10.0),
-        ),
-      ),
-    );
-  }
-
-  Widget buildDropdown(BuildContext context,
-      {required IconData icon,
-      required String hintText,
-      required String? value,
-      required List<String> items,
-      required ValueChanged<String?> onChanged}) {
-    return InputDecorator(
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: Colors.green),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.green),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.green),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          value: value,
-          hint: Text(hintText),
-          items: items.map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-          onChanged: onChanged,
         ),
       ),
     );

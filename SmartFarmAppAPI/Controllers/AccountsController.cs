@@ -70,7 +70,7 @@ namespace SmartFarmAppAPI.Controllers
             return Ok(account);
         }
 
-        // POST: api/Accounts/register
+        /*// POST: api/Accounts/register
         [HttpPost("register")]
         public async Task<IActionResult> Register(Account account)
         {
@@ -93,7 +93,7 @@ namespace SmartFarmAppAPI.Controllers
             await _accountRepository.AddAccountAsync(account);
 
             return Ok("Registration successful.");
-        }
+        }*/
 
         // POST: api/Accounts/
         [HttpPost]

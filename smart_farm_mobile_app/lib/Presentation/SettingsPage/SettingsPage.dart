@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../LoginScreen/LoginScreen.dart';
+import '../LoginPage/LoginPage.dart';
 import 'ChangePasswordScreen/ChangePasswordScreen.dart';
 import 'UpdateAccountScreen/UpdateAccountScreen.dart';
 
@@ -93,7 +93,7 @@ class SettingsPage extends StatelessWidget {
                         TextButton(
                           onPressed: () {
                             Navigator.of(context).pop();
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => LogInScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
                           },
                           child: const Text('Có'),
                         ),

@@ -2,8 +2,12 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../Models/Product.dart';
+
 class InfoProductScreen extends StatelessWidget {
-  const InfoProductScreen({super.key});
+  final Product product;
+
+  const InfoProductScreen({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -12,86 +16,70 @@ class InfoProductScreen extends StatelessWidget {
         title: const Text('THÔNG TIN SẢN PHẨM'),
         backgroundColor: Colors.green,
       ),
-      body: Padding(
+      body: SingleChildScrollView( // Using SingleChildScrollView to handle overflow
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              color: Colors.grey[300],
               height: 200,
               width: double.infinity,
-              child: const Center(child: Text('imageURL')),
-            ),
-            const SizedBox(height: 16),
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'TÊN SẢN PHẨM',
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.grey[300],
               ),
-            ),
-            const SizedBox(height: 16),
-            const TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'LOẠI SẢN PHẨM',
-              ),
-            ),
-            const SizedBox(height: 16),
-            const TextField(
-              maxLines: 3,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'MÔ TẢ',
-              ),
-            ),
-            const SizedBox(height: 16),
-            const Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'SỐ LƯỢNG',
-                    ),
-                  ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  product.imageUrl, // Truy cập thuộc tính imageUrl trực tiếp
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) => const Center(child: Text('Unable to load image')),
                 ),
-                SizedBox(width: 8),
-                Text('CÁI'),
-              ],
+              ),
             ),
             const SizedBox(height: 16),
-            const Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'GIÁ BÁN',
-                    ),
-                  ),
-                ),
-                SizedBox(width: 8),
-                Text('ĐỒNG'),
-              ],
+            Text(
+              'Tên sản phẩm: ${product.productName}', // Truy cập thuộc tính name trực tiếp
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Loại sản phẩm: ${product.category}', // Truy cập thuộc tính type trực tiếp
+              style: const TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Mô tả: ${product.description}', // Truy cập thuộc tính description trực tiếp
+              style: const TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Số lượng: ${product.amount.toString()} cái', // Truy cập thuộc tính quantity trực tiếp
+              style: const TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Giá bán: ${product.price.toString()} đồng', // Truy cập thuộc tính price trực tiếp
+              style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.shopping_cart),
-                    label: const Text('THÊM VÀO GIỎ HÀNG'),
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black, 
-                      backgroundColor: Colors.white,
-                      side: const BorderSide(color: Colors.green),
-                    ),
+                ElevatedButton.icon(
+                  onPressed: () {}, // Logic to handle Add to Cart
+                  icon: const Icon(Icons.shopping_cart),
+                  label: const Text('THÊM VÀO GIỎ HÀNG'),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white, 
+                    backgroundColor: Colors.green,
                   ),
                 ),
-                const SizedBox(width: 8),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {}, // Logic to handle Buy Now
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                   ),

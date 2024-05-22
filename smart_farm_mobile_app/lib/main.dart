@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Presentation/LoginScreen/LoginScreen.dart';
+import 'Presentation/LoginPage/LoginPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Smart Farm Mobile App',
       debugShowCheckedModeBanner: false,
-      home: LogInScreen(),
+      home: LoginPage(),
     );
   }
 }

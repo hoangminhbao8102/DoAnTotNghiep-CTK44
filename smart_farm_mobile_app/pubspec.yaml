@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^1.2.1
+  flutter_form_builder: ^9.2.1
+  form_builder_validators: ^9.1.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -65,6 +68,9 @@ flutter:
     - assets/icons/pet_icon.png
     - assets/icons/livestock_icon.png
     - assets/icons/farm_icon.png
+    - assets/uploads/livestocks/bo_ha_lan.jpg
+    - assets/uploads/products/ngo.jpg
+    - assets/uploads/products/gao.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

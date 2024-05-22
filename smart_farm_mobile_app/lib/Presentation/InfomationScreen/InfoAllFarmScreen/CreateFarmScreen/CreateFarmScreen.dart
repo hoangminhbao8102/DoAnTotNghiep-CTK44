@@ -1,6 +1,8 @@
-// ignore_for_file: file_names, library_private_types_in_public_api
+// ignore_for_file: file_names, library_private_types_in_public_api, unused_local_variable, avoid_print
 
 import 'package:flutter/material.dart';
+
+import '../../../../Models/Farm.dart';
 
 class CreateFarmScreen extends StatefulWidget {
   const CreateFarmScreen({super.key});
@@ -10,9 +12,69 @@ class CreateFarmScreen extends StatefulWidget {
 }
 
 class _CreateFarmScreenState extends State<CreateFarmScreen> {
-  String? selectedAnimalType;
-  String? selectedAnimal;
+  final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController _nameController = TextEditingController();
+
+  final TextEditingController _locationController = TextEditingController();
+
+  final TextEditingController _areaController = TextEditingController();
+
+  final TextEditingController _numberController = TextEditingController();
+
+  final TextEditingController _livestockTypeController = TextEditingController();
+
+  final TextEditingController _livestockNameController = TextEditingController();
+
+  void _createFarm() {
+  if (_formKey.currentState?.validate() ?? false) {  // Sử dụng null-aware operator để đảm bảo không gặp null
+    _formKey.currentState!.save();  // Lúc này mới an toàn để gọi save()
+    Farm newFarm = Farm(
+      farmName: _nameController.text,
+      location: _locationController.text,
+      creationDate: DateTime.now(),
+      area: double.tryParse(_areaController.text) ?? 0,  // Sử dụng tryParse để tránh lỗi khi parsing
+      account: '',
+      number: int.tryParse(_numberController.text) ?? 0,  // Tương tự như trên
+      livestockType: _livestockTypeController.text,
+      livestockName: _livestockNameController.text,
+      livestockCount: 0,
+    );
+    _confirmCreation(newFarm);
+  } else {
+    print('Biểu mẫu không hợp lệ');
+  }
+}
+
+  void _confirmCreation(Farm farm) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("XÁC NHẬN TẠO TRANG TRẠI"),
+          content: const Text("Bạn có chắc chắn tạo trang trại hay không?"),
+          actions: <Widget>[
+            TextButton(
+              child: const Text("Hủy"),
+              onPressed: () {
+                Navigator.of(context).pop();  // Close the dialog
+              },
+            ),
+            TextButton(
+              child: const Text("Xác nhận"),
+              onPressed: () {
+                // Here, add the farm to your farm list and maybe save to database or state management
+                print("Trang trại đã tạo: ${farm.farmName}");
+                Navigator.of(context).pop();  // Close the dialog
+                Navigator.of(context).pop();  // Optionally close the current screen
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,26 +99,26 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: Image.network(
-                  'https://example.com/your-image.png', // Replace with your image URL
-                  height: 150,
-                ),
+                child: Image.asset('assets/icons/farm_icon.png', width: 120, height: 120),
               ),
               const SizedBox(height: 20),
               buildTextField(
                 context,
+                controller: _nameController,
                 icon: Icons.agriculture,
                 hintText: 'Tên trang trại',
               ),
               const SizedBox(height: 20),
               buildTextField(
                 context,
+                controller: _locationController,
                 icon: Icons.location_on,
                 hintText: 'Vị trí',
               ),
               const SizedBox(height: 20),
               buildTextField(
                 context,
+                controller: _areaController,
                 icon: Icons.square_foot,
                 hintText: 'Diện tích',
                 suffixText: 'M2',
@@ -64,42 +126,29 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
               const SizedBox(height: 20),
               buildTextField(
                 context,
+                controller: _numberController,
                 icon: Icons.numbers,
-                hintText: 'Con',
+                hintText: 'Số lượng con',
                 suffixText: 'CON',
               ),
               const SizedBox(height: 20),
-              buildDropdown(
+              buildTextField(
                 context,
+                controller: _livestockTypeController,
                 icon: Icons.pets,
-                hintText: 'Chọn loại vật nuôi',
-                value: selectedAnimalType,
-                items: ['Gia súc', 'Gia cầm', 'Thú cưng'],
-                onChanged: (value) {
-                  setState(() {
-                    selectedAnimalType = value;
-                  });
-                },
+                hintText: 'Loại vật nuôi',
               ),
               const SizedBox(height: 20),
-              buildDropdown(
+              buildTextField(
                 context,
+                controller: _livestockNameController,
                 icon: Icons.pets,
-                hintText: 'Chọn vật nuôi',
-                value: selectedAnimal,
-                items: ['Bò', 'Dê', 'Cừu'],
-                onChanged: (value) {
-                  setState(() {
-                    selectedAnimal = value;
-                  });
-                },
+                hintText: 'Tên vật nuôi',
               ),
               const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Handle confirm action
-                  },
+                  onPressed: _createFarm,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
@@ -121,8 +170,9 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
   }
 
   Widget buildTextField(BuildContext context,
-      {required IconData icon, required String hintText, String? suffixText}) {
+      {required IconData icon, required String hintText, String? suffixText, TextEditingController? controller}) {
     return TextField(
+      controller: controller,
       decoration: InputDecoration(
         prefixIcon: Icon(icon, color: Colors.green),
         hintText: hintText,
@@ -134,40 +184,6 @@ class _CreateFarmScreenState extends State<CreateFarmScreen> {
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Colors.green),
           borderRadius: BorderRadius.circular(10.0),
-        ),
-      ),
-    );
-  }
-
-  Widget buildDropdown(BuildContext context,
-      {required IconData icon,
-      required String hintText,
-      required String? value,
-      required List<String> items,
-      required ValueChanged<String?> onChanged}) {
-    return InputDecorator(
-      decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: Colors.green),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.green),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.green),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton<String>(
-          value: value,
-          hint: Text(hintText),
-          items: items.map((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-          onChanged: onChanged,
         ),
       ),
     );

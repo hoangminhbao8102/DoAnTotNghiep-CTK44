@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../Data/Data.dart';
+import '../../Models/Product.dart';
 import '../AccountScreen/AccountScreen.dart';
 import '../CartScreen/CartScreen.dart';
 import '../InfomationScreen/InfomationScreen.dart';
@@ -12,23 +14,31 @@ import '../StatisticScreen/StatisticScreen.dart';
 import 'Widgets/CategoryButton.dart';
 import 'Widgets/ProductCard.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
   HomeScreenState createState() => HomeScreenState();
 }
 
-class HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = <Widget>[
-    const HomeScreen(),
+    const HomePage(),
     const InformationScreen(),
     ProductScreen(),
     const StatisticScreen(),
     const AccountScreen(),
   ];
+
+  late List<Product> _products;
+
+  @override
+  void initState() {
+    super.initState();
+    _products = initializeProducts(); // Khởi tạo danh sách sản phẩm từ Data.dart
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -117,9 +127,9 @@ class HomeScreenState extends State<HomeScreen> {
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 8.0,
             ),
-            itemCount: 4,
+            itemCount: _products.length,
             itemBuilder: (context, index) {
-              return const ProductCard(product: {},);
+              return ProductCard(product: _products[index]);
             },
           ),
         ),

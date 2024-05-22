@@ -1,18 +1,69 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, library_private_types_in_public_api, use_build_context_synchronously, unused_local_variable
 
 import 'package:flutter/material.dart';
 
+//import '../../API/ApiService.dart';
+import '../../Data/Data.dart';
+import '../../Models/Account.dart';
 import '../ForgotPasswordScreen/ForgotPasswordScreen.dart';
 import '../HomePage/HomePage.dart';
-import '../RegisterScreen/RegisterScreen.dart';
+import '../RegisterPage/RegisterPage.dart';
 
-// ignore: must_be_immutable
-class LogInScreen extends StatelessWidget {
-  LogInScreen({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
-  TextEditingController userNameController = TextEditingController();
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
 
-  TextEditingController passwordController = TextEditingController();
+class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  // Hàm kiểm tra thông tin đăng nhập
+  void _login() {
+    List<Account> accounts = initializeAccounts();
+    String username = _usernameController.text;
+    String password = _passwordController.text;
+    Account? account;
+
+    try {
+      // Sử dụng firstWhere mà không cần orElse, bắt ngoại lệ nếu không tìm thấy
+      account = accounts.firstWhere(
+        (acc) => acc.username == username && acc.password == password
+      );
+    
+      // Đăng nhập thành công, chuyển hướng đến HomePage
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomePage()),
+      );
+    } catch (e) {
+      // Xử lý trường hợp đăng nhập không thành công
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Error"),
+            content: const Text("Invalid username or password"),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    _usernameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +93,7 @@ class LogInScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               TextField(
+                controller: _usernameController,
                 decoration: InputDecoration(
                   hintText: 'Username',
                   prefixIcon: const Icon(Icons.person),
@@ -52,6 +104,7 @@ class LogInScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               TextField(
+                controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Password',
@@ -77,9 +130,7 @@ class LogInScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
-                },
+                onPressed: _login,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),
@@ -92,7 +143,7 @@ class LogInScreen extends StatelessWidget {
               const SizedBox(height: 10),
               OutlinedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
                 },
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.green, padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 15),

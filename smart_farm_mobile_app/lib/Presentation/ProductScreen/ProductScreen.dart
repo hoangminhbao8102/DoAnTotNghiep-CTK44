@@ -2,13 +2,13 @@
 
 import 'package:flutter/material.dart';
 
+import '../../Data/Data.dart';
+import '../../Models/Product.dart';
 import '../HomePage/Widgets/ProductCard.dart';
 
 class ProductScreen extends StatelessWidget {
-  final List<Map<String, dynamic>> products = [
-    {'name': 'TÊN SẢN PHẨM', 'type': 'Loại', 'price': 'Giá bán: Giá bán'},
-  ];
-
+  final List<Product> products = initializeProducts();
+  
   ProductScreen({super.key});
 
   @override

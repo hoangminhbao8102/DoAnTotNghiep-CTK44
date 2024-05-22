@@ -1,11 +1,26 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 
+import '../../../Data/Data.dart';
+import '../../../Models/Livestock.dart';
 import 'InfoLivestockScreen/InfoLivestockScreen.dart';
 
-class InfoAllLivestockScreen extends StatelessWidget {
+class InfoAllLivestockScreen extends StatefulWidget {
   const InfoAllLivestockScreen({super.key});
+
+  @override
+  _InfoAllLivestockScreenState createState() => _InfoAllLivestockScreenState();
+}
+
+class _InfoAllLivestockScreenState extends State<InfoAllLivestockScreen> {
+  late List<Livestock> livestocks;
+
+  @override
+  void initState() {
+    super.initState();
+    livestocks = initializeLivestock();  // Khởi tạo farms khi màn hình được tạo
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +60,7 @@ class InfoAllLivestockScreen extends StatelessWidget {
             const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
-                itemCount: 5, // Number of items
+                itemCount: livestocks.length, // Number of items
                 itemBuilder: (context, index) {
                   return Card(
                     shape: RoundedRectangleBorder(
@@ -54,17 +69,17 @@ class InfoAllLivestockScreen extends StatelessWidget {
                     ),
                     child: ListTile(
                       leading: Image.asset('assets/icons/livestock_icon.png', width: 50, height: 50),
-                      title: const Text(
-                        'Tên vật nuôi',
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      title: Text(
+                        livestocks[index].livestockName,  // Sử dụng tên trang trại từ đối tượng farm
+                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      subtitle: const Text(
-                        'Loại',
-                        style: TextStyle(fontSize: 14),
+                      subtitle: Text(
+                        livestocks[index].livestockType,  // Sử dụng địa chỉ trang trại từ đối tượng farm
+                        style: const TextStyle(fontSize: 14),
                       ),
                       trailing: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: ((context) => const InfoLivestockScreen())));
+                          Navigator.push(context, MaterialPageRoute(builder: ((context) => InfoLivestockScreen(livestock: livestocks[index]))));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,

@@ -1,9 +1,18 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
 
-class InfoLivestockScreen extends StatelessWidget {
-  const InfoLivestockScreen({super.key});
+import '../../../../Models/Livestock.dart';
+
+class InfoLivestockScreen extends StatefulWidget {
+  final Livestock livestock;
+
+  const InfoLivestockScreen({super.key, required this.livestock});
+
+  @override
+  _InfoLivestockScreenState createState() => _InfoLivestockScreenState();
+}
+class _InfoLivestockScreenState extends State<InfoLivestockScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -28,52 +37,33 @@ class InfoLivestockScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: double.infinity,
-                height: 200,
-                color: Colors.grey[300],
-                child: const Center(
-                  child: Text('imageURL', style: TextStyle(color: Colors.grey)),
-                ),
+              Center(
+                child: Image.asset(widget.livestock.imageUrl, width: double.infinity, height: 200)
               ),
               const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'TÊN VẬT NUÔI',
-                hintText: 'Tên vật nuôi',
+              buildDetailRow(
+                'Tên vật nuôi: ',
+                widget.livestock.livestockName
               ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'LOẠI VẬT NUÔI',
-                hintText: 'Loại vật nuôi',
+              buildDetailRow(
+                'Loại vật nuôi: ',
+                widget.livestock.livestockType
               ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'NGÀY SINH',
-                hintText: 'Ngày sinh',
+              buildDetailRow(
+                'Ngày sinh: ',
+                widget.livestock.dateOfBirth.toString(),
               ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'MÔ TẢ',
-                hintText: 'Mô tả',
-                maxLines: 3,
+              buildDetailRow(
+                'Mô tả',
+                widget.livestock.description
               ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'NUÔI GIỐNG',
-                hintText: 'Nuôi giống',
-                maxLines: 3,
+              buildDetailRow(
+                'Nuôi giống',
+                widget.livestock.breed
               ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'CHĂM SÓC',
-                hintText: 'Chăm sóc',
-                maxLines: 3,
+              buildDetailRow(
+                'Chăm sóc',
+                widget.livestock.care
               ),
             ],
           ),
@@ -82,30 +72,27 @@ class InfoLivestockScreen extends StatelessWidget {
     );
   }
 
-  Widget buildTextField(BuildContext context, {required String label, required String hintText, int maxLines = 1}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          maxLines: maxLines,
-          decoration: InputDecoration(
-            hintText: hintText,
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
+  Widget buildDetailRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 3,
+            child: Text(
+              label,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
-        ),
-      ],
+          Expanded(
+            flex: 4,
+            child: Text(
+              value,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

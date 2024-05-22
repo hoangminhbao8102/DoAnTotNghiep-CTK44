@@ -1,10 +1,21 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, library_private_types_in_public_api, use_build_context_synchronously, unnecessary_cast
 
 import 'package:flutter/material.dart';
 
-class InfoFarmScreen extends StatelessWidget {
-  const InfoFarmScreen({super.key});
+//import '../../../../API/ApiService.dart';
+import '../../../../Models/Farm.dart';
 
+class InfoFarmScreen extends StatefulWidget {
+  final Farm farm;
+
+  const InfoFarmScreen({super.key, required this.farm});
+
+  @override
+  _InfoFarmScreenState createState() => _InfoFarmScreenState();
+}
+
+class _InfoFarmScreenState extends State<InfoFarmScreen> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,55 +43,14 @@ class InfoFarmScreen extends StatelessWidget {
                 child: Image.asset('assets/icons/farm_icon.png', width: 120, height: 120),
               ),
               const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'TÊN TRANG TRẠI',
-                hintText: 'Tên trang trại',
-              ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'NGÀY TẠO',
-                hintText: 'Ngày tạo',
-              ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'CHỦ SỞ HỮU',
-                hintText: 'Chủ sở hữu',
-              ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'VỊ TRÍ',
-                hintText: 'Vị trí',
-              ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'DIỆN TÍCH',
-                hintText: 'Diện tích',
-                suffixText: 'M2',
-              ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'LOẠI VẬT NUÔI',
-                hintText: 'Loại vật nuôi',
-              ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'TÊN VẬT NUÔI',
-                hintText: 'Tên vật nuôi',
-              ),
-              const SizedBox(height: 20),
-              buildTextField(
-                context,
-                label: 'SỐ LƯỢNG CON',
-                hintText: 'Con',
-                suffixText: 'CON',
-              ),
+              buildDetailRow('Tên trang trại:', widget.farm.farmName),
+              buildDetailRow('Ngày tạo:', widget.farm.creationDate.toString()), // Example, assuming you have this data
+              buildDetailRow('Chủ sở hữu:', widget.farm.account as String),
+              buildDetailRow('Vị trí:', widget.farm.location),
+              buildDetailRow('Diện tích:', '${widget.farm.area} M2'),
+              buildDetailRow('Loại vật nuôi:', widget.farm.livestockType),
+              buildDetailRow('Tên vật nuôi:', widget.farm.livestockName),
+              buildDetailRow('Số lượng con:', '${widget.farm.livestockCount} con'),
             ],
           ),
         ),
@@ -88,31 +58,27 @@ class InfoFarmScreen extends StatelessWidget {
     );
   }
 
-  Widget buildTextField(BuildContext context,
-      {required String label, required String hintText, String? suffixText}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(height: 8),
-        TextField(
-          decoration: InputDecoration(
-            hintText: hintText,
-            suffixText: suffixText,
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.green),
-              borderRadius: BorderRadius.circular(10.0),
+  Widget buildDetailRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 3,
+            child: Text(
+              label,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
-        ),
-      ],
+          Expanded(
+            flex: 4,
+            child: Text(
+              value,
+              style: const TextStyle(fontSize: 16),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
