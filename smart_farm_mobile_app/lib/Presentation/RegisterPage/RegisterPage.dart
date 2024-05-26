@@ -34,8 +34,7 @@ class _RegisterPageState extends State<RegisterPage> {
         username: _usernameController.text,
         password: _passwordController.text,
         address: _addressController.text,
-        phoneNumber: _phoneController.text,
-        farms: [],
+        phoneNumber: _phoneController.text
       );
 
       var accounts = initializeAccounts();
@@ -44,8 +43,8 @@ class _RegisterPageState extends State<RegisterPage> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Registration Successful'),
-          content: const Text('Your account has been created.'),
+          title: const Text('Đăng ký thành công'),
+          content: const Text('Tài khoản của bạn đã đăng ký'),
           actions: [
             TextButton(
               onPressed: () {
@@ -55,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   MaterialPageRoute(builder: (context) => const LoginPage()), // Assume LoginPage exists
                 );
               },
-              child: const Text('Login Now'),
+              child: const Text('ĐĂNG NHẬP NGAY'),
             ),
           ],
         ),
@@ -64,8 +63,8 @@ class _RegisterPageState extends State<RegisterPage> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Text('Error'),
-          content: const Text('Passwords do not match.'),
+          title: const Text('Lỗi'),
+          content: const Text('Mất khẩu không hợp lệ.'),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),

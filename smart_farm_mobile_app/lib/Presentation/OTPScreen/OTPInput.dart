@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 
 class OTPInput extends StatelessWidget {
-  const OTPInput({super.key});
+  final TextEditingController controller;
+
+  const OTPInput({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +16,14 @@ class OTPInput extends StatelessWidget {
         border: Border.all(color: Colors.green),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: const Center(
+      child: Center(
         child: TextField(
+          controller: controller,
           keyboardType: TextInputType.number,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 24),
+          style: const TextStyle(fontSize: 24),
           maxLength: 1,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             border: InputBorder.none,
             counterText: '',
           ),

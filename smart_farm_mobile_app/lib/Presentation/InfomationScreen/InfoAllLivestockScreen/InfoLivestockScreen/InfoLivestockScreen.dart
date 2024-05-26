@@ -38,7 +38,7 @@ class _InfoLivestockScreenState extends State<InfoLivestockScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Center(
-                child: Image.asset(widget.livestock.imageUrl, width: double.infinity, height: 200)
+                child: Image.asset(widget.livestock.imageUrl, width: double.infinity, height: 200),
               ),
               const SizedBox(height: 20),
               buildDetailRow(

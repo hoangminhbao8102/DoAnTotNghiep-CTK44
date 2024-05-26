@@ -44,8 +44,8 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text("Error"),
-            content: const Text("Invalid username or password"),
+            title: const Text("Lỗi"),
+            content: const Text("Sai username hoặc password"),
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),

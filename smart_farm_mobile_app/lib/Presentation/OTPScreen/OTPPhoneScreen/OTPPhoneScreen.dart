@@ -1,26 +1,25 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, library_private_types_in_public_api, avoid_print
+
 
 import 'package:flutter/material.dart';
 
 import '../../SetPasswordScreen/SetPasswordScreen.dart';
 import '../OTPInput.dart';
 
-class OTPPhoneScreen extends StatelessWidget {
+class OTPPhoneScreen extends StatefulWidget {
   const OTPPhoneScreen({super.key});
+
+  @override
+  _OTPPhoneScreenState createState() => _OTPPhoneScreenState();
+}
+
+class _OTPPhoneScreenState extends State<OTPPhoneScreen> {
+  final controllers = List.generate(4, (_) => TextEditingController());
+  String otp = ''; // OTP is now a mutable field within the state
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            // Xử lý quay lại
-          },
-        ),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
@@ -45,14 +44,14 @@ class OTPPhoneScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  OTPInput(),
-                  OTPInput(),
-                  OTPInput(),
-                  OTPInput(),
-                ],
+                  OTPInput(controller: controllers[0]),
+                  OTPInput(controller: controllers[1]),
+                  OTPInput(controller: controllers[2]),
+                  OTPInput(controller: controllers[3]),
+                ]
               ),
               const SizedBox(height: 20),
               Row(
@@ -63,9 +62,7 @@ class OTPPhoneScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                   TextButton(
-                    onPressed: () {
-                      // Xử lý gửi lại mã
-                    },
+                    onPressed: () {},
                     child: const Text(
                       'Gửi lại mã',
                       style: TextStyle(fontSize: 16, color: Colors.green),
@@ -75,9 +72,7 @@ class OTPPhoneScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SetPasswordScreen()));
-                },
+                onPressed: () => SetPasswordScreen(),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   shape: RoundedRectangleBorder(
@@ -96,5 +91,11 @@ class OTPPhoneScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void verifyOTP() {
+    String otp = controllers.map((c) => c.text).join();
+
+    print("Entered OTP: $otp");
   }
 }

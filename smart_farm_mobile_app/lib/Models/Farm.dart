@@ -1,13 +1,13 @@
 // ignore_for_file: file_names
 class Farm {
-  final String farmName;
-  final DateTime creationDate; // Sử dụng DateTime để thay thế DateOnly
-  final String account;
-  final String location;
-  final double area;
-  final int number;
-  final String livestockType;
-  final String livestockName;
+  String farmName;
+  DateTime creationDate; // Sử dụng DateTime để thay thế DateOnly
+  String account;
+  String location;
+  double area;
+  int number;
+  String livestockType;
+  String livestockName;
   int livestockCount;
 
   Farm({

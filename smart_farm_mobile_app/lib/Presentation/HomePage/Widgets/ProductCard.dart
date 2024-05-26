@@ -25,11 +25,7 @@ class ProductCard extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                product.imageUrl,  // Truy cập trực tiếp thuộc tính của đối tượng Product
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => const Center(child: Text('Unable to load image')), // Fallback text if the image fails to load
-              ),
+              child: Image.asset(product.imageUrl, width: double.infinity, height: 200),
             ),
           ),
           const SizedBox(height: 10),
@@ -38,7 +34,6 @@ class ProductCard extends StatelessWidget {
             style: const TextStyle(fontWeight: FontWeight.bold)
           ),
           Text(product.category),  // Truy cập trực tiếp thuộc tính của đối tượng Product
-          const Text('\${product.price} VND'),  // Sử dụng giá trị giá cả từ đối tượng Product
           TextButton(
             onPressed: () {
               // Chuyển đến một màn hình chi tiết, đưa sản phẩm làm tham số

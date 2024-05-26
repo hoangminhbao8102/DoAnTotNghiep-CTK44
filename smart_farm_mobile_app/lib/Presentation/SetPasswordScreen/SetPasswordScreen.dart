@@ -1,6 +1,8 @@
 // ignore_for_file: file_names
 
-import 'package:flutter/material.dart'; // ignore_for_file: must_be_immutable
+import 'package:flutter/material.dart';
+
+import '../LoginPage/LoginPage.dart'; // ignore_for_file: must_be_immutable
 
 class SetPasswordScreen extends StatelessWidget {
   SetPasswordScreen({super.key});
@@ -65,7 +67,7 @@ class SetPasswordScreen extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Xử lý khi nhấn nút đặt lại mật khẩu
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,

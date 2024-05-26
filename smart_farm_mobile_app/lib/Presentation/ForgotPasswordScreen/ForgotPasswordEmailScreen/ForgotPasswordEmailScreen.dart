@@ -2,12 +2,15 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../Data/Data.dart';
+import '../../../Models/Account.dart';
 import '../../OTPScreen/OTPEmailScreen/OTPEmailScreen.dart'; // ignore_for_file: must_be_immutable
 
 class ForgotPasswordEmailScreen extends StatelessWidget {
   ForgotPasswordEmailScreen({super.key});
 
   TextEditingController emailController = TextEditingController();
+  final List<Account> accounts = initializeAccounts();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,8 @@ class ForgotPasswordEmailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             TextField(
-              keyboardType: TextInputType.phone,
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.email),
                 border: OutlineInputBorder(
@@ -49,7 +53,21 @@ class ForgotPasswordEmailScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const OTPEmailScreen()));
+                String inputEmailNumber = emailController.text.trim();
+                bool isValid = accounts.any((account) => account.email == inputEmailNumber);
+
+                if (isValid) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const OTPEmailScreen()),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Số điện thoại không chính xác, vui lòng thử lại.'),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,

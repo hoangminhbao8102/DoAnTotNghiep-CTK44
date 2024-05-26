@@ -33,6 +33,8 @@ dependencies:
   http: ^1.2.1
   flutter_form_builder: ^9.2.1
   form_builder_validators: ^9.1.0
+  fl_chart: ^0.68.0
+  pinput: ^4.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -69,8 +71,27 @@ flutter:
     - assets/icons/livestock_icon.png
     - assets/icons/farm_icon.png
     - assets/uploads/livestocks/bo_ha_lan.jpg
+    - assets/uploads/livestocks/bo_hereford.jpg
+    - assets/uploads/livestocks/cho_chihuahua.jpg
+    - assets/uploads/livestocks/cho_pug.jpg
+    - assets/uploads/livestocks/cuu_dorper.jpg
+    - assets/uploads/livestocks/cuu_texel.jpg
+    - assets/uploads/livestocks/ga_dong_tao.jpg
+    - assets/uploads/livestocks/ga_ri.jpg
+    - assets/uploads/livestocks/meo_muop.jpg
+    - assets/uploads/livestocks/meo_xiem.jpg
+    
     - assets/uploads/products/ngo.jpg
     - assets/uploads/products/gao.jpg
+    - assets/uploads/products/b_complex_k3_c.jpg
+    - assets/uploads/products/beta_glucan_c.jpg
+    - assets/uploads/products/biosubtyl.jpg
+    - assets/uploads/products/co_kho.jpg
+    - assets/uploads/products/dps_protein.jpg
+    - assets/uploads/products/hat_anf.jpg
+    - assets/uploads/products/hat_natural_core.jpg
+    - assets/uploads/products/royal_canin.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

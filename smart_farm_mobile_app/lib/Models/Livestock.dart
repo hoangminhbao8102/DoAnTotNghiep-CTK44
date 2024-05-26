@@ -9,7 +9,6 @@ class Livestock {
   final String breed;
   final String care;
   final DateTime dateOfBirth;
-  final int farmId;
 
   Livestock({
     required this.livestockType,
@@ -19,7 +18,6 @@ class Livestock {
     required this.breed,
     required this.care,
     required this.dateOfBirth,
-    required this.farmId,
   });
 
   /*// Chuyển đổi từ JSON sang đối tượng Dart

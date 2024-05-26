@@ -1,11 +1,10 @@
-// ignore_for_file: file_names, library_private_types_in_public_api, use_build_context_synchronously
+// ignore_for_file: file_names, library_private_types_in_public_api, use_build_context_synchronously, avoid_print
 
 import 'package:flutter/material.dart';
 
 //import '../../../API/ApiService.dart';
 import '../../../Data/Data.dart';
 import '../../../Models/Farm.dart';
-import 'CreateFarmScreen/CreateFarmScreen.dart';
 import 'EditFarmScreen/EditFarmScreen.dart';
 import 'InfoFarmScreen/InfoFarmScreen.dart';
 
@@ -80,77 +79,104 @@ class _InfoAllFarmScreenState extends State<InfoAllFarmScreen> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text("TẠO TRANG TRẠI"),
-          content: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                TextFormField(
-                  controller: _nameController,
-                  decoration: const InputDecoration(labelText: "Tên trang trại"),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Vui lòng nhập tên trang trại';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: _locationController,
-                  decoration: const InputDecoration(labelText: "Vị trí"),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Vui lòng nhập vị trí';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: _areaController,
-                  decoration: const InputDecoration(labelText: "Diện tích"),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a location';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: _locationController,
-                  decoration: const InputDecoration(labelText: "Location"),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a location';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: _locationController,
-                  decoration: const InputDecoration(labelText: "Location"),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter a location';
-                    }
-                    return null;
-                  },
-                ),
-              ],
+          content: SingleChildScrollView(  // Thêm cuộn nếu cần
+            child: Form(
+              key: _formKey,
+              child: ListBody(
+                children: <Widget>[
+                  TextFormField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(labelText: "Tên trang trại"),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Vui lòng nhập tên trang trại';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _locationController,
+                    decoration: const InputDecoration(labelText: "Vị trí"),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Vui lòng nhập vị trí';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _areaController,
+                    decoration: const InputDecoration(labelText: "Diện tích"),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Vui lòng nhập diện tích';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _numberController,
+                    decoration: const InputDecoration(labelText: "Số lượng con"),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Vui lòng nhập số lượng con';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _livestockTypeController,
+                    decoration: const InputDecoration(labelText: "Loại vật nuôi"),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Vui lòng nhập loại vật nuôi';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _livestockNameController,
+                    decoration: const InputDecoration(labelText: "Tên vật nuôi"),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Vui lòng nhập tên vật nuôi';
+                      }
+                      return null;
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text("Cancel"),
-              onPressed: () => Navigator.of(context).pop(),
+              child: const Text("Hủy"),
+              onPressed: () => Navigator.of(context). pop(),
             ),
             TextButton(
               onPressed: _addFarm,
-              child: const Text("Add"),
+              child: const Text("Thêm"),
             ),
           ],
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
+  void findFarm() {
+    String searchTerm = searchController.text.toLowerCase();
+
+    setState(() {
+      filteredFarms = farms.where((farm) =>
+        farm.farmName.toLowerCase().contains(searchTerm)
+      ).toList();
+    });
   }
 
   @override
@@ -175,6 +201,7 @@ class _InfoAllFarmScreenState extends State<InfoAllFarmScreen> {
         child: Column(
           children: [
             TextField(
+              controller: searchController,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.search, color: Colors.green),
                 hintText: 'Tìm kiếm',
@@ -236,9 +263,7 @@ class _InfoAllFarmScreenState extends State<InfoAllFarmScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             FloatingActionButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const CreateFarmScreen()));
-              },
+              onPressed: _showAddFarmDialog,
               backgroundColor: Colors.green,
               child: const Icon(Icons.add),
             ),

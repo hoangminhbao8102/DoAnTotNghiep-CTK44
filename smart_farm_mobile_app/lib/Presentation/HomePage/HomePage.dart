@@ -28,7 +28,7 @@ class HomeScreenState extends State<HomePage> {
     const HomePage(),
     const InformationScreen(),
     ProductScreen(),
-    const StatisticScreen(),
+    const StatisticPage(),
     const AccountScreen(),
   ];
 
@@ -62,7 +62,7 @@ class HomeScreenState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => CartScreen()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const CartScreen(products: [],)));
             },
           ),
           IconButton(

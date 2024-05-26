@@ -15,11 +15,23 @@ class InfoAllLivestockScreen extends StatefulWidget {
 
 class _InfoAllLivestockScreenState extends State<InfoAllLivestockScreen> {
   late List<Livestock> livestocks;
+  late List<Livestock> filteredLivestocks;
+  final TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     livestocks = initializeLivestock();  // Khởi tạo farms khi màn hình được tạo
+  }
+
+  void findFarm() {
+    String searchTerm = searchController.text.toLowerCase();
+
+    setState(() {
+      filteredLivestocks = livestocks.where((livestock) =>
+        livestock.livestockName.toLowerCase().contains(searchTerm)
+      ).toList();
+    });
   }
 
   @override
@@ -44,6 +56,7 @@ class _InfoAllLivestockScreenState extends State<InfoAllLivestockScreen> {
         child: Column(
           children: [
             TextField(
+              controller: searchController,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.search, color: Colors.green),
                 hintText: 'Tìm kiếm',

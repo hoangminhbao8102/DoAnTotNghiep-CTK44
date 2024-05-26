@@ -8,7 +8,6 @@ class Product {
   final int amount;
   final int price;
   final bool isSold;
-  final int reportId;
 
   Product({
     required this.productName,
@@ -18,7 +17,6 @@ class Product {
     required this.amount,
     required this.price,
     required this.isSold,
-    required this.reportId
   });
 
   /*// Chuyển đổi từ JSON sang đối tượng Dart

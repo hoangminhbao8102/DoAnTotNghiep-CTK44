@@ -1,13 +1,41 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-
 import '../../../Models/Product.dart';
+import '../../CartScreen/CartScreen.dart';
+import '../../NotificationScreen/NotificationScreen.dart';  // Ensure the correct path is provided
 
 class InfoProductScreen extends StatelessWidget {
   final Product product;
 
   const InfoProductScreen({super.key, required this.product});
+
+  void addToCartAndOpen(BuildContext context) {
+    // Here, we simply navigate to the CartScreen and pass the product information.
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CartScreen(products: [product]),
+      ),
+      
+    );
+  }
+
+  void showPurchaseSuccessNotification(BuildContext context) {
+  // Giả sử bạn đã có một Navigator stack setup
+    Navigator.push(context,
+      MaterialPageRoute(
+        builder: (context) => NotificationScreen(),
+      ),
+    );
+  }
+
+  void goToCartScreen(BuildContext context) {
+  // Ví dụ chuyển đến tab giỏ hàng
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => CartScreen(products: [product]) // giả sử tab 1 là giỏ hàng
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +44,7 @@ class InfoProductScreen extends StatelessWidget {
         title: const Text('THÔNG TIN SẢN PHẨM'),
         backgroundColor: Colors.green,
       ),
-      body: SingleChildScrollView( // Using SingleChildScrollView to handle overflow
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,11 +58,7 @@ class InfoProductScreen extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  product.imageUrl, // Truy cập thuộc tính imageUrl trực tiếp
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) => const Center(child: Text('Unable to load image')),
-                ),
+                child: Image.asset(product.imageUrl, width: double.infinity, height: 200),
               ),
             ),
             const SizedBox(height: 16),
@@ -70,7 +94,40 @@ class InfoProductScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton.icon(
-                  onPressed: () {}, // Logic to handle Add to Cart
+                  onPressed: () {
+                    // Hiển thị AlertDialog để xác nhận
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Xác nhận'),
+                          content: const Text('Bạn có muốn thêm sản phẩm này vào giỏ hàng không?'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(); // Đóng dialog
+                              },
+                              child: const Text('Hủy'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(); // Đóng dialog trước khi hiển thị thông báo và chuyển hướng
+                                // Gọi hàm để thêm sản phẩm vào giỏ hàng tại đây nếu cần
+                                // Hiển thị thông báo thành công và chuyển đến CartScreen
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Thêm vào giỏ hàng thành công!'))
+                                );
+                                // Giả sử bạn có một Navigator tab hoặc controller để chuyển đến CartScreen
+                                // Thay đổi index hoặc route tùy theo cấu trúc ứng dụng của bạn
+                                goToCartScreen(context);
+                              },
+                              child: const Text('Xác nhận'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                   icon: const Icon(Icons.shopping_cart),
                   label: const Text('THÊM VÀO GIỎ HÀNG'),
                   style: ElevatedButton.styleFrom(
@@ -79,7 +136,38 @@ class InfoProductScreen extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {}, // Logic to handle Buy Now
+                  onPressed: () {
+                    // Hiển thị AlertDialog để xác nhận
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Xác Nhận Mua'),
+                          content: const Text('Bạn có chắc chắn muốn mua sản phẩm này không?'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(); // Đóng dialog
+                              },
+                              child: const Text('Hủy'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Mua thành công!'))
+                                ); // Đóng dialog trước khi hiển thị thông báo
+                                // Thêm logic để chuyển đến NotificationScreen và hiển thị thông báo
+                                // Giả sử bạn đang sử dụng một function tên là showPurchaseSuccessNotification
+                                showPurchaseSuccessNotification(context);
+                              },
+                              child: const Text('Xác Nhận'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                   ),

@@ -1,26 +1,24 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, library_private_types_in_public_api, avoid_print
 
 import 'package:flutter/material.dart';
 
 import '../../SetPasswordScreen/SetPasswordScreen.dart';
 import '../OTPInput.dart';
 
-class OTPEmailScreen extends StatelessWidget {
+class OTPEmailScreen extends StatefulWidget {
   const OTPEmailScreen({super.key});
+
+  @override
+  _OTPEmailScreenState createState() => _OTPEmailScreenState();
+}
+
+class _OTPEmailScreenState extends State<OTPEmailScreen> {
+  final controllers = List.generate(4, (_) => TextEditingController());
+  String otp = ''; // OTP is now a mutable field within the state
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            // Xử lý quay lại
-          },
-        ),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16.0),
@@ -45,14 +43,9 @@ class OTPEmailScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 20),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  OTPInput(),
-                  OTPInput(),
-                  OTPInput(),
-                  OTPInput(),
-                ],
+                children: List.generate(4, (index) => OTPInput(controller: controllers[index])),
               ),
               const SizedBox(height: 20),
               Row(
@@ -63,9 +56,7 @@ class OTPEmailScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                   TextButton(
-                    onPressed: () {
-                      // Xử lý gửi lại mã
-                    },
+                    onPressed: () {},
                     child: const Text(
                       'Gửi lại mã',
                       style: TextStyle(fontSize: 16, color: Colors.green),
@@ -75,9 +66,7 @@ class OTPEmailScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SetPasswordScreen()));
-                },
+                onPressed: () => SetPasswordScreen(),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                   shape: RoundedRectangleBorder(
@@ -96,5 +85,11 @@ class OTPEmailScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void verifyOTP() {
+    String otp = controllers.map((c) => c.text).join();
+
+    print("Entered OTP: $otp");
   }
 }

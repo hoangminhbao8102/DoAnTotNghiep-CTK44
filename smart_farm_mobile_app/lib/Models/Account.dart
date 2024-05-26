@@ -1,7 +1,5 @@
 // ignore_for_file: file_names
 
-import 'Farm.dart';
-
 class Account {
   final String fullName;
   final String address;
@@ -9,7 +7,6 @@ class Account {
   final String email;
   final String username;
   final String password;
-  final List<Farm> farms;
 
   Account({
     required this.fullName,
@@ -17,8 +14,7 @@ class Account {
     required this.phoneNumber,
     required this.email,
     required this.username,
-    required this.password,
-    required this.farms,
+    required this.password
   });
 
   /*// Chuyển đổi từ JSON sang đối tượng Dart

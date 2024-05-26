@@ -2,12 +2,15 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../Data/Data.dart';
+import '../../../Models/Account.dart';
 import '../../OTPScreen/OTPPhoneScreen/OTPPhoneScreen.dart';// ignore_for_file: must_be_immutable
 
 class ForgotPasswordPhoneScreen extends StatelessWidget {
   ForgotPasswordPhoneScreen({super.key});
 
   TextEditingController phoneNumberInputController = TextEditingController();
+  final List<Account> accounts = initializeAccounts();
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,7 @@ class ForgotPasswordPhoneScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             TextField(
+              controller: phoneNumberInputController,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.phone),
@@ -49,7 +53,21 @@ class ForgotPasswordPhoneScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const OTPPhoneScreen()));
+                String inputPhoneNumber = phoneNumberInputController.text.trim();
+                bool isValid = accounts.any((account) => account.phoneNumber == inputPhoneNumber);
+
+                if (isValid) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const OTPPhoneScreen()),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Số điện thoại không chính xác, vui lòng thử lại.'),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
